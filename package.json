@@ -1,0 +1,20 @@
+{
+  "name": "starmotorsales",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "scss-compile": "mkdir node_modules/materialize-css/css; node compile-scss.js"
+  },
+  "author": "Filip Kin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "node-sass": "^4.13.1"
+  },
+  "devDependencies": {
+    "uglifycss": "0.0.29"
+  }
+}
