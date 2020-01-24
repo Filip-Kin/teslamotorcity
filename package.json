@@ -13,7 +13,8 @@
     "express": "^4.17.1",
     "materialize-css": "^1.0.0-rc.2",
     "mysql": "^2.18.1",
-    "node-sass": "^4.13.1"
+    "node-sass": "^4.13.1",
+    "uuidv4": "^6.0.2"
   },
   "devDependencies": {
     "uglifycss": "0.0.29"
