@@ -30,21 +30,54 @@
         </ul>
     
         <div class="container">
-          ${id}
-          ${make}
-          ${model}
-          ${year}
-          ${vin}
-          ${price}
-          ${description}
-          ${body}
-          ${color}
-          ${engine}
-          ${drive}
-          ${cylinders}
-          ${transmission}
-          ${fuel}
-          ${images}
+          <div class="row">
+            <div class="col s12 l8">
+              ${images}
+            </div>
+            <div class="col s12 l4">
+              <div class="row">
+                <div class="col s12 m4"><h4>${make}</h4></div>
+                <div class="col s12 m8"><h4>${model}</h4></div>
+              </div>
+              <h6>${year}</h6>
+              <h5>$${price}</h5>
+              <p>${description}</p>
+              <table>
+                <tr>
+                  <td>VIN: </td>
+                  <td>${vin}</td>
+                </tr>
+                <tr>
+                  <td>Body: </td>
+                  <td>${body}</td>
+                </tr>
+                <tr>
+                  <td>Color: </td>
+                  <td>${color}</td>
+                </tr>
+                <tr>
+                  <td>Engine: </td>
+                  <td>${engine}</td>
+                </tr>
+                <tr>
+                  <td>Cylinders: </td>
+                  <td>${cylinders}</td>
+                </tr>
+                <tr>
+                  <td>Drive: </td>
+                  <td>${drive}</td>
+                </tr>
+                <tr>
+                  <td>Transmission: </td>
+                  <td>${transmission}</td>
+                </tr>
+                <tr>
+                  <td>Fuel: </td>
+                  <td>${fuel}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
     </main>
   
