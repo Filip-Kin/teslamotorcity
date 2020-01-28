@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "scss-compile": "mkdir node_modules/materialize-css/css; node compile-scss.js"
+    "minify": "node minify.js"
   },
   "author": "Filip Kin",
   "license": "ISC",

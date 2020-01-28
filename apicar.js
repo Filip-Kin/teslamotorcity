@@ -31,6 +31,7 @@ exports.info = (req, res, c) => {
 
 // Add or update car
 exports.add = (req, res, c) => {
+    req.body.images = JSON.parse(req.body.images);
     if (req.body.id !== undefined) {
         console.log(req.body);
         c.query(`UPDATE cars 
@@ -48,7 +49,7 @@ exports.add = (req, res, c) => {
             cylinders = '${req.body.cylinders}',
             transmission = '${req.body.transmission}',
             fuel = '${req.body.fuel}',
-            images = '${req.body.images}'
+            images = '${JSON.stringify(req.body.images)}'
         WHERE id = '${req.body.id}'`, (err) => {
             if (err) { 
                 console.error(err);
@@ -78,7 +79,7 @@ exports.add = (req, res, c) => {
             '${req.body.cylinders}',
             '${req.body.transmission}',
             '${req.body.fuel}',
-            '${req.body.images}'
+            '${JSON.stringify(req.body.images)}'
         )`, (err) => {
             if (err) { 
                 console.error(err);

@@ -4,7 +4,46 @@ main {
 .brand-logo {
     margin: 0 15px;
 }
+.year {
+    font-size: .75em;
+}
 .card-subtitle {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+}
+#inventory {
+    display: flex;
+    flex-wrap: wrap;
+}
+#inventory .col {
+    display: flex;
+    flex-direction: column;
+}
+
+#inventory .card {
+    flex: 1;
+    cursor: pointer;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
+color: #ff8f00 !important ;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus, .input-field input[type=password]:focus {
+border-bottom: 1px solid #FF8F00 !IMPORTANT;
+box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
+}
+/* valid color */
+.input-field input[type=text].valid, .input-field input[type=password].valid {
+border-bottom: 1px solid #FF8F00 !IMPORTANT;
+box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
+}
+/* invalid color */
+.input-field input[type=text].invalid, .input-field input[type=password].invalid {
+border-bottom: 1px solid #FF8F00 !IMPORTANT;
+box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+color: #FF8F00 !IMPORTANT;
 }

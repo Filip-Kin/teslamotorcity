@@ -3,26 +3,11 @@ const numberWithCommas = (x) => {
 }
 
 let makeCard = (c) => {
-    /*
-    <div class="col s12 m6 l4">
-        <div class="card">
-            <div class="card-image">
-                <img src="https://via.placeholder.com/250">
-            </div>
-            <div class="card-content">
-                <span class="card-title">Card Title</span>
-                <p>short</p>
-            </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-            </div>
-        </div>
-    </div>
-    */
+    c.images = JSON.parse(c.images);
 
-    let imgSrc = 'https://via.placeholder.com/250';
-    let titleText = c.make + ' ' + c.model;
-    let subtitleText = c.year + ' <b>$' + numberWithCommas(c.price/100)+'</b>';
+    let imgSrc = '/img/'+c.images[0];
+    let titleText = c.make + ' ' + c.model + ' <span class="year">'+c.year+'</span>';
+    let subtitleText = '$' + numberWithCommas(c.price/100);
 
     // DOM creation
     let col = document.createElement('div');
@@ -36,7 +21,6 @@ let makeCard = (c) => {
     card.addEventListener('click',  () => {
         window.location.href = '/car/'+c.id;
     });
-    card.style.cursor = 'pointer';
     col.appendChild(card);
 
 

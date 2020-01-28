@@ -3,7 +3,7 @@
 
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/vendor/materialize-css/css/materialize.min.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css" media="screen,projection">
     <link type="text/css" rel="stylesheet" href="/css/global.min.css" media="screen,projection">
 
     <!--Let browser know website is optimized for mobile-->
@@ -14,7 +14,7 @@
     <main>
         <nav>
             <div class="nav-wrapper amber darken-2">
-                <a href="#" class="brand-logo">Star Motor Sales</a>
+                <a href="/index.html" class="brand-logo">Star Motor Sales</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/index.html">Home</a></li>
                     <li class="active"><a href="/inventory.html">Inventory</a></li class="active">
@@ -35,10 +35,7 @@
               ${images}
             </div>
             <div class="col s12 l4">
-              <div class="row">
-                <div class="col s12 m4"><h4>${make}</h4></div>
-                <div class="col s12 m8"><h4>${model}</h4></div>
-              </div>
+              <h4>${make} ${model}</h4>
               <h6>${year}</h6>
               <h5>${formattedPrice}</h5>
               <p>${description}</p>
@@ -108,8 +105,8 @@
       </footer>
 
     <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="/vendor/materialize-css/js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
 </body>
 
 </html>
