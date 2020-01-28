@@ -14,6 +14,10 @@ let c = mysql.createConnection({
    
 c.connect();
 
+const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -42,7 +46,8 @@ app.get('/car/:carId', (req, res) => {
             data = data.replace('${model}', row.model);
             data = data.replace('${year}', row.year);
             data = data.replace('${vin}', row.vin);
-            data = data.replace('${price}', row.price);
+            data = data.replace('${price}', row.price/100);
+            data = data.replace('${formattedPrice}', '$'+numberWithCommas(row.price/100));
             data = data.replace('${description}', row.description);
             data = data.replace('${body}', row.body);
             data = data.replace('${color}', row.color);
@@ -64,6 +69,7 @@ app.get('/api', (req, res) => res.send('Hello World!'));
 app.use(express.json());
 
 // api-car
+app.get('/api/car', (req, res) => apiCar.inventory(req, res, c));
 app.get('/api/car/:carId', (req, res) => apiCar.info(req, res, c));
 app.post('/api/car/add', (req, res) => apiCar.add(req, res, c));
 app.post('/api/car/:carId/remove', (req, res) => apiCar.remove(req, res, c));

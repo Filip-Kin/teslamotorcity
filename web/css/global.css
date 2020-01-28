@@ -4,3 +4,7 @@ main {
 .brand-logo {
     margin: 0 15px;
 }
+.card-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
