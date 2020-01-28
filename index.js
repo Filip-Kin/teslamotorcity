@@ -2,6 +2,7 @@ const fs = require('fs');
 
 const apiCar = require('./apicar.js');
 const apiImage = require('./apiimage.js');
+const apiUser = require('./apiuser.js');
 
 const mysql = require('mysql');
 let c = mysql.createConnection({
@@ -77,5 +78,9 @@ app.post('/api/car/:carId/remove', (req, res) => apiCar.remove(req, res, c));
 // api-image
 app.post('/api/image/:id/remove', (req, res) => apiImage.remove(req, res, c));
 app.post('/api/image/add', (req, res) => apiImage.upload(req, res, c));
+
+// api-user
+app.get('/api/user/:username', (req, res) => apiUser.userExists(req, res, c));
+app.post('/api/user/add', (req, res) => apiUser.addUser(req, res, c));
 
 app.listen(port, () => console.log('SMS Server running on '+port));

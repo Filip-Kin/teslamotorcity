@@ -40,6 +40,7 @@ c.query('CREATE TABLE IF NOT EXISTS `cars` ('+
         '`id` VARCHAR(36) NOT NULL,'+
         '`username` VARCHAR(256),'+
         '`permissions` VARCHAR(16),'+
+        '`password` VARCHAR(128),'+
         'PRIMARY KEY (`id`)'+
         ');', (err) => {
             if (err) throw err;
