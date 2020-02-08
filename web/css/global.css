@@ -33,17 +33,20 @@ color: #ff8f00 !important ;
 border-bottom: 1px solid #FF8F00 !IMPORTANT;
 box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
 }
-/* valid color */
-.input-field input[type=text].valid, .input-field input[type=password].valid {
-border-bottom: 1px solid #FF8F00 !IMPORTANT;
-box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
-}
-/* invalid color */
-.input-field input[type=text].invalid, .input-field input[type=password].invalid {
-border-bottom: 1px solid #FF8F00 !IMPORTANT;
-box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
-}
 /* icon prefix focus color */
 .input-field .prefix.active {
 color: #FF8F00 !IMPORTANT;
+}
+
+.imgs .col.s12.m6 {
+    padding: 0;
+}
+.imgs .row .col.s12.m6:nth-child(1) {
+    padding-right: 2px;
+}
+.imgs .row .col.s12.m6:nth-child(2) {
+    padding-left: 2px;
+}
+.imgs .row {
+    margin-bottom: 0;
 }

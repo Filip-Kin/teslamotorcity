@@ -14,23 +14,12 @@
     <main>
         <nav>
             <div class="nav-wrapper amber darken-2">
-                <a href="/index.html" class="brand-logo">Star Motor Sales</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="inventory.html">Inventory</a></li class="active">
-                    <li><a href="services.html">Services</a></li>
-                </ul>
+                <a href="/index.html" class="brand-logo center">Star Motor Sales</a>
             </div>
         </nav>
     
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="index.html">Home</a></li class="active">
-            <li><a href="inventory.html">Inventory</a></li class="active">
-            <li><a href="services.html">Services</a></li>
-        </ul>
-    
         <div class="container" id="admin">
-            <div class="row" id="login">
+            <div class="row" id="login" style="display: none;">
                 <h1>Login</h1>
                 <form class="col s12" onsubmit="loginFormSubmit();return false" name="loginForm">
                     <div class="row">
@@ -41,7 +30,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate" name="password">
+                            <input id="password" type="password">
                             <label for="password">Password</label>
                         </div>
                     </div>
@@ -51,35 +40,54 @@
                         </div>
                     </div>
                 </form>
-            </div>  
+            </div>
+            <div class="row" id="admin-page" style="display: none;">
+                <div class="row" style="margin-top: 10px">
+                    <div class="col s12 m1">
+                        <a style="width: 150px" class="btn amber darken-2" href="#" onclick="logout()">Logout</a>
+                    </div>
+                    <div class="col offset-m10 s12 m1">
+                        <a href="add" style="width: 150px" class="btn amber darken-2">Add post</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="responsive-table">
+                        <tbody id="car-list">
+                            <tr>
+                                <th style="width: 10vw">Image</th>
+                                <th>Make and model</th>
+                                <th>Year</th>
+                                <th>Price</th>
+                                <th>Edit</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </main>
   
     <footer class="page-footer amber darken-2">
         <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">Footer Content</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Star Motor Sales</h5>
+                    <p class="grey-text text-lighten-4">
+                        1234 Somewhere rd<br>
+                        City, State 99999<br>
+                        <a href="tel:+19999999999" class="blue-text text-lighten-2">(999) 999-9999</a><br>
+                        <a href="mailto:john.doe@starmotorsales.net" class="blue-text text-lighten-2">john.doe@starmotorsales.net</a>
+                    </p>
+                </div>
             </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-              </ul>
-            </div>
-          </div>
         </div>
         <div class="footer-copyright">
-          <div class="container">
-          © 2020 Star Motor Sales all rights reserved
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-          </div>
+            <div class="container">
+            © 2020 Star Motor Sales all rights reserved
+            <a class="grey-text text-lighten-4 right" href="/admin.html">Admin</a>
+            </div>
         </div>
-      </footer>
+    </footer>
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
