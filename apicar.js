@@ -31,8 +31,7 @@ exports.info = (req, res, c) => {
 
 // Add or update car
 exports.add = (req, res, c) => {
-    req.body.images = JSON.parse(req.body.images);
-    if (req.body.id !== undefined) {
+    if (req.body.id !== undefined || req.body.id !== '') {
         console.log(req.body);
         c.query(`UPDATE cars 
         SET

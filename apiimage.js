@@ -21,10 +21,13 @@ exports.remove = (req, res, c) => {
             res.status(500);
             return res.send({status: 500, message: err.message});
         }
-        res.send({status: 200, message: req.params.id+' was deleted'});
+        res.send({status: 200, message: req.params.id});
     })
 }
 
 exports.upload = (req, res, c) => {
     // magic
+    console.log(req.body);
+    res.status(200);
+    res.send({status: 200, message: '373410da-a87f-472a-ad40-5d0c26b688e7.jpg'});
 }

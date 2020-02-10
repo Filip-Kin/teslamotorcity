@@ -19,8 +19,8 @@
         </nav>
     
         <div class="container">
-          <div class="row">
-              <form class="col s12">
+            <div class="row">
+                <form class="col s12" onsubmit="addFormSubmit();return false">
                     <div class="row">
                         <div class="input-field col s12 m6">
                             <input id="make" type="text">
@@ -70,19 +70,19 @@
                             Drive
                             <p>
                                 <label>
-                                    <input name="drive" type="radio">
+                                    <input name="drive" type="radio" value="Front wheel drive">
                                     <span>Front wheel drive</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="drive" type="radio">
+                                    <input name="drive" type="radio" value="Rear wheel drive">
                                     <span>Rear wheel drive</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="drive" type="radio">
+                                    <input name="drive" type="radio" value="All wheel drive">
                                     <span>All wheel drive</span>
                                 </label>
                             </p>
@@ -91,13 +91,13 @@
                             Transmission
                             <p>
                                 <label>
-                                    <input name="transmission" type="radio">
+                                    <input name="transmission" type="radio" value="Automatic">
                                     <span>Automatic</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="transmission" type="radio">
+                                    <input name="transmission" type="radio" value="Manual">
                                     <span>Manual</span>
                                 </label>
                             </p>
@@ -106,19 +106,19 @@
                             Fuel
                             <p>
                                 <label>
-                                    <input name="fuel" type="radio">
+                                    <input name="fuel" type="radio" value="Gas">
                                     <span>Gas</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="fuel" type="radio">
+                                    <input name="fuel" type="radio" value="Hybrid">
                                     <span>Hybrid</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="fuel" type="radio">
+                                    <input name="fuel" type="radio" value="Electric">
                                     <span>Electric</span>
                                 </label>
                             </p>
@@ -128,17 +128,26 @@
                             <label for="description">Description (optional)</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="images" type="file"></input>
-                        </div>
-                    </div>
                     <div class="row right">
                         <a href="admin.html" class="btn amber darken-3">Cancel</a>
-                        <button name="add" class="btn amber darken-3">${addOrEdit}</button>
+                        <button name="add" class="btn amber darken-3">Save</button>
                     </div>
-              </form>
-          </div>
+                </form>
+                <div class="row">
+                    <div class="col s12 m9">
+                        <h4>Images</h4>
+                        <table>
+                            <tbody id="images"></tbody>
+                        </table>
+                    </div>
+                    <form onsubmit="uploadImages();return false">
+                        <div class="col s12">
+                            <label for="imageUpload">Upload image</label><br>
+                            <input id="imageUpload" type="file" accept="image/*" multiple="true"></input>
+                        </div>
+                    </form onsubmit="addFormSubmit();return false">
+                </div>
+            </div>
         </div>
     </main>
   
@@ -167,7 +176,6 @@
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
-    <script type="text/javascript" src="/js/add.js"></script>
 
     <script>
         let car = {
@@ -186,6 +194,17 @@
             transmission: "${transmission}",
             fuel: "${fuel}"
         };
+
+        if (car.id === '${id}') {
+            for (let field in car) {
+                car[field] = '';
+            }
+        }
+
+        let images = '${images}';
+        images = (images === '' || images === '${images}')?[]:JSON.parse(images);
     </script>
+    
+    <script type="text/javascript" src="/js/add.js"></script>
 </body>
 </html>

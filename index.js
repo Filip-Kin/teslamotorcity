@@ -37,6 +37,7 @@ const imagesHTML = (imgs) => {
 }
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
@@ -84,7 +85,7 @@ app.get('/car/:carId', (req, res) => {
 app.get('/add', (req, res) => {
     fs.readFile('web/add.html', (err, data) => {
         if (err) throw err;
-        res.send(data.toString().replace('${addOrEdit}', 'Add'));
+        res.send(data.toString());
     });
 });
 app.get('/add/:carId', (req, res) => {
@@ -118,7 +119,6 @@ app.get('/add/:carId', (req, res) => {
             data = data.replace('${fuel}', row.fuel);
             data = data.replace('${images}', row.images);
             data = data.replace('${imagesHTML}', imagesHTML(row.images));
-            data = data.replace('${addOrEdit}', 'Save')
 
             res.send(data);
         });
@@ -129,6 +129,8 @@ app.get('/add/:carId', (req, res) => {
 
 // API
 app.get('/api', (req, res) => res.send('Hello World!'));
+app.use(bodyParser.raw({type: ['image/jpeg', 'image/png']}));
+app.post('/api/image/add', (req, res) => apiImage.upload(req, res, c));
 app.use(express.json());
 
 // api-car
@@ -139,7 +141,6 @@ app.post('/api/car/:carId/remove', (req, res) => apiCar.remove(req, res, c));
 
 // api-image
 app.post('/api/image/:id/remove', (req, res) => apiImage.remove(req, res, c));
-app.post('/api/image/add', (req, res) => apiImage.upload(req, res, c));
 
 // api-user
 app.get('/api/user/:username', (req, res) => apiUser.userExists(req, res, c));

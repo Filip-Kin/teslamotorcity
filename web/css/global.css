@@ -50,3 +50,6 @@ color: #FF8F00 !IMPORTANT;
 .imgs .row {
     margin-bottom: 0;
 }
+#images a.btn {
+    margin: -8px 3px;
+}

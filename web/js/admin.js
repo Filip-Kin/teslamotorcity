@@ -28,9 +28,14 @@ let loginFormSubmit = () => {
                     document.getElementById('admin-page').style.display = '';
                     generateCarList();
                 } else {
-                    document.forms.loginForm.login.classList.add('invalid');
-                    document.forms.loginForm.password.classList.add('invalid');
-                    M.toast({html: 'Incorrect username or password'})
+                    if (localStorage.password == undefined) {
+                        document.forms.loginForm.login.classList.add('invalid');
+                        document.forms.loginForm.password.classList.add('invalid');
+                        M.toast({html: 'Incorrect username or password'})
+                    } else {
+                        localStorage.remove('password')
+                        document.getElementById('login').style.display = '';
+                    }
                 }
             });
         } else {
@@ -41,9 +46,9 @@ let loginFormSubmit = () => {
     });
 };
 
-if (localStorage.username !== undefined) {
+if (localStorage.username != undefined) {
     document.forms.loginForm.login.value = localStorage.username;
-    if (localStorage.password !== undefined) {
+    if (localStorage.password != undefined) {
         document.forms.loginForm.password.value = localStorage.password;
         loginFormSubmit();
     } else {
