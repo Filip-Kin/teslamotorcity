@@ -71,7 +71,6 @@ let addFormSubmit = () => {
         fuel: getRadioValue(document.forms[0].fuel),
         images: images
     }
-
     console.log(newcar);
 
     fetch('/api/car/add', {

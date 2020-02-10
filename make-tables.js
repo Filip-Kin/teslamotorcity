@@ -28,24 +28,15 @@ c.query('CREATE TABLE IF NOT EXISTS `cars` ('+
 	'PRIMARY KEY (`id`)'+
 ');', (err) => {
     if (err) throw err;
-    c.query('CREATE TABLE IF NOT EXISTS `images` ('+
+    c.query('CREATE TABLE IF NOT EXISTS `users` ('+
     '`id` VARCHAR(36) NOT NULL,'+
-    '`type` VARCHAR(3),'+
-    '`size` INT,'+
-    '`car` VARCHAR(36),'+
+    '`username` VARCHAR(256),'+
+    '`permissions` VARCHAR(16),'+
+    '`password` VARCHAR(128),'+
     'PRIMARY KEY (`id`)'+
     ');', (err) => {
         if (err) throw err;
-        c.query('CREATE TABLE IF NOT EXISTS `users` ('+
-        '`id` VARCHAR(36) NOT NULL,'+
-        '`username` VARCHAR(256),'+
-        '`permissions` VARCHAR(16),'+
-        '`password` VARCHAR(128),'+
-        'PRIMARY KEY (`id`)'+
-        ');', (err) => {
-            if (err) throw err;
-            c.end();
-            console.log('Done!');
-        });
-    })
+        c.end();
+        console.log('Done!');
+    });
 });
