@@ -5,6 +5,7 @@ const apiImage = require('./apiimage.js');
 const apiUser = require('./apiuser.js');
 const apiAuth = require('./apiauth.js');
 
+const mysqldump = require('mysqldump');
 const mysql = require('mysql');
 let connectionDetails = {
     host: '34.74.167.132',
@@ -37,10 +38,11 @@ const imagesHTML = (imgs) => {
     return output;
 }
 
+const https = require('https');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 80;
+const port = 443;
 
 
 // Front end
@@ -150,8 +152,13 @@ app.post('/api/user/add', (req, res) => apiUser.addUser(req, res, c));
 // api-auth
 app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
-
-https.createServer({key: fs.readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), cert: fs.readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.pem')}, app).listen(port);
+//app.listen(port, () => console.log('SMS Server running on '+port));
+https.createServer({
+    key: fs.readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), 
+    cert: fs.readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.pem')
+}, app)
+.listen(port);
+console.log('SMS Server running on '+port+' with certs');
 
 // Daily database backup
-setInterval(mysqldump({conneciton: connectionDetails, dumpToFile: './dbBackup.sql'}), 1*24*60*60*1000);
+setInterval(() => {mysqldump({connection: connectionDetails, dumpToFile: './dbBackup.sql'})}, 1*24*60*60*1000);
