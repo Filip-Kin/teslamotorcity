@@ -6,13 +6,14 @@ const apiUser = require('./apiuser.js');
 const apiAuth = require('./apiauth.js');
 
 const mysql = require('mysql');
-let c = mysql.createConnection({
+let connectionDetails = {
     host: '34.74.167.132',
     port: 3306,
     user: 'starmotorsales',
     password: 'niwV^sqxb1s3Z!5h04KXlPTO8cdqO82@',
     database: 'starmotorsales'
-  });
+};
+let c = mysql.createConnection(connectionDetails);
    
 c.connect();
 
@@ -151,3 +152,6 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
 app.listen(port, () => console.log('SMS Server running on '+port));
+
+// Daily database backup
+setInterval(mysqldump({conneciton: connectionDetails, dumpToFile: './dbBackup.sql'}), 1*24*60*60*1000);
