@@ -21,7 +21,7 @@ const imagesHTML = (imgs) => {
 }
 
 exports.generateCarPage = (req, res, c) => {
-    fs.readFile('./car.html', (err, data) => {
+    fs.readFile('./dynamic/.html', (err, data) => {
         if (err) throw err;
         data = data.toString();
         c.query(`SELECT * FROM cars WHERE id = "${req.params.carId}"`, (err, row) => {

@@ -1,14 +1,14 @@
 const fs = require('fs');
 
 exports.generateBlankAddPage = (req, res) => {
-    fs.readFile('./add.html', (err, data) => {
+    fs.readFile('./dynamic/add.html', (err, data) => {
         if (err) throw err;
         res.send(data.toString());
     });
 };
 
 exports.generateEditPage = (req, res, c) => {
-    fs.readFile('./add.html', (err, data) => {
+    fs.readFile('./dynamic/add.html', (err, data) => {
         if (err) throw err;
         data = data.toString();
         c.query(`SELECT * FROM cars WHERE id = "${req.params.carId}"`, (err, row) => {
