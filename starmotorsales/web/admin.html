@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="/css/global.min.css" media="screen,projection">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <main>
+        <nav>
+            <div class="nav-wrapper amber darken-2">
+                <a href="/index.html" class="brand-logo center">Star Motor Sales</a>
+            </div>
+        </nav>
+    
+        <div class="container" id="admin">
+            <div class="row" id="login" style="display: none;">
+                <h1>Login</h1>
+                <form class="col s12" onsubmit="loginFormSubmit();return false" name="loginForm">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="username" type="text" name="login">
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="submit" type="submit" class="btn amber darken-3">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row" id="admin-page" style="display: none;">
+                <div class="row center" style="margin-top: 10px">
+                    <div class="col s12">
+                        <a href="add/" style="width: 150px" class="btn amber darken-2">Add post</a>
+                        <a href="users/" style="width: 150px" class="btn amber darken-2">Manage Users</a>
+                        <a href="#" style="width: 150px" class="btn amber darken-2" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <table>
+                        <tbody id="car-list">
+                            <tr>
+                                <th style="width: 10vw">Image</th>
+                                <th>Make and model</th>
+                                <th>Year</th>
+                                <th>Price</th>
+                                <th>Edit</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+  
+    <footer class="page-footer amber darken-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Star Motor Sales</h5>
+                    <p class="grey-text text-lighten-4">
+                        1234 Somewhere rd<br>
+                        City, State 99999<br>
+                        <a href="tel:+19999999999" class="blue-text text-lighten-2">(999) 999-9999</a><br>
+                        <a href="mailto:john.doe@starmotorsales.net" class="blue-text text-lighten-2">john.doe@starmotorsales.net</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+            © 2020 Star Motor Sales all rights reserved
+            <a class="grey-text text-lighten-4 right" href="/admin.html">Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/admin.js"></script>
+</body>
+
+</html>

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "minify": "node minify.js",
-    "make-tables": "node make-tables.js"
+    "make-tables": "node make-tables.js",
+    "dumpdb": "node dumpdb.js"
   },
   "author": "Filip Kin",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "express": "^4.17.1",
     "materialize-css": "^1.0.0-rc.2",
     "mysql": "^2.18.1",
+    "mysqldump": "^3.1.0",
     "node-sass": "^4.13.1",
     "pbkdf2": "^3.0.17",
     "uuidv4": "^6.0.2"
