@@ -40,7 +40,7 @@ const imagesHTML = (imgs) => {
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = 80;
 
 
 // Front end
@@ -151,7 +151,7 @@ app.post('/api/user/add', (req, res) => apiUser.addUser(req, res, c));
 app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
-app.listen(port, () => console.log('SMS Server running on '+port));
+https.createServer({key: fs.readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), cert: fs.readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.pem')}, app).listen(port);
 
 // Daily database backup
 setInterval(mysqldump({conneciton: connectionDetails, dumpToFile: './dbBackup.sql'}), 1*24*60*60*1000);
