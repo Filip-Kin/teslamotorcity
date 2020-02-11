@@ -14,7 +14,7 @@ exports.fsRemove = (id, c, next) => {
 }
 
 exports.remove = (req, res, c) => {
-    fsRemove(req.params.id, c, (err) => {
+    this.fsRemove(req.params.id, c, (err) => {
         if (err) {
             res.status(500);
             return res.send({status: 500, message: err.message});
@@ -26,7 +26,7 @@ exports.remove = (req, res, c) => {
 exports.upload = (req, res, c) => {
     let id = uuid4.uuid();
     console.log(req.headers);
-    let type = req.headers['content-type'].split('/')[1];
+    let type = '.'+req.headers['content-type'].split('/')[1];
     writeFile('./web/img/'+id+type, req.body, (err) => {
         if (err) {
             res.status(500);

@@ -40,8 +40,55 @@ let renderImages = () => {
         out += `<td><div class="row center"><a class="btn amber darken-2" href="#" onclick="removeImg(${i})">Remove</a></div>`;
         out += `<div class="row center"><a class="btn amber darken-2${(i<1)?' disabled':''}" onclick="imgUp(${i})"><i class="material-icons">arrow_upward</i></a>`;
         out += `<a class="btn amber darken-2${(i>=images.length-1)?' disabled':''}" onclick="imgDown(${i})"><i class="material-icons">arrow_downward</i></a></div></td>`;
+        i++;
     }
     tbody.innerHTML = out;
+}
+
+let removeImg = (i) => {
+    fetch('/api/image/'+images[i]+'/remove', {method: 'POST'}).then(res => res.json()).then(res => {
+        if (res.status !== 200) {
+            M.toast({html: "Image deletion failed<br>"+res.message});
+        } else {
+            let newArr = [];
+            for (let j = 0; j < i; j++) {
+                newArr.push(images[j]);
+            }
+            for (let k = i+1; k < images.length; k++) {
+                newArr.push(images[k]);
+            }
+            images = newArr;
+            renderImages();
+        }
+    });
+}
+
+let imgUp = (i) => {
+    let newArr = [];
+    for (let j = 0; j+1 < i; j++) {
+        newArr.push(images[j]);
+    }
+    newArr.push(images[i]);
+    newArr.push(images[i-1]);
+    for (let k = i+1; k < images.length; k++) {
+        newArr.push(images[k]);
+    }
+    images = newArr;
+    renderImages();
+}
+
+let imgDown = (i) => {
+    let newArr = [];
+    for (let j = 0; j < i; j++) {
+        newArr.push(images[j]);
+    }
+    newArr.push(images[i+1]);
+    newArr.push(images[i]);
+    for (let k = i+2; k < images.length; k++) {
+        newArr.push(images[k]);
+    }
+    images = newArr;
+    renderImages();
 }
 
 let getRadioValue = (radios) => {
