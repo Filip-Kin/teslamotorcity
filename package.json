@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "minify": "node minify.js",
-    "make-tables": "node make-tables.js",
-    "dumpdb": "node dumpdb.js"
+    "minify": "node tools/minify.js",
+    "make-tables": "node tools/make-tables.js",
+    "dumpdb": "node tools/dumpdb.js"
   },
   "author": "Filip Kin",
   "license": "ISC",
