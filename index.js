@@ -67,11 +67,12 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
 // Put the server up
-//app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
-const { readFileSync } = require('fs');
+app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
+/*const { readFileSync } = require('fs');
 https.createServer({
     key: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), 
     cert: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.pem')
 }, app)
 .listen(port);
 console.log('SMS Server running on '+port+' with certs');
+*/
