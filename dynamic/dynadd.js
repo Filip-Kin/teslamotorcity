@@ -27,7 +27,6 @@ exports.generateEditPage = (req, res, c) => {
             data = data.replace('${year}', row.year);
             data = data.replace('${vin}', row.vin);
             data = data.replace('${price}', row.price/100);
-            data = data.replace('${formattedPrice}', '$'+numberWithCommas(row.price/100));
             data = data.replace('${description}', row.description);
             data = data.replace('${body}', row.body);
             data = data.replace('${color}', row.color);
@@ -37,7 +36,6 @@ exports.generateEditPage = (req, res, c) => {
             data = data.replace('${transmission}', row.transmission);
             data = data.replace('${fuel}', row.fuel);
             data = data.replace('${images}', row.images);
-            data = data.replace('${imagesHTML}', imagesHTML(row.images));
 
             res.send(data);
         });
