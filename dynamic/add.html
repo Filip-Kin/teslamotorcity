@@ -33,45 +33,45 @@
                 <form class="col s12" onsubmit="addFormSubmit();return false">
                     <div class="row">
                         <div class="input-field col s12 m6">
-                            <input id="make" type="text">
+                            <input id="make" type="text" autocomplete="none">
                             <label for="make">Make</label>
                         </div>
                         <div class="input-field col s12 m6">
-                            <input id="model" type="text">
+                            <input id="model" type="text" autocomplete="none">
                             <label for="model">Model</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6">
-                            <input id="color" type="text">
+                            <input id="color" type="text" autocomplete="none">
                             <label for="color">Color</label>
                         </div>
                         <div class="input-field col s12 m6">
-                            <input id="body" type="text">
+                            <input id="body" type="text" autocomplete="none">
                             <label for="body">Body</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6">
-                            <input id="vin" type="text">
+                            <input id="vin" type="text" autocomplete="none">
                             <label for="vin">VIN</label>
                         </div>
                         <div class="input-field col s12 m6">
-                            <input id="engine" type="text">
+                            <input id="engine" type="text" autocomplete="none">
                             <label for="engine">Engine</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m4">
-                            <input id="year" type="number">
+                            <input id="year" type="number" autocomplete="none">
                             <label for="year">Year</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <input id="cylinders" type="number">
+                            <input id="cylinders" type="number" autocomplete="none">
                             <label for="cylinders">Cylinders</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <input id="price" type="number" step=".01">
+                            <input id="price" type="number" step=".01" autocomplete="none">
                             <label for="price">Price</label>
                         </div>
                     </div>
@@ -80,19 +80,19 @@
                             Drive
                             <p>
                                 <label>
-                                    <input name="drive" type="radio" value="Front wheel drive">
+                                    <input name="drive" type="radio" value="Front wheel drive" autocomplete="none">
                                     <span>Front wheel drive</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="drive" type="radio" value="Rear wheel drive">
+                                    <input name="drive" type="radio" value="Rear wheel drive" autocomplete="none">
                                     <span>Rear wheel drive</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="drive" type="radio" value="All wheel drive">
+                                    <input name="drive" type="radio" value="All wheel drive" autocomplete="none">
                                     <span>All wheel drive</span>
                                 </label>
                             </p>
@@ -101,13 +101,13 @@
                             Transmission
                             <p>
                                 <label>
-                                    <input name="transmission" type="radio" value="Automatic">
+                                    <input name="transmission" type="radio" value="Automatic" autocomplete="none">
                                     <span>Automatic</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="transmission" type="radio" value="Manual">
+                                    <input name="transmission" type="radio" value="Manual" autocomplete="none">
                                     <span>Manual</span>
                                 </label>
                             </p>
@@ -116,25 +116,25 @@
                             Fuel
                             <p>
                                 <label>
-                                    <input name="fuel" type="radio" value="Gas">
+                                    <input name="fuel" type="radio" value="Gas" autocomplete="none">
                                     <span>Gas</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="fuel" type="radio" value="Hybrid">
+                                    <input name="fuel" type="radio" value="Hybrid" autocomplete="none">
                                     <span>Hybrid</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name="fuel" type="radio" value="Electric">
+                                    <input name="fuel" type="radio" value="Electric" autocomplete="none">
                                     <span>Electric</span>
                                 </label>
                             </p>
                         </div>
                         <div class="input-field col s6 m3">
-                            <textarea id="description" class="materialize-textarea"></textarea>
+                            <textarea id="description" class="materialize-textarea" autocomplete="none"></textarea>
                             <label for="description">Description (optional)</label>
                         </div>
                     </div>
@@ -145,17 +145,15 @@
                                 <tbody id="images"></tbody>
                             </table>
                         </div>
-                        <form onsubmit="uploadImages();return false">
-                            <div class="col s12">
-                                <label for="imageUpload">Upload image</label><br>
-                                <input id="imageUpload" type="file" accept="image/jpeg image/png" multiple="true"></input>
-                            </div>
-                        </form>
+                        <div class="col s12">
+                            <label for="imageUpload">Upload image</label><br>
+                            <input id="imageUpload" type="file" accept="image/jpeg image/png" multiple="true" class="editPerms"  autocomplete="none"></input>
+                        </div>
                     </div>
                     <div class="row right">
                         <a href="/admin.html" class="btn amber darken-3">Cancel</a>
-                        <a href="#" onclick="M.Modal.getInstance(document.getElementById('removeModal')).open()" class="btn amber darken-3">Remove</a>
-                        <a href="#" onclick="addFormSubmit()" class="btn amber darken-3">Save</a>
+                        <a href="#" onclick="M.Modal.getInstance(document.getElementById('removeModal')).open()" id="removeBtn" class="editPerms btn amber darken-3">Remove</a>
+                        <a href="#" onclick="addFormSubmit()" class="editPerms btn amber darken-3">Save</a>
                     </div>
                 </form>
             </div>
@@ -186,7 +184,6 @@
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/js/index.min.js"></script>
 
     <script>
         let car = {

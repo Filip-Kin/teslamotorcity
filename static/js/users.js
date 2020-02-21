@@ -2,6 +2,7 @@ let generateUserList = () => {
     fetch('/api/user').then(res => res.json()).then(users => {
         let out = '';
         console.log(users);
+        users.sort((a, b) => { return b.permissions - a.permissions; })
         for (user of users) {
             switch (user.permissions) {
                 case 0: user.permissions = 'View Only'; break;

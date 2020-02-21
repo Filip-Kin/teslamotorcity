@@ -1,4 +1,11 @@
 window.addEventListener('load', () => {
+    if (localStorage.permissions < 2 || (user.permissions > 2 && localStorage.permissions < 3)) {
+        document.querySelectorAll('.editPerms').forEach(elm => {
+            elm.classList.add('disabled');
+            if (elm.nodeName === 'INPUT') elm.setAttribute('disabled', 'true')
+        });
+    }
+
     if (user.id !== '') {
         for (let field in user) {
             console.log(field);
@@ -7,15 +14,16 @@ window.addEventListener('load', () => {
             } else {
                 if (field === 'permissions') {
                     switch (user[field]) {
-                        case 0: document.forms[0][field][2].checked = true;
-                        case 1: document.forms[0][field][1].checked = true;
-                        case 2: document.forms[0][field][0].checked = true;
+                        case "0": document.forms[0][field][2].checked = true;
+                        case "1": document.forms[0][field][1].checked = true;
+                        case "2": document.forms[0][field][0].checked = true;
                     }
                 }
             }
         }
     } else {
         document.forms[0].password.value = '';
+        document.getElementById('removeBtn').style.display = 'none';
     }
     M.updateTextFields();
 });
@@ -53,6 +61,21 @@ let addUserFormSubmit = () => {
                 console.error(res);
                 M.toast({html: 'Something went wrong<br>'+res.message});
             })
+        } else {
+            window.location.replace('/users.html');
+        }
+    });
+}
+
+M.Modal.init(document.querySelectorAll('.modal'), {});
+
+let removeUser = () => {
+    fetch('/api/user/'+user.id+'/remove', {
+        method: 'POST',
+        headers: {id: localStorage.id, password: localStorage.password}
+    }).then(res => res.json()).then(res => {
+        if (res.status !== 200) {
+            M.toast({html: 'Something went wrong<br>'+res.message});
         } else {
             window.location.replace('/users.html');
         }

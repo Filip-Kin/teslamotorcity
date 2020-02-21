@@ -24,6 +24,7 @@ let loginFormSubmit = () => {
                     document.forms.loginForm.login.classList.add('valid');
                     document.forms.loginForm.password.classList.add('valid');
                     localStorage.setItem('password', document.forms.loginForm.password.value);
+                    localStorage.setItem('permissions', res.permissions);
                     document.getElementById('login').style.display = 'none';
                     document.getElementById('admin-page').style.display = '';
                     generateCarList();
@@ -61,6 +62,7 @@ if (localStorage.username != undefined) {
 
 let logout = () => {
     localStorage.removeItem('password');
+    localStorage.removeItem('permissions');
     window.location.replace('/index.html');
 }
 
@@ -69,7 +71,7 @@ let generateCarList = () => {
         let out = '';
         console.log(cars);
         for (car of cars) {
-            out += `<tr><td><div><img src="/img/${JSON.parse(car.images)[0]}" class="responsive-img"></div></td>`;
+            out += `<tr><td><div><img src="/img/${JSON.parse(car.images)[0]}" style="width: 15vw; height: auto"></div></td>`;
             out += `<td>${car.make} ${car.model}</td>`;
             out += `<td>${car.year}</td>`;
             out += `<td>${car.price}</td>`;

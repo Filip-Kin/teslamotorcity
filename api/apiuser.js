@@ -50,7 +50,7 @@ exports.addUser = (req, res, c) => {
                 VALUES (
                     '${id}',
                     '${req.body.username.toLowerCase()}',
-                    '',
+                    ${req.body.permissions},
                     '${hash}'
                 )`, (err) => {
                     if (err) {
@@ -85,4 +85,38 @@ exports.userList = (req, res, c) => {
             res.send(rows);
         }
     })
+}
+
+// Remove a user
+exports.remove = (req, res, c) => {
+    auth.auth(req.headers.id, req.headers.password, c, -1, (err, login, permission) => {
+        if (err) {
+            res.status(500);
+            res.send({status: 500, message: err.message});
+        } else {
+            c.query(`SELECT * FROM users WHERE id = '${req.params.username}';`, (err, rows) => {
+                if (err) { 
+                    res.status(500);
+                    res.send({status: 500, message: err.message}); 
+                } else {
+                    if (rows[0] !== undefined) {
+                        if (!login || permission < 2 || (rows[0].permissions == 3 && permission < 3)) {
+                            res.status(403);
+                            res.send({status: 403, message: 'Invalid credentials'});
+                        } else {
+                            console.log('Remove '+req.params.username);
+                            c.query(`DELETE FROM users WHERE id = '${req.params.username}';`, (err) => {
+                                if (err) { 
+                                    res.status(500);
+                                    res.send({status: 500, message: err.message}); 
+                                } else {
+                                    res.send({status: 200, message: 'Removed'});
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        }
+    });
 }

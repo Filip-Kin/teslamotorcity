@@ -64,6 +64,7 @@ app.post('/api/image/:id/remove', (req, res) => apiImage.remove(req, res, c));
 app.get('/api/user', (req, res) => apiUser.userList(req, res, c));
 app.get('/api/user/:username', (req, res) => apiUser.userExists(req, res, c));
 app.post('/api/user/add', (req, res) => apiUser.addUser(req, res, c));
+app.post('/api/user/:username/remove', (req, res) => apiUser.remove(req, res, c));
 
 // api-auth
 app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));

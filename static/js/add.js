@@ -1,6 +1,12 @@
 window.addEventListener('load', () => {
-    let toast = M.toast({html: 'Loading...'});
-    if (car.id !== "${id}") {
+    if (localStorage.permissions < 1) {
+        document.querySelectorAll('.editPerms').forEach(elm => {
+            elm.classList.add('disabled');
+            if (elm.nodeName === 'INPUT') elm.setAttribute('disabled', 'true')
+        });
+    }
+
+    if (car.id !== "") {
         for (let field in car) {
             console.log(field);
             if (document.forms[0][field].length == undefined) {
@@ -26,19 +32,22 @@ window.addEventListener('load', () => {
                 }
             }
         }
-        M.updateTextFields();
-        renderImages(toast);
+    } else {
+        document.getElementById('removeBtn').style.display = 'none';
     }
+    
+    M.updateTextFields();
+    renderImages();
 });
 
 let renderImages = (toast=null) => {
     let tbody = document.getElementById('images');
     let out = '';
     let i = 0;
+    let disabled = (localStorage.permissions < 1) ? 'disabled ':'';
     for (let img of images) {
-        console.log(img);
         out += `<tr><td width="50%"><img style="responsive-img" width="100%" src="/img/${img}"></td>`;
-        out += `<td><div class="row center"><a class="btn amber darken-2" href="#" onclick="removeImg(${i})">Remove</a></div>`;
+        out += `<td><div class="row center"><a class="${disabled}btn amber darken-2" href="#" onclick="removeImg(${i})">Remove</a></div>`;
         out += `<div class="row center"><a class="btn amber darken-2${(i<1)?' disabled':''}" onclick="imgUp(${i})"><i class="material-icons">arrow_upward</i></a>`;
         out += `<a class="btn amber darken-2${(i>=images.length-1)?' disabled':''}" onclick="imgDown(${i})"><i class="material-icons">arrow_downward</i></a></div></td>`;
         i++;

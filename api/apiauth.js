@@ -40,6 +40,7 @@ exports.auth = (id, password, c, permissions, next) => {
             next(false, false, false)
         } else {
             if (rows[0].permissions < permissions) return next(false, false, false); // If permission level is less than required
+            if (permissions < 0) return next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)), rows[0].permissions);
             next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)), true);
         }
     })
@@ -47,11 +48,11 @@ exports.auth = (id, password, c, permissions, next) => {
 
 exports.apiauth = (req, res, c) => {
     console.log(req.body);
-    exports.auth(req.params.id, req.body.password, c, 0, (err, out) => {
+    exports.auth(req.params.id, req.body.password, c, -1, (err, out, permissions) => {
         if (err) {
             res.status(500);
             res.send({status: 500, message: err.message});
         }
-        res.send({status: 200, auth: out});
+        res.send({status: 200, auth: out, permissions: permissions});
     });
 }
