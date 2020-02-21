@@ -26,7 +26,7 @@ exports.generateEditPage = (req, res, c) => {
             data = data.replace('${model}', row.model);
             data = data.replace('${year}', row.year);
             data = data.replace('${vin}', row.vin);
-            data = data.replace('${price}', row.price/100);
+            data = data.replace('${price}', row.price);
             data = data.replace('${description}', row.description);
             data = data.replace('${body}', row.body);
             data = data.replace('${color}', row.color);

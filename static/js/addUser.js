@@ -13,10 +13,10 @@ window.addEventListener('load', () => {
                 document.forms[0][field].value = user[field];
             } else {
                 if (field === 'permissions') {
-                    switch (user[field]) {
-                        case "0": document.forms[0][field][2].checked = true;
-                        case "1": document.forms[0][field][1].checked = true;
-                        case "2": document.forms[0][field][0].checked = true;
+                    switch (parseInt(user[field])) {
+                        case 0: document.forms[0][field][2].checked = true;
+                        case 1: document.forms[0][field][1].checked = true;
+                        case 2: document.forms[0][field][0].checked = true;
                     }
                 }
             }
