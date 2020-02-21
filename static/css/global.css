@@ -4,6 +4,9 @@ main {
 .brand-logo {
     white-space: nowrap;
 }
+.btn {
+    margin: 5px 0;
+}
 .year {
     font-size: .75em;
 }
