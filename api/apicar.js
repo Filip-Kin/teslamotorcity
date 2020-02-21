@@ -26,6 +26,7 @@ exports.info = (req, res, c) => {
         if (row.length < 1) {
             return res.send(response);
         }
+        row[0].price = row[0].price/100
         res.send(row[0]);
     });
 }
@@ -48,7 +49,7 @@ exports.add = (req, res, c) => {
                     model = '${req.body.model}',
                     year = '${req.body.year}',
                     vin = '${req.body.vin}',
-                    price = ${req.body.price},
+                    price = ${req.body.price*100},
                     description = '${req.body.description}',
                     body = '${req.body.body}',
                     color = '${req.body.color}',
@@ -78,7 +79,7 @@ exports.add = (req, res, c) => {
                     '${req.body.model}',
                     '${req.body.year}',
                     '${req.body.vin}',
-                    ${req.body.price},
+                    ${req.body.price*100},
                     '${req.body.description}',
                     '${req.body.body}',
                     '${req.body.color}',

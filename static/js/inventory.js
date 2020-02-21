@@ -7,7 +7,7 @@ let makeCard = (c) => {
 
     let imgSrc = '/img/'+c.images[0];
     let titleText = c.make + ' ' + c.model + ' <span class="year">'+c.year+'</span>';
-    let subtitleText = '$' + numberWithCommas(c.price/100);
+    let subtitleText = '$' + numberWithCommas(c.price);
 
     // DOM creation
     let col = document.createElement('div');
