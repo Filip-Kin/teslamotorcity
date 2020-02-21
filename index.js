@@ -10,7 +10,8 @@ const { generateBlankUserAddPage, generateUserEditPage } = require('./dynamic/dy
 // Mysql setup
 const mysql = require('mysql');
 let connectionDetails = {
-    host: 'localhost',
+    //host: 'localhost',
+    host: '34.74.167.132',
     port: 3306,
     user: 'starmotorsales',
     password: 'niwV^sqxb1s3Z!5h04KXlPTO8cdqO82@',
@@ -46,7 +47,7 @@ app.get('/addUser/:userId', (req, res) => generateUserEditPage(req, res, c));
 
 // API
 app.get('/api', (req, res) => res.send('Hello World!'));
-app.use(bodyParser.raw({type: ['image/jpeg', 'image/png']}));
+app.use(bodyParser.raw({limit: '50mb', type: ['image/jpeg', 'image/png']}));
 app.post('/api/image/add', (req, res) => apiImage.upload(req, res, c));
 app.use(express.json());
 
@@ -70,7 +71,8 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
 // Put the server up
-//app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
+app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
+/*
 const { readFileSync } = require('fs');
 https.createServer({
     key: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), 
@@ -78,3 +80,4 @@ https.createServer({
 }, app)
 .listen(port);
 console.log('SMS Server running on '+port+' with certs');
+*/

@@ -6,7 +6,6 @@
     <link type="text/css" rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css" media="screen,projection">
     <link type="text/css" rel="stylesheet" href="/css/global.min.css" media="screen,projection">
 
-    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -145,7 +144,7 @@
                     <div class="row right">
                         <a href="/admin.html" class="btn amber darken-3">Cancel</a>
                         <a href="#" onclick="removeCar()" class="btn amber darken-3">Remove</a>
-                        <button name="add" class="btn amber darken-3">Save</button>
+                        <a href="#" onclick="addFormSubmit()" class="btn amber darken-3">Save</a>
                     </div>
                 </form>
             </div>
@@ -176,7 +175,7 @@
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/index.min.js"></script>
 
     <script>
         let car = {
@@ -206,6 +205,6 @@
         images = (images === '' || images === '${images}')?[]:JSON.parse(images);
     </script>
     
-    <script type="text/javascript" src="/js/add.js"></script>
+    <script type="text/javascript" src="/js/add.min.js"></script>
 </body>
 </html>

@@ -1,19 +1,43 @@
-const { writeFile, readFileSync } = require('fs');
-const minifyCSS = require('uglifycss');
-const minifyJS = require('uglify-js');
+const { writeFile } = require('fs');
+const minify = require('minify');
 
-Promise.all([
-    new Promise((resolve, reject) => {
-        writeFile('static/css/global.min.css', minifyCSS.processFiles(['static/css/global.css']), () =>  resolve());
-    }),
-    new Promise((resolve, reject) => {
-        let minified = minifyJS.minify({
-            'add.js': readFileSync('static/js/add.js'),
-            'admin.js': readFileSync('static/js/admin.js'),
-            'index.js': readFileSync('static/js/index.js'),
-            'inventory.js': readFileSync('static/js/inventory.js')
+const options = {
+
+}
+
+const files = [
+    './static/css/global.css',
+    './static/js/add.js',
+    './static/js/addUser.js',
+    './static/js/admin.js',
+    './static/js/index.js',
+    './static/js/inventory.js',
+    './static/js/users.js'
+]
+
+let threads = [];
+
+for (let i = 0; i < files.length; i++) {
+    let file = files[i];
+    console.log('Processing '+file)
+    let type = file.match(/(js|css|html)$/gm);
+    threads.push(new Promise((resolve, reject) => {
+        minify(file, options).then((data) => {
+            let newFile = file.replace(/\.(js|css|html)$/gm, '.min.'+type[0]);
+            console.log('Writing '+newFile)
+            writeFile(newFile, data, (err) => {
+                if (err) {
+                    console.log('Write error on file '+file);
+                    console.error(err);
+                }
+                resolve();
+            })
+        }).catch(err => {
+            console.log('Minify error on file '+file);
+            console.error(err);
+            resolve();
         });
-        if (minified.error) console.error(minified.error);
-        writeFile('static/js/global.min.js', minified.code, () => resolve());
-    })
-]).then(() => console.log('Done!'));
+    }));
+}
+
+Promise.all(threads).then(console.log('Done!'));

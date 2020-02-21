@@ -3,8 +3,8 @@ const { auth } = require('./apiauth.js');
 const uuid4 = require('uuidv4');
 
 exports.fsRemove = (id, c, next) => {
-    if (existsSync('web/img/'+id)) {
-        unlink('web/img/'+id, (err) => {
+    if (existsSync('static/img/'+id)) {
+        unlink('static/img/'+id, (err) => {
             if (err) return next(err);
             return next(false);
         });
@@ -46,7 +46,7 @@ exports.upload = (req, res, c) => {
             let id = uuid4.uuid();
             console.log(req.headers);
             let type = '.'+req.headers['content-type'].split('/')[1];
-            writeFile('./web/img/'+id+type, req.body, (err) => {
+            writeFile('./static/img/'+id+type, req.body, err => {
                 if (err) {
                     res.status(500);
                     res.send({status: 500, message: err.message});
@@ -54,7 +54,7 @@ exports.upload = (req, res, c) => {
                     res.status(200);
                     res.send({status: 200, message: id+type});
                 }
-            })
+            });
         }
     });
 }

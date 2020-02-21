@@ -24,16 +24,20 @@ main {
     flex: 1;
     cursor: pointer;
 }
-/* label focus color */
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #ff8f00;
+}
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #ff8f00;
+}
 .input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
 color: #ff8f00 !important ;
 }
-/* label underline focus color */
 .input-field input[type=text]:focus, .input-field input[type=password]:focus {
 border-bottom: 1px solid #FF8F00 !IMPORTANT;
 box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
 }
-/* icon prefix focus color */
 .input-field .prefix.active {
 color: #FF8F00 !IMPORTANT;
 }
