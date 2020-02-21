@@ -10,6 +10,9 @@ exports.inventory = (req, res, c) => {
             res.status(500);
             return res.send({status: 500, error: err.message});
         }
+        for(car of row) {
+            car.price = car.price/100
+        }
         res.send(row);
     });
 }
