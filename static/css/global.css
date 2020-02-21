@@ -2,7 +2,7 @@ main {
     min-height: 100vh;
 }
 .brand-logo {
-    margin: 0 15px;
+    white-space: nowrap;
 }
 .year {
     font-size: .75em;

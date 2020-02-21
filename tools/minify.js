@@ -10,7 +10,6 @@ const files = [
     './static/js/add.js',
     './static/js/addUser.js',
     './static/js/admin.js',
-    './static/js/index.js',
     './static/js/inventory.js',
     './static/js/users.js'
 ]
