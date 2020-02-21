@@ -2,7 +2,7 @@ const { unlink, existsSync, writeFile } = require('fs');
 const { auth } = require('./apiauth.js');
 const uuid4 = require('uuidv4');
 
-exports.fsRemove = (id, c, next) => {
+exports.fsRemove = (id, next) => {
     if (existsSync('static/img/'+id)) {
         unlink('static/img/'+id, (err) => {
             if (err) return next(err);
@@ -23,7 +23,7 @@ exports.remove = (req, res, c) => {
             res.status(403);
             res.send({status: 403, message: 'Invalid credentials'});
         } else {
-            this.fsRemove(req.params.id, c, (err) => {
+            this.fsRemove(req.params.id, (err) => {
                 if (err) {
                     res.status(500);
                     return res.send({status: 500, message: err.message});

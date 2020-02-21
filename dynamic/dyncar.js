@@ -7,7 +7,7 @@ const numberWithCommas = (x) => {
 const imagesHTML = (imgs) => {
     imgs = JSON.parse(imgs);
     if (imgs.length < 1) return `<img src="https://via.placeholder.com/1280x720">`;
-    let output = `<div class="row"><img src="/img/${imgs[0]}" class="responsive-img"></div>`;
+    let output = `<div class="row center"><img src="/img/${imgs[0]}" class="responsive-img"></div>`;
     if (imgs.length > 1) {
         for (let i = 0; i < imgs.length; i++) {
             if (i > 0) {

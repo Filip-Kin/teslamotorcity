@@ -17,6 +17,17 @@
             </div>
         </nav>
     
+        <div id="removeModal" class="modal">
+            <div class="modal-content">
+                <h4>Are you sure you want to remove this post?</h4>
+                <p>All data and images will be deleted</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close amber darken-3 btn">Cancel</a>
+                <a href="#!" onclick="removeCar()" class="modal-close red darken-3 btn">Remove</a>
+            </div>
+        </div>
+
         <div class="container">
             <div class="row">
                 <form class="col s12" onsubmit="addFormSubmit();return false">
@@ -143,7 +154,7 @@
                     </div>
                     <div class="row right">
                         <a href="/admin.html" class="btn amber darken-3">Cancel</a>
-                        <a href="#" onclick="removeCar()" class="btn amber darken-3">Remove</a>
+                        <a href="#" onclick="M.Modal.getInstance(document.getElementById('removeModal')).open()" class="btn amber darken-3">Remove</a>
                         <a href="#" onclick="addFormSubmit()" class="btn amber darken-3">Save</a>
                     </div>
                 </form>

@@ -102,7 +102,7 @@ exports.add = (req, res, c) => {
 }
 
 // Remove a car
-(req, res, c) => {
+exports.remove = (req, res, c) => {
     auth(req.headers.id, req.headers.password, c, 1, (err, login, permission) => {
         if (err) {
             res.status(500);
@@ -112,18 +112,38 @@ exports.add = (req, res, c) => {
             res.send({status: 403, message: 'Invalid credentials'});
         } else {
             console.log('Remove '+req.params.carId);
-            c.query(`DELETE FROM cars WHERE id = '${req.params.carId}';`, (err) => {
+            c.query(`SELECT images FROM cars WHERE id = '${req.params.carId}';`, (err, rows) => {
                 if (err) { 
-                    console.error(err);
                     res.status(500);
-                    return res.send({status: 500, message: err.message}); 
-                }
-                fsRemove((err) => {
-                    if (err) {
-                        console.error(err);
+                    res.send({status: 500, message: err.message}); 
+                } else {
+                    let threads = [];
+
+                    threads.push(new Promise(resolve => {
+                        c.query(`DELETE FROM cars WHERE id = '${req.params.carId}';`, (err) => {
+                            if (err) { 
+                                res.status(500);
+                                res.send({status: 500, message: err.message}); 
+                            }
+                            resolve();
+                        });
+                    }));
+
+                    if (rows[0] !== undefined) {
+                        for (img of JSON.parse(rows[0].images)) {
+                            threads.push(new Promise((resolve, reject) => {
+                                fsRemove(img, (err) => {
+                                    if (err) console.error(err);
+                                    resolve();
+                                });
+                            }));
+                        }
                     }
-                    res.send({status: 200, message: 'Removed'});
-                });
+
+                    Promise.all(threads).then(() => {
+                        res.send({status: 200, message: 'Removed'});
+                    });
+                }
             });
         }
     });

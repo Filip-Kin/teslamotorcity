@@ -1,4 +1,5 @@
 window.addEventListener('load', () => {
+    let toast = M.toast({html: 'Loading...'});
     if (car.id !== "${id}") {
         for (let field in car) {
             console.log(field);
@@ -25,12 +26,12 @@ window.addEventListener('load', () => {
                 }
             }
         }
-        renderImages();
         M.updateTextFields();
+        renderImages(toast);
     }
 });
 
-let renderImages = () => {
+let renderImages = (toast=null) => {
     let tbody = document.getElementById('images');
     let out = '';
     let i = 0;
@@ -43,6 +44,7 @@ let renderImages = () => {
         i++;
     }
     tbody.innerHTML = out;
+    if (toast!==null) toast.dismiss();
 }
 
 let removeImg = (i) => {
@@ -101,6 +103,7 @@ let getRadioValue = (radios) => {
 }
 
 let addFormSubmit = () => {
+    let toast = M.toast({html: 'Saving...'});
     let newcar = {
         id: car.id,
         make: document.forms[0].make.value,
@@ -132,6 +135,7 @@ let addFormSubmit = () => {
         if (res.status !== 200) {
             res.json().then((res) => {
                 console.error(res);
+                toast.dismiss();
                 M.toast({html: 'Something went wrong<br>'+res.message});
             })
         } else {
@@ -141,6 +145,7 @@ let addFormSubmit = () => {
 }
 
 let uploadImages = () => {
+    let toast = M.toast({html: 'Uploading, please wait'});
     let files = document.forms[0].imageUpload.files;
     console.log(files);
     let promises = [];
@@ -161,9 +166,23 @@ let uploadImages = () => {
                 images.push(img.message);
             }
         }
-        renderImages();
+        renderImages(toast);
         document.forms[0].imageUpload.value = '';
     });
 }
 
 document.forms[0].imageUpload.addEventListener('change', uploadImages, false);
+M.Modal.init(document.querySelectorAll('.modal'), {});
+
+let removeCar = () => {
+    fetch('/api/car/'+car.id+'/remove', {
+        method: 'POST',
+        headers: {id: localStorage.id, password: localStorage.password}
+    }).then(res => res.json()).then(res => {
+        if (res.status !== 200) {
+            M.toast({html: 'Something went wrong<br>'+res.message});
+        } else {
+            window.location.replace('/admin.html');
+        }
+    });
+}
