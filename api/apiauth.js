@@ -32,21 +32,22 @@ exports.deconstructHashString = (hash) => {
     }
 }
 
-exports.auth = (id, password, c, next, action='') => {
+exports.auth = (id, password, c, permissions, next) => {
     c.query(`SELECT * FROM users WHERE id = '${id}'`, (err, rows) => {
         if (err) next(err, null)
         console.log(rows);
         if (rows[0] == undefined) {
-            next(false, false)
+            next(false, false, false)
         } else {
-            next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)));
+            if (rows[0].permissions < permissions) return next(false, false, false); // If permission level is less than required
+            next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)), true);
         }
     })
 }
 
 exports.apiauth = (req, res, c) => {
     console.log(req.body);
-    exports.auth(req.params.id, req.body.password, c, (err, out) => {
+    exports.auth(req.params.id, req.body.password, c, 0, (err, out) => {
         if (err) {
             res.status(500);
             res.send({status: 500, message: err.message});

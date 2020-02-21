@@ -46,7 +46,7 @@ let renderImages = () => {
 }
 
 let removeImg = (i) => {
-    fetch('/api/image/'+images[i]+'/remove', {method: 'POST'}).then(res => res.json()).then(res => {
+    fetch('/api/image/'+images[i]+'/remove', {method: 'POST', headers: {id: localStorage.id, password: localStorage.password}}).then(res => res.json()).then(res => {
         if (res.status !== 200) {
             M.toast({html: "Image deletion failed<br>"+res.message});
         } else {
@@ -123,27 +123,32 @@ let addFormSubmit = () => {
     fetch('/api/car/add', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            id: localStorage.id, 
+            password: localStorage.password
         },
         body: JSON.stringify(newcar)
     }).then((res) => {
         if (res.status !== 200) {
-            console.error(res);
-            M.toast({html: 'Something went wrong<br>'+res.message});
+            res.json().then((res) => {
+                console.error(res);
+                M.toast({html: 'Something went wrong<br>'+res.message});
+            })
         } else {
             window.location.replace('/admin.html');
         }
     });
 }
 
-let uploadImages  = () => {
-    let files = document.forms[1].imageUpload.files;
+let uploadImages = () => {
+    let files = document.forms[0].imageUpload.files;
     console.log(files);
     let promises = [];
     for (let img of files) {
         promises.push(new Promise((resolve, reject) => {
             fetch('/api/image/add', {
                 method: 'POST',
+                headers: {id: localStorage.id, password: localStorage.password},
                 body: img
             }).then(res => res.json()).then(res => resolve(res));
         }))
@@ -157,8 +162,8 @@ let uploadImages  = () => {
             }
         }
         renderImages();
-        document.forms[1].reset();
+        document.forms[0].imageUpload.value = '';
     });
 }
 
-document.forms[1].imageUpload.addEventListener('change', uploadImages, false);
+document.forms[0].imageUpload.addEventListener('change', uploadImages, false);

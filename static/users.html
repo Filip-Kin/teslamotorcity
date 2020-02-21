@@ -19,44 +19,20 @@
         </nav>
     
         <div class="container" id="admin">
-            <div class="row" id="login" style="display: none;">
-                <h1>Login</h1>
-                <form class="col s12" onsubmit="loginFormSubmit();return false" name="loginForm">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="username" type="text" name="login">
-                            <label for="username">Username</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password">
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="submit" type="submit" class="btn amber darken-3">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="row" id="admin-page" style="display: none;">
+            <div class="row">
                 <div class="row center" style="margin-top: 10px">
                     <div class="col s12">
-                        <a href="add/" style="width: 150px" class="btn amber darken-2">Add post</a>
-                        <a href="users.html" style="width: 150px" class="btn amber darken-2">Manage Users</a>
+                        <a href="addUser/" style="width: 150px" class="btn amber darken-2">Add User</a>
+                        <a href="admin.html" style="width: 150px" class="btn amber darken-2">Manage Cars</a>
                         <a href="#" style="width: 150px" class="btn amber darken-2" onclick="logout()">Logout</a>
                     </div>
                 </div>
                 <div class="row">
                     <table>
-                        <tbody id="car-list">
+                        <tbody id="user-list">
                             <tr>
-                                <th style="width: 10vw">Image</th>
-                                <th>Make and model</th>
-                                <th>Year</th>
-                                <th>Price</th>
+                                <th>Username</th>
+                                <th>Role</th>
                                 <th>Edit</th>
                             </tr>
                         </tbody>
@@ -91,7 +67,7 @@
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
-    <script type="text/javascript" src="/js/admin.js"></script>
+    <script type="text/javascript" src="/js/users.js"></script>
 </body>
 
 </html>

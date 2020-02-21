@@ -5,11 +5,12 @@ const apiUser = require('./api/apiuser.js');
 const apiAuth = require('./api/apiauth.js');
 const { generateCarPage } = require('./dynamic/dyncar.js');
 const { generateBlankAddPage, generateEditPage } = require('./dynamic/dynadd.js');
+const { generateBlankUserAddPage, generateUserEditPage } = require('./dynamic/dynaddUser.js');
 
 // Mysql setup
 const mysql = require('mysql');
 let connectionDetails = {
-    host: '34.74.167.132',
+    host: 'localhost',
     port: 3306,
     user: 'starmotorsales',
     password: 'niwV^sqxb1s3Z!5h04KXlPTO8cdqO82@',
@@ -39,7 +40,8 @@ app.use('/vendor/materialize-css', express.static('node_modules/materialize-css'
 app.get('/car/:carId', (req, res) => generateCarPage(req, res, c));
 app.get('/add', (req, res) => generateBlankAddPage(req, res));
 app.get('/add/:carId', (req, res) => generateEditPage(req, res, c));
-
+app.get('/addUser', (req, res) => generateBlankUserAddPage(req, res));
+app.get('/addUser/:userId', (req, res) => generateUserEditPage(req, res, c));
 
 
 // API
@@ -58,6 +60,7 @@ app.post('/api/car/:carId/remove', (req, res) => apiCar.remove(req, res, c));
 app.post('/api/image/:id/remove', (req, res) => apiImage.remove(req, res, c));
 
 // api-user
+app.get('/api/user', (req, res) => apiUser.userList(req, res, c));
 app.get('/api/user/:username', (req, res) => apiUser.userExists(req, res, c));
 app.post('/api/user/add', (req, res) => apiUser.addUser(req, res, c));
 
@@ -67,12 +70,11 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
 // Put the server up
-app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
-/*const { readFileSync } = require('fs');
+//app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
+const { readFileSync } = require('fs');
 https.createServer({
     key: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), 
     cert: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.pem')
 }, app)
 .listen(port);
 console.log('SMS Server running on '+port+' with certs');
-*/

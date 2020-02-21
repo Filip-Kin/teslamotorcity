@@ -128,25 +128,26 @@
                             <label for="description">Description (optional)</label>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col s12 m9">
+                            <h4>Images</h4>
+                            <table>
+                                <tbody id="images"></tbody>
+                            </table>
+                        </div>
+                        <form onsubmit="uploadImages();return false">
+                            <div class="col s12">
+                                <label for="imageUpload">Upload image</label><br>
+                                <input id="imageUpload" type="file" accept="image/jpeg image/png" multiple="true"></input>
+                            </div>
+                        </form>
+                    </div>
                     <div class="row right">
-                        <a href="admin.html" class="btn amber darken-3">Cancel</a>
+                        <a href="/admin.html" class="btn amber darken-3">Cancel</a>
+                        <a href="#" onclick="removeCar()" class="btn amber darken-3">Remove</a>
                         <button name="add" class="btn amber darken-3">Save</button>
                     </div>
                 </form>
-                <div class="row">
-                    <div class="col s12 m9">
-                        <h4>Images</h4>
-                        <table>
-                            <tbody id="images"></tbody>
-                        </table>
-                    </div>
-                    <form onsubmit="uploadImages();return false">
-                        <div class="col s12">
-                            <label for="imageUpload">Upload image</label><br>
-                            <input id="imageUpload" type="file" accept="image/jpeg image/png" multiple="true"></input>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </main>

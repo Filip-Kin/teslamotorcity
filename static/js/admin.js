@@ -41,6 +41,7 @@ let loginFormSubmit = () => {
         } else {
             document.forms.loginForm.login.classList.add('invalid');
             document.forms.loginForm.password.classList.add('invalid');
+            document.getElementById('login').style.display = '';
             M.toast({html: 'Incorrect username or password'})
         }
     });

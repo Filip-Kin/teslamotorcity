@@ -31,7 +31,7 @@ c.query('CREATE TABLE IF NOT EXISTS `cars` ('+
     c.query('CREATE TABLE IF NOT EXISTS `users` ('+
     '`id` VARCHAR(36) NOT NULL,'+
     '`username` VARCHAR(256),'+
-    '`permissions` VARCHAR(16),'+
+    '`permissions` INT,'+
     '`password` VARCHAR(128),'+
     'PRIMARY KEY (`id`)'+
     ');', (err) => {
