@@ -10,8 +10,8 @@ const { generateBlankUserAddPage, generateUserEditPage } = require('./dynamic/dy
 // Mysql setup
 const mysql = require('mysql');
 let connectionDetails = {
-    //host: 'localhost',
-    host: '34.74.167.132',
+    host: 'localhost',
+    //host: '34.74.167.132',
     port: 3306,
     user: 'starmotorsales',
     password: 'niwV^sqxb1s3Z!5h04KXlPTO8cdqO82@',
@@ -72,8 +72,7 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
 // Put the server up
-app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
-/*
+//app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
 const { readFileSync } = require('fs');
 https.createServer({
     key: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), 
@@ -81,4 +80,3 @@ https.createServer({
 }, app)
 .listen(port);
 console.log('SMS Server running on '+port+' with certs');
-*/
