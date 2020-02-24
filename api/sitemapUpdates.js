@@ -11,7 +11,7 @@ exports.updateCar = (id) => {
         if (xmlObject.urlset.url[i].loc._text === 'https://www.starmotorsales.net/car/'+id) car = i;
     }
     let today = new Date();
-    let lastmod = today.getFullYear()+'-'+today.getMonth()+'-'+today.getDate();
+    let lastmod = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     if (car == undefined) {
         xmlObject.urlset.url.push({
@@ -34,7 +34,7 @@ exports.removeCar = (id) => {
         if (xmlObject.urlset.url[i].loc._text === 'https://www.starmotorsales.net/car/'+id) car = i;
     }
     let today = new Date();
-    let lastmod = today.getFullYear()+'-'+today.getMonth()+'-'+today.getDate();
+    let lastmod = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     xmlObject.urlset.slice(i, 1);
     xmlObject.urlset.url[1].lastmod = { _text: lastmod };
