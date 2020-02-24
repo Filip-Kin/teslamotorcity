@@ -22,7 +22,7 @@ exports.updateCar = (id) => {
     } else {
         xmlObject.urlset.url[car].lastmod = { _text: lastmod };
     }
-    xmlObject.urlset[1].lastmod = { _text: lastmod };
+    xmlObject.urlset.url[1].lastmod = { _text: lastmod };
 
     writeFileSync('./static/sitemap.xml', xml.json2xml(JSON.stringify(xmlObject), {compact: true, ignoreComment: true, spaces: 4}));
 }
@@ -37,7 +37,7 @@ exports.removeCar = (id) => {
     let lastmod = today.getFullYear()+'-'+today.getMonth()+'-'+today.getDate();
 
     xmlObject.urlset.slice(i, 1);
-    xmlObject.urlset[1].lastmod = { _text: lastmod };
+    xmlObject.urlset.url[1].lastmod = { _text: lastmod };
 
     writeFileSync('./static/sitemap.xml', xml.json2xml(JSON.stringify(xmlObject), {compact: true, ignoreComment: true, spaces: 4}));
 }
