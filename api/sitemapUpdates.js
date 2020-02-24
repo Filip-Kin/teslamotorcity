@@ -6,7 +6,8 @@ const editor = xmlEdit.getInstance({
     strict: true,
 });
 
-let xmlObject = await editor.read(path.resolve('./static/sitemap.xml'));
+let xmlObject;
+editor.read(path.resolve('./static/sitemap.xml')).then(obj => xmlObject = obj);
 
 exports.updateCar = (id) => {
     let car = xmlObject.urlset.find((v) => (v.loc === 'https://www.starmotorsales.net/car/'+id));
