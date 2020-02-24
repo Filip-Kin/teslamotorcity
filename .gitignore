@@ -3,6 +3,8 @@ node_modules
 static/css/*.min.css
 static/js/*.min.js
 static/img/*
+static/sitemap.xml
+static/google*
 !static/img/frontPage.jpg
 !static/img/owner.jpg
 dbBackup.sql
