@@ -6,8 +6,8 @@ console.log(xmlObject);
 
 exports.updateCar = (id) => {
     let car = undefined;
-    for (let i = 0; i < xmlObject.urlset.url.length; i++) {
-        console.log(xmlObject.urlset.url[i]);
+    for (let i = 0; i < xmlObject['urlset']['url'].length; i++) {
+        console.log(xmlObject['urlset']['url'][i]);
         if (xmlObject.urlset.url[i].loc._text === 'https://www.starmotorsales.net/car/'+id) car = i;
     }
     let today = new Date();

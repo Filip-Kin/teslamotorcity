@@ -70,7 +70,7 @@ exports.add = (req, res, c) => {
                         return res.send({status: 500, message: err.message}); 
                     }
                     res.send({status: 200, message: req.body.id});
-                    sitemap.updateCar(req.body.id);
+                    //sitemap.updateCar(req.body.id);
                 });
             } else {
                 let id = uuidv4.uuid();
@@ -101,7 +101,7 @@ exports.add = (req, res, c) => {
                         return res.send({status: 500, message: err.message}); 
                     }
                     res.send({status: 200, message: id});
-                    sitemap.updateCar(id);
+                    //sitemap.updateCar(id);
                 });
             }
         }
@@ -149,7 +149,7 @@ exports.remove = (req, res, c) => {
 
                     Promise.all(threads).then(() => {
                         res.send({status: 200, message: 'Removed'});
-                        sitemap.removeCar(req.body.carId);
+                        //sitemap.removeCar(req.body.carId);
                     });
                 }
             });
