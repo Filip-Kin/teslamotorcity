@@ -12,7 +12,7 @@ let generateUserList = () => {
             }
             out += `<tr><td>${user.username}</td>`;
             out += `<td>${user.permissions}</td>`;
-            out += `<td><a href="addUser/${user.id}" class="btn amber darken-3">Edit</a></td></tr>`;
+            out += `<td><a href="addUser/${user.id}" class="btn red darken-3">Edit</a></td></tr>`;
         }
         document.getElementById('user-list').innerHTML += out;
     });

@@ -75,7 +75,7 @@ let generateCarList = () => {
             out += `<td>${car.make} ${car.model}</td>`;
             out += `<td>${car.year}</td>`;
             out += `<td>${car.price}</td>`;
-            out += `<td><a href="add/${car.id}" class="btn amber darken-3">Edit</a></td></tr>`;
+            out += `<td><a href="add/${car.id}" class="btn red darken-3">Edit</a></td></tr>`;
         }
         document.getElementById('car-list').innerHTML += out;
     });

@@ -47,9 +47,9 @@ let renderImages = (toast=null) => {
     let disabled = (localStorage.permissions < 1) ? 'disabled ':'';
     for (let img of images) {
         out += `<tr><td width="50%"><img style="responsive-img" width="100%" src="/img/${img}"></td>`;
-        out += `<td><div class="row center"><a class="${disabled}btn amber darken-2" href="#" onclick="removeImg(${i})">Remove</a></div>`;
-        out += `<div class="row center"><a class="btn amber darken-2${(i<1)?' disabled':''}" onclick="imgUp(${i})"><i class="material-icons">arrow_upward</i></a>`;
-        out += `<a class="btn amber darken-2${(i>=images.length-1)?' disabled':''}" onclick="imgDown(${i})"><i class="material-icons">arrow_downward</i></a></div></td>`;
+        out += `<td><div class="row center"><a class="${disabled}btn red darken-2" href="#" onclick="removeImg(${i})">Remove</a></div>`;
+        out += `<div class="row center"><a class="btn red darken-2${(i<1)?' disabled':''}" onclick="imgUp(${i})"><i class="material-icons">arrow_upward</i></a>`;
+        out += `<a class="btn red darken-2${(i>=images.length-1)?' disabled':''}" onclick="imgDown(${i})"><i class="material-icons">arrow_downward</i></a></div></td>`;
         i++;
     }
     tbody.innerHTML = out;
