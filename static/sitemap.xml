@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  <url>
+    <loc>https://starmotorsales.net/index.html</loc>
+    <lastmod>2020-02-24</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url> 
+  <url>
+    <loc>https://starmotorsales.net/inventory.html</loc>
+    <lastmod>2020-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url> 
+  <url>
+    <loc>https://www.starmotorsales.net/car/0dc55c12-7112-4265-9032-dc376e52bf30</loc>
+    <lastmod>2020-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+</urlset>
