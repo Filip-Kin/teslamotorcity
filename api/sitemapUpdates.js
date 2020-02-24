@@ -1,13 +1,13 @@
 const  {readFileSync, writeFileSync } = require('fs');
 const xml = require('xml-js');
 
-let xmlObject = xml.xml2json(readFileSync('./static/sitemap.xml'), {compact: true, spaces: 4});
+let xmlObject = JSON.parse(xml.xml2json(readFileSync('./static/sitemap.xml'), {compact: true, spaces: 4}));
 console.log(xmlObject);
 
 exports.updateCar = (id) => {
     let car = undefined;
-    for (let i = 0; i < xmlObject['urlset']['url'].length; i++) {
-        console.log(xmlObject['urlset']['url'][i]);
+    for (let i = 0; i < xmlObject.urlset.url.length; i++) {
+        console.log(xmlObject.urlset.url[i]);
         if (xmlObject.urlset.url[i].loc._text === 'https://www.starmotorsales.net/car/'+id) car = i;
     }
     let today = new Date();
@@ -24,7 +24,7 @@ exports.updateCar = (id) => {
     }
     xmlObject.urlset[1].lastmod = { _text: lastmod };
 
-    writeFileSync('./static/sitemap.xml', xml.json2xml(xmlObject, {compact: true, ignoreComment: true, spaces: 4}));
+    writeFileSync('./static/sitemap.xml', xml.json2xml(JSON.stringify(xmlObject), {compact: true, ignoreComment: true, spaces: 4}));
 }
 
 exports.removeCar = (id) => {
@@ -39,5 +39,5 @@ exports.removeCar = (id) => {
     xmlObject.urlset.slice(i, 1);
     xmlObject.urlset[1].lastmod = { _text: lastmod };
 
-    writeFileSync('./static/sitemap.xml', xml.json2xml(xmlObject, {compact: true, ignoreComment: true, spaces: 4}));
+    writeFileSync('./static/sitemap.xml', xml.json2xml(JSON.stringify(xmlObject), {compact: true, ignoreComment: true, spaces: 4}));
 }
