@@ -24,7 +24,7 @@ exports.updateCar = (id) => {
     }
     xmlObject.urlset[1].lastmod = lastmod;
 
-    await editor.write(path.resolve('./static/sitemap.xml'), xmlObject, process.stdout);
+    editor.write(path.resolve('./static/sitemap.xml'), xmlObject, process.stdout);
 }
 
 exports.removeCar = (id) => {
@@ -35,5 +35,5 @@ exports.removeCar = (id) => {
     xmlObject.urlset = xmlObject.urlset.filter((v) => (v !== car));
     xmlObject.urlset[1].lastmod = lastmod;
 
-    await editor.write(path.resolve('./static/sitemap.xml'), xmlObject, process.stdout);
+    editor.write(path.resolve('./static/sitemap.xml'), xmlObject, process.stdout);
 }
