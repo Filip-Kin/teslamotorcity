@@ -1,13 +1,8 @@
-const path = require('path');
-const xmlEdit = require('xml-edit');
+const  {readFileSync, writeFileSync } = require('fs');
+const xml = require('xml-js');
 
-const editor = xmlEdit.getInstance({
-    indentation: 2,
-    strict: true,
-});
-
-let xmlObject;
-editor.read(path.resolve('./static/sitemap.xml')).then(obj => xmlObject = obj);
+let xmlObject = xml.xml2json(readFileSync('./static/sitemap.xml'), {compact: true, spaces: 4});
+console.log(xmlObject);
 
 exports.updateCar = (id) => {
     let car = xmlObject.urlset.find((v) => (v.loc === 'https://www.starmotorsales.net/car/'+id));
@@ -25,7 +20,7 @@ exports.updateCar = (id) => {
     }
     xmlObject.urlset[1].lastmod = lastmod;
 
-    editor.write(path.resolve('./static/sitemap.xml'), xmlObject, process.stdout);
+    writeFileSync('./static/sitemap.xml', xml.json2xml(xmlObject, {compact: true, ignoreComment: true, spaces: 4}));
 }
 
 exports.removeCar = (id) => {
@@ -36,5 +31,5 @@ exports.removeCar = (id) => {
     xmlObject.urlset = xmlObject.urlset.filter((v) => (v !== car));
     xmlObject.urlset[1].lastmod = lastmod;
 
-    editor.write(path.resolve('./static/sitemap.xml'), xmlObject, process.stdout);
+    writeFileSync('./static/sitemap.xml', xml.json2xml(xmlObject, {compact: true, ignoreComment: true, spaces: 4}));
 }
