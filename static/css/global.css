@@ -29,20 +29,20 @@ main {
 }
 
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
-    background-color: #ff8f00;
+    background-color: #D32F2F;
 }
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
-    border: 2px solid #ff8f00;
+    border: 2px solid #D32F2F;
 }
 .input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
-color: #ff8f00 !important ;
+color: #D32F2F !important ;
 }
 .input-field input[type=text]:focus, .input-field input[type=password]:focus {
-border-bottom: 1px solid #FF8F00 !IMPORTANT;
-box-shadow: 0 1px 0 0 #FF8F00 !IMPORTANT;
+border-bottom: 1px solid #D32F2F !IMPORTANT;
+box-shadow: 0 1px 0 0 #D32F2F !IMPORTANT;
 }
 .input-field .prefix.active {
-color: #FF8F00 !IMPORTANT;
+color: #D32F2F !IMPORTANT;
 }
 
 .imgs .col.s12.m6 {

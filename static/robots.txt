@@ -1,13 +1,8 @@
-# Group 1
-User-agent: Googlebot
-Disallow: /nogooglebot/
-
-# Group 2
 User-agent: *
 Allow: /
-Disallow: /admin.html
-Disallow: /users
+Disallow: /admin*
+Disallow: /users*
 Disallow: /add*
 Disallow: /addUser*
 
-Sitemap: http://www.example.com/sitemap.xml
+Sitemap: https://www.starmotorsales.net/sitemap.xml
