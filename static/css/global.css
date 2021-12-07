@@ -1,23 +1,71 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url("./fonts/GothamMedium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'TESLA';
+    src: url("./fonts/TESLA.woff2") format("woff2");
+}
+
+h1,
+h2 {
+    font-family: 'TESLA', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Gotham', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.parallax img {
+    z-index: -1;
+}
+
+.parallax div {
+    margin-top: 5%;
+}
+
+.red {
+    background-color: #FF1616 !important;
+}
+
+.red-text {
+    color: #FF1616 !important;
+}
+
+.btn {
+    margin-bottom: 5px;
+}
+
 main {
     min-height: 100vh;
 }
+
 .brand-logo {
     white-space: nowrap;
 }
-.btn {
-    margin: 5px 0;
+
+.homepage-nav a.btn {
+    width: 100%;
 }
+
 .year {
     font-size: .75em;
 }
+
 .card-subtitle {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
+
 #inventory {
     display: flex;
     flex-wrap: wrap;
 }
+
 #inventory .col {
     display: flex;
     flex-direction: column;
@@ -28,35 +76,48 @@ main {
     cursor: pointer;
 }
 
-[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
     background-color: #D32F2F;
 }
-[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
     border: 2px solid #D32F2F;
 }
-.input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
-color: #D32F2F !important ;
+
+.input-field input[type=text]:focus+label,
+.input-field input[type=password]:focus+label {
+    color: #D32F2F !important;
 }
-.input-field input[type=text]:focus, .input-field input[type=password]:focus {
-border-bottom: 1px solid #D32F2F !IMPORTANT;
-box-shadow: 0 1px 0 0 #D32F2F !IMPORTANT;
+
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid #D32F2F !IMPORTANT;
+    box-shadow: 0 1px 0 0 #D32F2F !IMPORTANT;
 }
+
 .input-field .prefix.active {
-color: #D32F2F !IMPORTANT;
+    color: #D32F2F !IMPORTANT;
 }
 
 .imgs .col.s12.m6 {
     padding: 0;
 }
+
 .imgs .row .col.s12.m6:nth-child(1) {
     padding-right: 2px;
 }
+
 .imgs .row .col.s12.m6:nth-child(2) {
     padding-left: 2px;
 }
+
 .imgs .row {
     margin-bottom: 0;
 }
+
 #images a.btn {
     margin: -8px 3px;
 }
