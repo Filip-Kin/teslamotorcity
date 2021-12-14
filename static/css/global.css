@@ -9,15 +9,23 @@
 }
 
 h1,
-h2 {
+.fancy-title {
     font-family: 'TESLA', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
+h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+a,
+p,
+div {
     font-family: 'Gotham', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.nav-wrapper li i.material-icons {
+    font-size: 32px;
 }
 
 .parallax img {
@@ -26,6 +34,59 @@ h6 {
 
 .parallax div {
     margin-top: 5%;
+}
+
+.main-parallax div h2 {
+    margin-top: 0;
+}
+
+.main-parallax div {
+    margin-top: 20px;
+}
+
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transform: scale(1.25);
+}
+
+.big-home-btn {
+    position: absolute;
+    left: calc(15% + 80px);
+    bottom: 50px;
+    font-weight: 700;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.btn-with-bg {
+    background-image: url(../img/cinematic/badge-blur.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.btn-with-bg .col {
+    padding: 10vh 0;
+    text-align: center;
+    border: 1px white solid;
+}
+
+.btn-with-bg a {
+    color: white;
+    font-size: 16pt;
+    font-weight: 700;
+}
+
+.hours td {
+    padding: 10px 3px;
+}
+
+.parallax-container div.parallax-floating-box {
+    background: white;
+    padding: 40px 20px;
+    margin-top: 120px;
 }
 
 .red {
@@ -38,6 +99,10 @@ h6 {
 
 .btn {
     margin-bottom: 5px;
+}
+
+.social-buttons a {
+    width: 60px;
 }
 
 main {
