@@ -1,11 +1,6 @@
 const mysql = require('mysql');
-let c = mysql.createConnection({
-    host: '34.74.167.132',
-    port: 3306,
-    user: 'starmotorsales',
-    password: 'niwV^sqxb1s3Z!5h04KXlPTO8cdqO82@',
-    database: 'starmotorsales'
-  });
+const { DATABASE_CREDENTIALS } = require('../config');
+let c = mysql.createConnection(DATABASE_CREDENTIALS);
    
 c.connect();
 

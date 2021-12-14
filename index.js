@@ -9,25 +9,18 @@ const { generateBlankUserAddPage, generateUserEditPage } = require('./dynamic/dy
 
 // Mysql setup
 const mysql = require('mysql');
-let connectionDetails = {
-    host: 'localhost',
-    //host: '34.74.167.132',
-    port: 3306,
-    user: 'starmotorsales',
-    password: 'niwV^sqxb1s3Z!5h04KXlPTO8cdqO82@',
-    database: 'starmotorsales'
-};
-let c = mysql.createConnection(connectionDetails);
+const { DATABASE_CREDENTIALS } = require('./config');
+let c = mysql.createConnection(DATABASE_CREDENTIALS);
 c.connect();
 // Daily database backup
 const mysqldump = require('mysqldump');
-setInterval(() => {mysqldump({connection: connectionDetails, dumpToFile: './dbBackup.sql'})}, 1*24*60*60*1000);
+setInterval(() => {mysqldump({connection: DATABASE_CREDENTIALS, dumpToFile: './dbBackup.sql'})}, 1*24*60*60*1000);
 
-const https = require('https');
+const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = process.env.PORT | 3000;
 
 
 
@@ -74,9 +67,6 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 // Put the server up
 //app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
 const { readFileSync } = require('fs');
-https.createServer({
-    key: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.key'), 
-    cert: readFileSync('/home/filip_kinmails_com/.ssh/starmotorsales.net.pem')
-}, app)
+http.createServer({}, app)
 .listen(port);
-console.log('SMS Server running on '+port+' with certs');
+console.log('SMS Server running on '+port);

@@ -10,3 +10,4 @@ static/google*
 !static/img/owner.jpg
 dbBackup.sql
 package-lock.json
+confing.js
