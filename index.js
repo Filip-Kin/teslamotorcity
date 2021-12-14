@@ -20,7 +20,7 @@ const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT | 3000;
+const port = process.env.PORT || 3000;
 
 
 
@@ -65,8 +65,4 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
 // Put the server up
-//app.listen(port, () => console.log('SMS Server running on '+port)); // Without certs
-const { readFileSync } = require('fs');
-http.createServer({}, app)
-.listen(port);
-console.log('SMS Server running on '+port);
+app.listen(port, () => console.log('SMS Server running on '+port));
