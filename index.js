@@ -14,7 +14,7 @@ let c = mysql.createConnection(DATABASE_CREDENTIALS);
 c.connect();
 // Daily database backup
 const mysqldump = require('mysqldump');
-setInterval(() => {mysqldump({connection: DATABASE_CREDENTIALS, dumpToFile: './dbBackup.sql'})}, 1*24*60*60*1000);
+setInterval(() => { mysqldump({ connection: DATABASE_CREDENTIALS, dumpToFile: './dbBackup.sql' }) }, 1 * 24 * 60 * 60 * 1000);
 
 const http = require('http');
 const express = require('express');
@@ -40,7 +40,7 @@ app.get('/addUser/:userId', (req, res) => generateUserEditPage(req, res, c));
 
 // API
 app.get('/api', (req, res) => res.send('Hello World!'));
-app.use(bodyParser.raw({limit: '50mb', type: ['image/jpeg', 'image/png']}));
+app.use(bodyParser.raw({ limit: '50mb', type: ['image/jpeg', 'image/png'] }));
 app.post('/api/image/add', (req, res) => apiImage.upload(req, res, c));
 app.use(express.json());
 
@@ -65,4 +65,4 @@ app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, c));
 
 
 // Put the server up
-app.listen(port, () => console.log('SMS Server running on '+port));
+app.listen(port, () => console.log('SMS Server running on ' + port));

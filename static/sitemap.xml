@@ -8,7 +8,7 @@
     </url>
     <url>
         <loc>https://starmotorsales.net/index.html</loc>
-        <lastmod>2020-02-24</lastmod>
+        <lastmod>2021-12-26</lastmod>
         <changefreq>never</changefreq>
         <priority>0.8</priority>
     </url>
@@ -31,6 +31,11 @@
     <url>
         <loc>https://www.starmotorsales.net/car/c00411f4-16c5-44b7-8866-8e4e25c69977</loc>
         <lastmod>2020-02-24</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.starmotorsales.net/car/83f8b624-7799-4ca3-b62c-c3961da1e90f</loc>
+        <lastmod>2021-12-26</lastmod>
         <changefreq>weekly</changefreq>
     </url>
 </urlset>
