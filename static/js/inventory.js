@@ -5,8 +5,8 @@ const numberWithCommas = (x) => {
 let makeCard = (c) => {
     c.images = JSON.parse(c.images);
 
-    let imgSrc = '/img/'+c.images[0];
-    let titleText = c.make + ' ' + c.model + ' <span class="year">'+c.year+'</span>';
+    let imgSrc = '/img/' + c.images[0];
+    let titleText = c.make + ' ' + c.model + ' <span class="year">' + c.year + '</span>';
     let subtitleText = '$' + numberWithCommas(c.price);
 
     // DOM creation
@@ -15,11 +15,11 @@ let makeCard = (c) => {
     col.classList.add('s12');
     col.classList.add('m6');
     col.classList.add('l4');
-    
+
     let card = document.createElement('div');
     card.classList.add('card');
-    card.addEventListener('click',  () => {
-        window.location.href = '/car/'+c.id;
+    card.addEventListener('click', () => {
+        window.location.href = '/car/' + c.id;
     });
     col.appendChild(card);
 
@@ -27,7 +27,7 @@ let makeCard = (c) => {
     let imgContainer = document.createElement('div');
     imgContainer.classList.add('card-image');
     card.appendChild(imgContainer);
-    
+
     let img = document.createElement('img');
     img.src = imgSrc;
     imgContainer.appendChild(img);
@@ -36,7 +36,7 @@ let makeCard = (c) => {
     let content = document.createElement('div');
     content.classList.add('card-content');
     card.appendChild(content);
-    
+
     let title = document.createElement('span');
     title.classList.add('card-title');
     title.innerHTML = titleText;
@@ -61,13 +61,27 @@ let makeCard = (c) => {
 
 let makeInventory = () => {
     fetch('/api/car/')
-    .then(res => res.json())
-    .then(c => {
-        let inventory = document.getElementById('inventory');
-        for (car of c) {
-            inventory.appendChild(makeCard(car));
-        };
-    });
+        .then(res => res.json())
+        .then(c => {
+            let inventory = document.getElementById('inventory');
+            for (car of c) {
+                inventory.appendChild(makeCard(car));
+            };
+        });
 }
 
 makeInventory();
+
+noUiSlider.create(document.getElementById('price-slider'), {
+    start: [0, 100000],
+    connect: true,
+    step: 500,
+    orientation: 'horizontal', // 'horizontal' or 'vertical'
+    range: {
+        'min': 0,
+        'max': 100000
+    },
+    format: wNumb({
+        decimals: 0
+    })
+});

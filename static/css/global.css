@@ -9,7 +9,8 @@
 }
 
 h1,
-.fancy-title {
+.fancy-title,
+.brand-logo {
     font-family: 'TESLA', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
@@ -24,6 +25,11 @@ div {
     font-family: 'Gotham', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
+nav {
+    color: black;
+    transition: background-color 0.5s ease;
+}
+
 .nav-wrapper li i.material-icons {
     font-size: 32px;
 }
@@ -36,12 +42,13 @@ div {
     margin-top: 5%;
 }
 
-.main-parallax div h2 {
+.main-parallax h2 {
     margin-top: 0;
 }
 
-.main-parallax div {
-    margin-top: 20px;
+.main-parallax {
+    margin-top: 84px;
+    margin-left: 48px;
 }
 
 .chat-button {
@@ -53,11 +60,15 @@ div {
 
 .big-home-btn {
     position: absolute;
-    left: calc(15% + 80px);
+    left: calc(15% + 40px);
     bottom: 50px;
     font-weight: 700;
     padding-left: 100px;
     padding-right: 100px;
+}
+
+.container.row {
+    margin-top: 20px;
 }
 
 .btn-with-bg {
@@ -99,6 +110,11 @@ div {
 
 .btn {
     margin-bottom: 5px;
+    border-radius: 18px;
+}
+
+.btn-large {
+    border-radius: 27px;
 }
 
 .social-buttons a {
@@ -111,6 +127,8 @@ main {
 
 .brand-logo {
     white-space: nowrap;
+    font-size: 24px !important;
+    margin-left: 12px;
 }
 
 .homepage-nav a.btn {
@@ -134,6 +152,7 @@ main {
 #inventory .col {
     display: flex;
     flex-direction: column;
+    margin-left: 0;
 }
 
 #inventory .card {

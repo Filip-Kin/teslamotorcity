@@ -27,6 +27,8 @@ const port = process.env.PORT || 3000;
 // Static hosting
 app.use('/', express.static('static'));
 app.use('/vendor/materialize-css', express.static('node_modules/materialize-css'));
+app.use('/vendor/nouislider', express.static('node_modules/nouislider'));
+app.use('/vendor/wnumb', express.static('node_modules/wnumb'));
 
 
 
