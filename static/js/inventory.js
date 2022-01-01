@@ -9,19 +9,11 @@ let makeCard = (c) => {
     let titleText = `Model ${c.model} <span class="year">${c.year}</span>`;
     let subtitleText = '$' + numberWithCommas(c.price);
 
-    // DOM creation
-    let col = document.createElement('div');
-    col.classList.add('col');
-    col.classList.add('s12');
-    col.classList.add('m6');
-    col.classList.add('l4');
-
     let card = document.createElement('div');
     card.classList.add('card');
     card.addEventListener('click', () => {
         window.location.href = '/car/' + c.id;
     });
-    col.appendChild(card);
 
 
     let imgContainer = document.createElement('div');
@@ -56,7 +48,7 @@ let makeCard = (c) => {
     carInfo.innerHTML = c.engine + '<br>' + c.transmission + ' ' + c.drive + '<br>' + c.color + ' ' + c.body;
     content.appendChild(carInfo);
 
-    return col;
+    return card;
 }
 
 let cars = [];

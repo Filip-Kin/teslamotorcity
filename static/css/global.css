@@ -146,19 +146,15 @@ main {
 }
 
 #inventory {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#inventory .col {
-    display: flex;
-    flex-direction: column;
-    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-top: 10px;
 }
 
 #inventory .card {
-    flex: 1;
-    cursor: pointer;
+    margin: 0;
 }
 
 .noUi-tooltip {
