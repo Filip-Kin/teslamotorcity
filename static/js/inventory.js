@@ -53,7 +53,7 @@ let makeCard = (c) => {
 
 let cars = [];
 let filter = {
-    price: {min: 0, max: 1000},
+    price: {min: 1000000, max: 1000},
     year: {min: 3000, max: 0},
     mileage: {min:0, max: 200000},
     model: [],
@@ -73,6 +73,7 @@ let makeInventory = () => {
             for (car of cars) {
                 if (resetFilter) {
                     if (car.price > filter.price.max) filter.price.max = car.price;
+                    if (car.price < filter.price.min) filter.price.min = car.price;
                     if (car.year < filter.year.min) filter.year.min = parseInt(car.year);
                     if (car.year > filter.year.max) filter.year.max = parseInt(car.year);
                     if (car.mileage > filter.mileage.max) filter.mileage.max = car.mileage;
