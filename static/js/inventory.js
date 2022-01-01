@@ -3,7 +3,7 @@ const numberWithCommas = (x) => {
 }
 
 let makeCard = (c) => {
-    c.images = JSON.parse(c.images);
+    if (typeof c.images !== 'object') c.images = JSON.parse(c.images);
 
     let imgSrc = '/img/' + c.images[0];
     let titleText = c.make + ' ' + c.model + ' <span class="year">' + c.year + '</span>';
@@ -72,7 +72,15 @@ let makeInventory = () => {
 
 makeInventory();
 
-noUiSlider.create(document.getElementById('price-slider'), {
+function filterPips(value, type) {
+    if (type === 0) {
+        return value < 2000 ? -1 : 0;
+    }
+    return value % 1000 ? 2 : 1;
+}
+
+
+const priceSlider = noUiSlider.create(document.getElementById('price-slider'), {
     start: [0, 100000],
     connect: true,
     step: 500,
@@ -82,6 +90,50 @@ noUiSlider.create(document.getElementById('price-slider'), {
         'max': 100000
     },
     format: wNumb({
+        decimals: 0,
+        prefix: '$'
+    }),
+    tooltips: true
+});
+
+const yearSlider = noUiSlider.create(document.getElementById('year-slider'), {
+    start: [2012, 2022],
+    connect: true,
+    step: 1,
+    orientation: 'horizontal', // 'horizontal' or 'vertical'
+    range: {
+        'min': 2012,
+        'max': 2022
+    },
+    format: wNumb({
         decimals: 0
-    })
+    }),
+    tooltips: true
+});
+
+const mileSlider = noUiSlider.create(document.getElementById('mile-slider'), {
+    start: [0, 200000],
+    connect: true,
+    step: 10000,
+    orientation: 'horizontal', // 'horizontal' or 'vertical'
+    range: {
+        'min': 0,
+        'max': 200000
+    },
+    format: wNumb({
+        decimals: 0
+    }),
+    tooltips: true
+});
+
+let translateFilterBar = false
+document.addEventListener('scroll', () => {
+    let breakpoint = document.querySelector('main').clientHeight - window.innerHeight + 84;
+    if (window.scrollY < breakpoint) {
+        if (!translateFilterBar) document.getElementById('filter-bar').style.transform = `translateY(0)`;
+        translateFilterBar = false;
+    } else {
+        document.getElementById('filter-bar').style.transform = `translateY(${(window.scrollY-breakpoint)*-1}px)`;
+        translateFilterBar = true;
+    }
 });

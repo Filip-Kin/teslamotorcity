@@ -37,10 +37,100 @@
 
     <main>
         <div class="row">
-            <div class="col s3 grey lighten-3" style="padding: 10px">
-                <div id="price-slider"></div>
+            <div class="col s3 grey lighten-3" id="filter-bar">
+                <div class="input-field">
+                    <div class="slider-label">Price</div>
+                    <div id="price-slider"></div>
+                </div>
+                <div class="input-field">
+                    <div class="slider-label">Year</div>
+                    <div id="year-slider"></div>
+                </div>
+                <div class="input-field">
+                    <div class="slider-label">Mileage</div>
+                    <div id="mile-slider"></div>
+                </div>
+                <div class="input-field">
+                    <div class="checkbox-label">Model</div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-s" checked/>
+                            <span>Model S</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-s-plaid" checked/>
+                            <span>Model S Plaid</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-3" checked/>
+                            <span>Model 3</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-3-longrange" checked/>
+                            <span>Model 3 Long Range</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-3-performance" checked/>
+                            <span>Model 3 Performance</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-x" checked/>
+                            <span>Model X</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-x-plaid" checked/>
+                            <span>Model X Plaid</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-y-longrange" checked/>
+                            <span>Model Y Long Range</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="model-y-performance" checked/>
+                            <span>Model Y Performance</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="input-field">
+                    <div class="checkbox-label">Color</div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" class="filled-in" id="color-white" checked/>
+                            <span>Pearl White</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="color-black" checked/>
+                            <span>Solid Black</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="color-silver" checked/>
+                            <span>Midnight Silver</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="color-blue" checked/>
+                            <span>Deep Blue</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="color-red" checked/>
+                            <span>Red</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="input-field">
+                    <div class="checkbox-label">Driver Assist</div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" class="filled-in" id="assist-autopilot" checked/>
+                            <span>Autopilot</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="assist-fsd" checked/>
+                            <span>Full Self Driving</span>
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="col s12 l9" id="inventory">
+            <div class="col s12 l9 push-l3" id="inventory">
             </div>
         </div>
     </main>
