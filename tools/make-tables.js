@@ -6,19 +6,16 @@ c.connect();
 
 c.query('CREATE TABLE IF NOT EXISTS `cars` ('+
 	'`id` VARCHAR(36) NOT NULL,'+
-	'`make` VARCHAR(256),'+
 	'`model` VARCHAR(256),'+
-	'`year` VARCHAR(4),'+
+	'`year` INT,'+
+	'`miles` INT,'+
 	'`vin` VARCHAR(17),'+
 	'`price` INT,'+
 	'`description` VARCHAR(1024),'+
-	'`body` VARCHAR(64),'+
 	'`color` VARCHAR(64),'+
 	'`engine` VARCHAR(64),'+
 	'`drive` VARCHAR(64),'+
-	'`cylinders` VARCHAR(64),'+
-	'`transmission` VARCHAR(64),'+
-	'`fuel` VARCHAR(64),'+
+	'`assist` VARCHAR(64),'+
 	'`images` VARCHAR(512),'+
 	'PRIMARY KEY (`id`)'+
 ');', (err) => {

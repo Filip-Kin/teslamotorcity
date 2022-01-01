@@ -35,20 +35,17 @@ exports.generateCarPage = (req, res, c) => {
             console.log(row);
             // Replace variables in the .html
             data = data.replace('${id}', row.id);
-            data = data.replace('${make}', row.make);
             data = data.replace('${model}', row.model);
             data = data.replace('${year}', row.year);
+            data = data.replace('${miles}', row.miles);
             data = data.replace('${vin}', row.vin);
             data = data.replace('${price}', row.price);
-            data = data.replace('${formattedPrice}', '$'+numberWithCommas(row.price));
+            data = data.replace('${formattedPrice}', '$'+numberWithCommas(row.price/100));
             data = data.replace('${description}', row.description);
-            data = data.replace('${body}', row.body);
             data = data.replace('${color}', row.color);
             data = data.replace('${engine}', row.engine);
             data = data.replace('${drive}', row.drive);
-            data = data.replace('${cylinders}', row.cylinders);
-            data = data.replace('${transmission}', row.transmission);
-            data = data.replace('${fuel}', row.fuel);
+            data = data.replace('${assist}', row.assist);
             data = data.replace('${images}', row.images);
             data = data.replace('${imagesHTML}', imagesHTML(row.images));
 
