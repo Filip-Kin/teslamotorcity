@@ -6,7 +6,7 @@ let makeCard = (c) => {
     if (typeof c.images !== 'object') c.images = JSON.parse(c.images);
 
     let imgSrc = '/img/' + c.images[0];
-    let titleText = c.make + ' ' + c.model + ' <span class="year">' + c.year + '</span>';
+    let titleText = `Model ${c.model} <span class="year">${c.year}</span>`;
     let subtitleText = '$' + numberWithCommas(c.price);
 
     // DOM creation
