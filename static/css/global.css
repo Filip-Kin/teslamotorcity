@@ -80,15 +80,18 @@ nav {
 }
 
 .btn-with-bg .col {
-    padding: 10vh 0;
+    padding: 0;
     text-align: center;
     border: 1px white solid;
+    height: 20vh;
 }
 
-.btn-with-bg a {
-    color: white;
+.btn-with-bg div a {
+    color: #fff;
     font-size: 16pt;
+    width: 100%;
     font-weight: 700;
+    padding: calc(10vh - 8pt) 0;
 }
 
 .hours td {
@@ -214,12 +217,18 @@ label span {
 }
 
 .input-field input[type=text]:focus+label,
-.input-field input[type=password]:focus+label {
+.input-field input[type=password]:focus+label,
+.input-field input[type=email]:focus+label,
+.input-field input[type=tel]:focus+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
     color: #FF1616 !important;
 }
 
 .input-field input[type=text]:focus,
-.input-field input[type=password]:focus {
+.input-field input[type=password]:focus,
+.input-field input[type=email]:focus,
+.input-field input[type=tel]:focus,
+textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid #FF1616 !IMPORTANT;
     box-shadow: 0 1px 0 0 #FF1616 !IMPORTANT;
 }
@@ -246,4 +255,9 @@ label span {
 
 #images a.btn {
     margin: -8px 3px;
+}
+
+.full-width-btns a.btn {
+    width: 100%;
+    display: block;
 }
