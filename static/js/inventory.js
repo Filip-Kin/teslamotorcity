@@ -6,8 +6,8 @@ let makeCard = (c) => {
     if (typeof c.images !== 'object') c.images = JSON.parse(c.images);
 
     let imgSrc = '/img/' + c.images[0];
-    let titleText = `Model ${c.model} <span class="year">${c.year}</span>`;
-    let subtitleText = '$' + numberWithCommas(c.price);
+    let titleText = `Model ${c.model.split(' ')[0]} <span class="year">${c.year}</span>`;
+    let subtitleText = `${numberWithCommas(c.miles)} miles <span class="right">$ ${numberWithCommas(c.price)}</span>`;
 
     let card = document.createElement('div');
     card.classList.add('card');
@@ -45,7 +45,7 @@ let makeCard = (c) => {
     content.appendChild(divider);
 
     let carInfo = document.createElement('p');
-    carInfo.innerHTML = c.engine + '<br>' + c.transmission + ' ' + c.drive + '<br>' + c.color + ' ' + c.body;
+    carInfo.innerHTML = `${c.engine} ${c.drive}<br>${(c.assist === 'None') ? 'No Assist' : c.assist}<br>${c.color}`;
     content.appendChild(carInfo);
 
     return card;
@@ -55,7 +55,7 @@ let cars = [];
 let filter = {
     price: {min: 1000000, max: 1000},
     year: {min: 3000, max: 0},
-    mileage: {min:0, max: 200000},
+    mileage: {min: 0, max: 0},
     model: [],
     color: [],
     driverAssist: []
@@ -71,12 +71,13 @@ let makeInventory = () => {
             let inventory = document.getElementById('inventory');
             inventory.innerHTML = '';
             for (car of cars) {
+                car.year = parseInt(car.year);
                 if (resetFilter) {
                     if (car.price > filter.price.max) filter.price.max = car.price;
                     if (car.price < filter.price.min) filter.price.min = car.price;
-                    if (car.year < filter.year.min) filter.year.min = parseInt(car.year);
-                    if (car.year > filter.year.max) filter.year.max = parseInt(car.year);
-                    if (car.mileage > filter.mileage.max) filter.mileage.max = car.mileage;
+                    if (car.year < filter.year.min) filter.year.min = car.year;
+                    if (car.year > filter.year.max) filter.year.max = car.year;
+                    if (car.miles > filter.mileage.max) filter.mileage.max = car.miles;
                 }
                 car.elm = makeCard(car);
                 inventory.appendChild(car.elm);
@@ -92,11 +93,11 @@ function filterElms() {
             car.price < filter.price.min ||
             car.year > filter.year.max ||
             car.year < filter.year.min ||
-            /*car.mileage > filter.mileage.max ||
-            car.mileage < filter.mileage.min ||*/
+            car.miles > filter.mileage.max ||
+            car.miles < filter.mileage.min ||
             !filter.model.includes(car.model) ||
-            !filter.color.includes(car.color) //||
-            //!filter.driverAssist.includes(car.driverAssist)
+            !filter.color.includes(car.color) ||
+            !filter.driverAssist.includes(car.assist)
             ) {
                 car.elm.style.display = 'none';
             } else {
@@ -107,9 +108,9 @@ function filterElms() {
 
 function updateFilter(update = true) {
     filter = {
-        price: {min: 0, max: 1000},
+        price: {min: 1000000, max: 1000},
         year: {min: 3000, max: 0},
-        mileage: {min:0, max: 200000},
+        mileage: {min: 0, max: 0},
         model: [],
         color: [],
         driverAssist: []
@@ -126,8 +127,8 @@ function updateFilter(update = true) {
     for (let i in inputs.color) {
         if (inputs.color[i].checked) filter.color.push(i);
     }
-    for (let i in inputs.assist) {
-        if (inputs.assist[i].checked) filter.assist.push(i);
+    for (let i in inputs.driverAssist) {
+        if (inputs.driverAssist[i].checked) filter.driverAssist.push(i);
     }
     if (update) filterElms();
 }
@@ -155,6 +156,7 @@ const inputs = {
         'Red': document.getElementById('color-red'),
     },
     driverAssist: {
+        'None': document.getElementById('assist-none'),
         'Autopilot': document.getElementById('assist-autopilot'),
         'Full Self Driving': document.getElementById('assist-fsd')
     }
@@ -191,7 +193,7 @@ async function magic() {
     inputs.mileSlider = noUiSlider.create(document.getElementById('mile-slider'), {
         start: [filter.mileage.min, filter.mileage.max],
         connect: true,
-        step: 10000,
+        step: 500,
         orientation: 'horizontal', // 'horizontal' or 'vertical'
         range: filter.mileage,
         format: wNumb({
@@ -218,7 +220,7 @@ async function magic() {
     inputs.mileSlider.on('update', updateFilter);
     for (let i in inputs.model) inputs.model[i].addEventListener('change', updateFilter);
     for (let i in inputs.color) inputs.color[i].addEventListener('change', updateFilter);
-    for (let i in inputs.assist) inputs.assist[i].addEventListener('change', updateFilter);
+    for (let i in inputs.driverAssist) inputs.driverAssist[i].addEventListener('change', updateFilter);
 }
 
 magic();
