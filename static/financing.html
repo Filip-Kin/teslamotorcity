@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159208016-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159208016-1');
+    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/vendor/nouislider/dist/nouislider.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/global.min.css" media="screen,projection">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper grey darken-4">
+                <ul>
+                    <li><a href="#" class="menu"><i class="material-icons">menu</i></a></li>
+                    <li><a href="/index.html" class="brand-logo">TESLA MOTOR CITY</li>
+                    <li class="right"><a href="tel:+15864041670"><i class="material-icons">phone</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <form class="container">
+            <div class="center">
+                <h3>Finance Your Tesla</h3>
+                <p>
+                    Getting approved for your Tesla has never been easier.<br>
+                    Apply online and get approved the same day!
+                </p>
+            </div>
+            <div id="page-1" class="center" style="display: block">
+                <h5>Select Model</h5>
+                <ul class="model-selection">
+                    <li><a href="#" class="btn btn-large red">S</a></li>
+                    <li><a href="#" class="btn btn-large red">3</a></li>
+                    <li><a href="#" class="btn btn-large red">X</a></li>
+                    <li><a href="#" class="btn btn-large red">Y</a></li>
+                </ul>
+            </div>
+            <div id="page-2" class="center" style="display: none">
+                <div class="row">
+                    <div class="input-field col s6 m4 push-m2">
+                      <input id="first_name" type="text" class="validate">
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6 m4 push-m2">
+                      <input id="last_name" type="text" class="validate">
+                      <label for="last_name">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="address" type="text" class="validate">
+                        <label for="address">Address</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="address_line_2" type="text" class="validate">
+                        <label for="address_line_2">Address Line 2</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4 m2 push-m2">
+                        <input id="zip_code" type="text" class="validate">
+                        <label for="zip_code">Zip Code</label>
+                    </div>
+                    <div class="input-field col s4 m3 push-m2">
+                        <input id="city" type="text" class="validate">
+                        <label for="city">City</label>
+                    </div>
+                    <div class="input-field col s4 m3 push-m2">
+                        <select id="state">
+                            <option value="" disabled selected>Select state</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        <label for="state">State</label>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <button class="btn red waves-effect waves-light">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="page-3" class="center" style="display: none">
+                <h5>How long have you been living at this address?</h5>
+                <div class="row">
+                    <div class="input-field col s6 m4 push-m2">
+                        <button class="btn grey darken-3 waves-effect waves-light right">Less Than 2 Years</button>
+                    </div>
+                    <div class="input-field col s6 m4">
+                        <button class="btn grey darken-3 waves-effect waves-light left">2 Years or More</button>
+                    </div>
+                </div>
+            </div>
+            <div id="page-4" class="center" style="display: none">
+                <h5>What is your current employment status?</h5>
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <select id="employment-status">
+                            <option value="" disabled selected>Select an Option</option>
+                            <option value="fulltime">Full Time</option>
+                            <option value="parttime">Part Time</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="student">Student</option>
+                            <option value="retired">Retired</option>
+                        </select>
+                        <label for="employment-status">Employment Status</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <button class="btn red waves-effect waves-light">Continue</button>
+                    </div>
+                </div>
+            </div>
+            <div id="page-4" class="center" style="display: none">
+                <h5>Where do you work?</h5>
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="employer" type="text" class="validate">
+                        <label for="employer">Employer</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <button class="btn red waves-effect waves-light">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="page-footer grey darken-4">
+        <div class="container">
+            <div class="center">
+                <img src="img/heading1.png" class="responsive-img">
+            </div>
+            <div class="row">
+                <div class="col s12 m4 push-m2">
+                    <p class="grey-text text-lighten-4 right">
+                        50111 Van Dyke Ave<br> Shelby Twp, Mi 48317<br>
+                        <a href="tel:+15864041670" class="blue-text text-lighten-2">(586) 404-1670</a>
+                    </p>
+                </div>
+                <div class="col s12 m4 push-m2 social-buttons" style="padding-left: 40px;">
+                    <ul>
+                        <li>
+                            <a class="waves-effect waves-light white black-text btn"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a class="waves-effect waves-light white black-text btn"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-light white black-text btn"><i class="fab fa-facebook"></i></a>
+                            <a class="waves-effect waves-light white black-text btn"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row center">
+                Tesla Motor City is not affiliated with Tesla, inc.
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2021 Telsa Motor City all rights reserved
+                <a class="grey-text text-lighten-4 right" href="/admin.html">Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://kit.fontawesome.com/1d8d60483d.js" crossorigin="anonymous"></script>
+    <script src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/financing.js"></script>
+</body>
+
+</html>
