@@ -227,6 +227,27 @@ main {
     margin: 0;
 }
 
+@media only screen and (max-width: 992px) {
+    #inventory {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 5px;
+        grid-auto-rows: minmax(100px, auto);
+        margin-top: 10px;
+    }
+
+    #filter-bar {
+        z-index: 100;
+        width: 100%;
+        top: 104px;
+        padding: 0 10px;
+    }
+
+    #filter-bar .input-field {
+        margin: 5px 0;
+    }
+}
+
 .noUi-tooltip {
     font-size: 13px;
     border: 0;
@@ -265,6 +286,7 @@ label span {
     padding: 10px;
     height: calc(100vh - 64px);
     position: fixed;
+    overflow: scroll;
 }
 
 [type="checkbox"].filled-in:checked+span:not(.lever):after {

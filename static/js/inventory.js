@@ -204,13 +204,15 @@ async function magic() {
     
     let translateFilterBar = false
     document.addEventListener('scroll', () => {
-        let breakpoint = document.querySelector('main').clientHeight - window.innerHeight + 64;
-        if (window.scrollY < breakpoint) {
-            if (!translateFilterBar) document.getElementById('filter-bar').style.transform = `translateY(0)`;
-            translateFilterBar = false;
-        } else {
-            document.getElementById('filter-bar').style.transform = `translateY(${(window.scrollY-breakpoint)*-1}px)`;
-            translateFilterBar = true;
+        if (window.innerWidth > 992) {
+            let breakpoint = document.querySelector('main').clientHeight - window.innerHeight + 64;
+            if (window.scrollY < breakpoint) {
+                if (!translateFilterBar) document.getElementById('filter-bar').style.transform = `translateY(0)`;
+                translateFilterBar = false;
+            } else {
+                document.getElementById('filter-bar').style.transform = `translateY(${(window.scrollY-breakpoint)*-1}px)`;
+                translateFilterBar = true;
+            }
         }
     });
 
@@ -224,3 +226,21 @@ async function magic() {
 }
 
 magic();
+
+let filterOpen = false;
+let filterBtn = document.getElementById('filter-btn');
+let filterBar = document.getElementById('filter-bar');
+
+filterBtn.addEventListener('click', () => {
+    if (filterOpen) {
+        filterBar.classList.add('hide-on-med-and-down');
+        filterBtn.innerHTML = 'Filter'
+        filterOpen = false;
+        document.body.style.overflow = 'scroll';
+    } else {
+        filterBar.classList.remove('hide-on-med-and-down');
+        filterBtn.innerHTML = 'Close filter'
+        filterOpen = true;
+        document.body.style.overflow = 'hidden';
+    }
+});

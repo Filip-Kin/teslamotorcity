@@ -5,15 +5,15 @@ document.addEventListener('DOMContentLoaded', function() {
 let nav_opaque = false;
 document.addEventListener('scroll', () => {
     if ((
-        (window.innerWidth > 996 && window.scrollY > 600) ||
-        (window.innerWidth < 996 && window.scrollY > 250))
+        (window.innerWidth > 992 && window.scrollY > 600) ||
+        (window.innerWidth < 992 && window.scrollY > 250))
          && !nav_opaque) {
         document.querySelector('nav').classList.remove('clear')
         nav_opaque = true;
     }
     else if ((
-        (window.innerWidth > 996 && window.scrollY < 600) || 
-        (window.innerWidth < 996 && window.scrollY < 250)) 
+        (window.innerWidth > 992 && window.scrollY < 600) || 
+        (window.innerWidth < 992 && window.scrollY < 250)) 
         && nav_opaque) {
         document.querySelector('nav').classList.add('clear');
         nav_opaque = false;
@@ -21,8 +21,8 @@ document.addEventListener('scroll', () => {
 });
 
 if (
-    (window.innerWidth > 996 && window.scrollY > 600) ||
-    (window.innerWidth < 996 && window.scrollY > 250)) {
+    (window.innerWidth > 992 && window.scrollY > 600) ||
+    (window.innerWidth < 992 && window.scrollY > 250)) {
     document.querySelector('nav').classList.remove('clear');
     nav_opaque = true;
 }
