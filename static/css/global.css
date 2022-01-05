@@ -43,20 +43,18 @@ nav {
     margin-top: 5%;
 }
 
-.main-parallax h2 {
-    margin-top: 0;
-}
-
 .main-parallax {
     margin-top: 84px;
     margin-left: 48px;
 }
 
-.chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    transform: scale(1.25);
+.main-parallax h2 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.main-parallax h4 {
+    color: #fff;
 }
 
 .big-home-btn {
@@ -66,6 +64,75 @@ nav {
     font-weight: 700;
     padding-left: 100px;
     padding-right: 100px;
+}
+
+.main-parallax-container {
+    height: 75vh;
+}
+
+nav.clear.grey.darken-4 {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.second-parallax {
+    height: 600px;
+}
+
+@media only screen and (max-width: 992px) {
+    nav .brand-logo {
+        font-size: 20px !important;
+    }
+
+    nav.clear div ul li a {
+        color: #000;
+    }
+
+    .main-parallax-container {
+        height: 650px;
+    }
+
+    .main-parallax {
+        margin-top: 84px;
+        margin-left: 16px;
+    }
+
+    .main-parallax h2 {
+        font-size: 3rem;
+        margin-top: 0;
+        color: #000;
+    }
+
+    .main-parallax h4 {
+        position: absolute;
+        bottom: 90px;
+    }
+
+    .big-home-btn {
+        position: absolute;
+        left: 16px;
+        bottom: 32px;
+        font-weight: 700;
+        padding: 0;
+        width: calc(100vw - 32px);
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+    }
+
+    .btn-with-bg {
+        background-image: url(../img/badge-blur-2-min.jpg) !important;
+    }
+
+    .second-parallax {
+        height: 400px;
+    }
+}
+
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transform: scale(1.25);
 }
 
 .container.row {

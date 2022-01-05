@@ -4,12 +4,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let nav_opaque = false;
 document.addEventListener('scroll', () => {
-    if (window.scrollY > 600 && !nav_opaque) {
-        document.querySelector('nav').style.background = 'rgba(33,33,33,1)';
+    if ((
+        (window.innerWidth > 996 && window.scrollY > 600) ||
+        (window.innerWidth < 996 && window.scrollY > 250))
+         && !nav_opaque) {
+        document.querySelector('nav').classList.remove('clear')
         nav_opaque = true;
     }
-    else if (window.scrollY < 600 && nav_opaque) {
-        document.querySelector('nav').style.background = 'rgba(33,33,33,0)';
+    else if ((
+        (window.innerWidth > 996 && window.scrollY < 600) || 
+        (window.innerWidth < 996 && window.scrollY < 250)) 
+        && nav_opaque) {
+        document.querySelector('nav').classList.add('clear');
         nav_opaque = false;
     }
 });
+
+if (
+    (window.innerWidth > 996 && window.scrollY > 600) ||
+    (window.innerWidth < 996 && window.scrollY > 250)) {
+    document.querySelector('nav').classList.remove('clear');
+    nav_opaque = true;
+}
