@@ -241,6 +241,7 @@ main {
         width: 100%;
         top: 104px;
         padding: 0 10px;
+        overflow: scroll;
     }
 
     #filter-bar .input-field {
@@ -286,7 +287,6 @@ label span {
     padding: 10px;
     height: calc(100vh - 64px);
     position: fixed;
-    overflow: scroll;
 }
 
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
