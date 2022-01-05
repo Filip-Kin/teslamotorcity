@@ -5,9 +5,6 @@ static/js/*.min.js
 static/img/unused/*
 static/sitemap.xml
 static/google*
-!static/img/frontPage.jpg
-!static/img/frontSign.jpg
-!static/img/owner.jpg
 dbBackup.sql
 package-lock.json
 config.js
