@@ -2,7 +2,7 @@ node_modules
 .vscode
 static/css/*.min.css
 static/js/*.min.js
-static/img/*
+static/img/unused/*
 static/sitemap.xml
 static/google*
 !static/img/frontPage.jpg
