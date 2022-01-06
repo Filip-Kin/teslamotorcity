@@ -1,4 +1,5 @@
 // External functions
+const apiEmail = require('./api/apiemail.js');
 const apiCar = require('./api/apicar.js');
 const apiImage = require('./api/apiimage.js');
 const apiUser = require('./api/apiuser.js');
@@ -45,6 +46,9 @@ app.get('/api', (req, res) => res.send('Hello World!'));
 app.use(bodyParser.raw({ limit: '50mb', type: ['image/jpeg', 'image/png'] }));
 app.post('/api/image/add', (req, res) => apiImage.upload(req, res, c));
 app.use(express.json());
+
+// api-email
+app.post('/api/testdrive', (req, res) => apiEmail.testdrive(req, res));
 
 // api-car
 app.get('/api/car', (req, res) => apiCar.inventory(req, res, c));

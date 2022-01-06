@@ -363,3 +363,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     margin-top: 5px;
     width: 98pt;
 }
+
+.btn-row .col a {
+    width: 100%
+}

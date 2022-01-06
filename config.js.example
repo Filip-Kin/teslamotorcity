@@ -5,3 +5,13 @@ exports.DATABASE_CREDENTIALS = {
     password: 'password',
     database: 'motorsales'
 };
+
+exports.SMTP = {
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: testAccount.user, // generated ethereal user
+      pass: testAccount.pass, // generated ethereal password
+    },
+};
