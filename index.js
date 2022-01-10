@@ -34,39 +34,39 @@ app.use('/vendor/wnumb', express.static('node_modules/wnumb'));
 
 
 // Dynamic pages
-app.get('/car/:carId', (req, res) => generateCarPage(req, res, pool.getConnection()));
+app.get('/car/:carId', (req, res) => generateCarPage(req, res, pool));
 app.get('/add', (req, res) => generateBlankAddPage(req, res));
-app.get('/add/:carId', (req, res) => generateEditPage(req, res, pool.getConnection()));
+app.get('/add/:carId', (req, res) => generateEditPage(req, res, pool));
 app.get('/addUser', (req, res) => generateBlankUserAddPage(req, res));
-app.get('/addUser/:userId', (req, res) => generateUserEditPage(req, res, pool.getConnection()));
+app.get('/addUser/:userId', (req, res) => generateUserEditPage(req, res, pool));
 
 
 // API
 app.get('/api', (req, res) => res.send('Hello World!'));
 app.use(bodyParser.raw({ limit: '50mb', type: ['image/jpeg', 'image/png'] }));
-app.post('/api/image/add', (req, res) => apiImage.upload(req, res, pool.getConnection()));
+app.post('/api/image/add', (req, res) => apiImage.upload(req, res, pool));
 app.use(express.json());
 
 // api-email
 app.post('/api/testdrive', (req, res) => apiEmail.testdrive(req, res));
 
 // api-car
-app.get('/api/car', (req, res) => apiCar.inventory(req, res, pool.getConnection()));
-app.get('/api/car/:carId', (req, res) => apiCar.info(req, res, pool.getConnection()));
-app.post('/api/car/add', (req, res) => apiCar.add(req, res, pool.getConnection()));
-app.post('/api/car/:carId/remove', (req, res) => apiCar.remove(req, res, pool.getConnection()));
+app.get('/api/car', (req, res) => apiCar.inventory(req, res, pool));
+app.get('/api/car/:carId', (req, res) => apiCar.info(req, res, pool));
+app.post('/api/car/add', (req, res) => apiCar.add(req, res, pool));
+app.post('/api/car/:carId/remove', (req, res) => apiCar.remove(req, res, pool));
 
 // api-image
-app.post('/api/image/:id/remove', (req, res) => apiImage.remove(req, res, pool.getConnection()));
+app.post('/api/image/:id/remove', (req, res) => apiImage.remove(req, res, pool));
 
 // api-user
-app.get('/api/user', (req, res) => apiUser.userList(req, res, pool.getConnection()));
-app.get('/api/user/:username', (req, res) => apiUser.userExists(req, res, pool.getConnection()));
-app.post('/api/user/add', (req, res) => apiUser.addUser(req, res, pool.getConnection()));
-app.post('/api/user/:username/remove', (req, res) => apiUser.remove(req, res, pool.getConnection()));
+app.get('/api/user', (req, res) => apiUser.userList(req, res, pool));
+app.get('/api/user/:username', (req, res) => apiUser.userExists(req, res, pool));
+app.post('/api/user/add', (req, res) => apiUser.addUser(req, res, pool));
+app.post('/api/user/:username/remove', (req, res) => apiUser.remove(req, res, pool));
 
 // api-auth
-app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, pool.getConnection()));
+app.post('/api/auth/:id', (req, res) => apiAuth.apiauth(req, res, pool));
 
 
 

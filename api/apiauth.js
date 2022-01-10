@@ -32,8 +32,8 @@ exports.deconstructHashString = (hash) => {
     }
 }
 
-exports.auth = (id, password, c, permissions, next) => {
-    c.query(`SELECT * FROM users WHERE id = '${id}'`, (err, rows) => {
+exports.auth = (id, password, pool, permissions, next) => {
+    pool.query(`SELECT * FROM users WHERE id = '${id}'`, (err, rows) => {
         if (err) next(err, null)
         console.log(rows);
         if (rows[0] == undefined) {
@@ -43,7 +43,6 @@ exports.auth = (id, password, c, permissions, next) => {
             if (permissions < 0) return next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)), rows[0].permissions);
             next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)), true);
         }
-        c.release();
     })
 }
 

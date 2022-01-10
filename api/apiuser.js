@@ -1,7 +1,7 @@
 const uuidv4 = require('uuidv4');
 const auth = require('./apiauth.js');
 
-exports.addUser = (req, res, c) => {
+exports.addUser = (req, res, pool) => {
     auth.auth(req.headers.id, req.headers.password, c, 2, (err, login, permission) => {
         if (err) {
             res.status(500);
@@ -13,7 +13,7 @@ exports.addUser = (req, res, c) => {
             console.log(req.body);
             if (req.body.id !== '') {
                 if (req.body.password === '') {
-                    c.query(`UPDATE users
+                    pool.query(`UPDATE users
                     SET
                         username = '${req.body.username}',
                         permissions = ${req.body.permissions}
@@ -24,11 +24,10 @@ exports.addUser = (req, res, c) => {
                         } else {
                             res.send({status: 200, message: req.body.id});
                         }
-                        c.release();
                     })
                 } else {
                     let hash = auth.constructHashString(auth.hashPassword(req.body.password));
-                    c.query(`UPDATE users
+                    pool.query(`UPDATE users
                     SET
                         username = '${req.body.username}',
                         permissions = ${req.body.permissions},
@@ -40,14 +39,13 @@ exports.addUser = (req, res, c) => {
                         } else {
                             res.send({status: 200, message: req.body.id});
                         }
-                        c.release();
                     })
                 }
             } else {
                 let id = uuidv4.uuid();
                 let hash = auth.constructHashString(auth.hashPassword(req.body.password));
                 console.log(id+' '+hash.length+' '+hash);
-                c.query(`INSERT INTO users 
+                pool.query(`INSERT INTO users 
                 (id, username, permissions, password) 
                 VALUES (
                     '${id}',
@@ -61,68 +59,67 @@ exports.addUser = (req, res, c) => {
                     } else {
                         res.send({status: 200, message: id});
                     }
-                    c.release();
                 });
             }
         }
     });
 }
 
-exports.userExists = (req, res, c) => {
-    c.query(`SELECT id FROM users WHERE username = '${req.params.username.toLowerCase()}'`, (err, rows) => {
+exports.userExists = (req, res, pool) => {
+    pool.query(`SELECT id FROM users WHERE username = '${req.params.username.toLowerCase()}'`, (err, rows) => {
         if (err) {
             res.status(500);
             res.send({status: 500, message: err.message});
         } else {
             res.send({status: 200, message: (rows.length > 0), id: (rows.length > 0)?rows[0].id:false});
         }
-        c.release();
     });
 }
 
-exports.userList = (req, res, c) => {
-    c.query(`SELECT id, username, permissions FROM users`, (err, rows) => {
+exports.userList = (req, res, pool) => {
+    pool.query(`SELECT id, username, permissions FROM users`, (err, rows) => {
         if (err) {
             res.status(500);
             res.send({status: 500, message: err.message});
         } else {
             res.send(rows);
         }
-        c.release();
-    })
+    });
 }
 
 // Remove a user
-exports.remove = (req, res, c) => {
-    auth.auth(req.headers.id, req.headers.password, c, -1, (err, login, permission) => {
-        if (err) {
-            res.status(500);
-            res.send({status: 500, message: err.message});
-        } else {
-            c.query(`SELECT * FROM users WHERE id = '${req.params.username}';`, (err, rows) => {
-                if (err) { 
-                    res.status(500);
-                    res.send({status: 500, message: err.message}); 
-                } else {
-                    if (rows[0] !== undefined) {
-                        if (!login || permission < 2 || (rows[0].permissions == 3 && permission < 3)) {
-                            res.status(403);
-                            res.send({status: 403, message: 'Invalid credentials'});
-                        } else {
-                            console.log('Remove '+req.params.username);
-                            c.query(`DELETE FROM users WHERE id = '${req.params.username}';`, (err) => {
-                                if (err) { 
-                                    res.status(500);
-                                    res.send({status: 500, message: err.message}); 
-                                } else {
-                                    res.send({status: 200, message: 'Removed'});
-                                }
-                                c.release();
-                            });
+exports.remove = (req, res, pool) => {
+    pool.getConnection((err, c) => {
+        auth.auth(req.headers.id, req.headers.password, c, -1, (err, login, permission) => {
+            if (err) {
+                res.status(500);
+                res.send({status: 500, message: err.message});
+            } else {
+                c.query(`SELECT * FROM users WHERE id = '${req.params.username}';`, (err, rows) => {
+                    if (err) { 
+                        res.status(500);
+                        res.send({status: 500, message: err.message}); 
+                    } else {
+                        if (rows[0] !== undefined) {
+                            if (!login || permission < 2 || (rows[0].permissions == 3 && permission < 3)) {
+                                res.status(403);
+                                res.send({status: 403, message: 'Invalid credentials'});
+                            } else {
+                                console.log('Remove '+req.params.username);
+                                c.query(`DELETE FROM users WHERE id = '${req.params.username}';`, (err) => {
+                                    if (err) { 
+                                        res.status(500);
+                                        res.send({status: 500, message: err.message}); 
+                                    } else {
+                                        res.send({status: 200, message: 'Removed'});
+                                    }
+                                    c.release();
+                                });
+                            }
                         }
                     }
-                }
-            });
-        }
+                });
+            }
+        });
     });
 }
