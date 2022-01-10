@@ -11,7 +11,11 @@ exports.captcha = (req, res) => {
     })
     .then(data => data.json())
     .then(json => {
-        res.send({valid: json.success})
+        if (json.success && json.score > 0.2) {
+            res.send({valid: true});
+        } else {
+            res.send({valid: false});
+        }
     });
 };
 

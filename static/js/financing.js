@@ -106,6 +106,7 @@ document.getElementById('submit').addEventListener('click', (evt) => {
     info.social = inputs.social.value;
     grecaptcha.ready(() => {
         grecaptcha.execute('6LfY7gMeAAAAABz4wMoW0im7TXwUpm2b-0vj8gOL', {action: 'submit'}).then((token) => {
+            console.log(token);
             fetch('/api/captcha/'+token)
             .then(data => data.json())
             .then(json => {
