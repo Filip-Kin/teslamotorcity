@@ -36,11 +36,24 @@
     </div>
 
     <main>
+        <div class="loader" style="display: none;" id="loader">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
+        </div>
         <form class="container">
             <h3>Rent A Tesla</h3>
             <div class="row">
                 <div class="input-field col s12">
-                    <select id="model">
+                    <select id="model" name="model">
                         <option value="" disabled selected>Select model</option>
                         <option value="S">Model S</option>
                         <option value="3">Model 3</option>
@@ -51,38 +64,46 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate">
+                  <input id="first_name" type="text" name="first_name" required>
                   <label for="first_name">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="last_name" type="text" class="validate">
+                  <input id="last_name" type="text" name="last_name" required>
                   <label for="last_name">Last Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="phone" type="tel" class="validate">
+                    <input id="phone" type="tel" name="phone" required>
                     <label for="phone">Phone Number</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" name="email" required>
                     <label for="email">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea placeholder="Tell us when you would like to rent out a Tesla" id="comments" class="materialize-textarea"></textarea>
-                    <label for="comments">Comments</label>
+                    <textarea placeholder="Tell us when you would like to rent out a Tesla" id="comment" class="materialize-textarea" name="comment" required></textarea>
+                    <label for="comment">Comments</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 center">
-                    <button class="btn red waves-effect waves-light">Submit</button>
+                    <button class="btn red waves-effect waves-light" name="submit">Submit</button>
                 </div>
             </div>
         </form>
+        <div id="thankyou" style="display:none" class="container center">
+            <h2>Thank You for Your Submission</h2>
+            <h5>An agent will reach out to you shortly to begin your Tesla experience.</h5>
+            <div class="row btn-row">
+                <div class="col s6 m2 push-m4"><a href="tel:+15864041670" class="btn grey darken-3">Call</a></div>
+                <div class="col s6 m2 push-m4"><a href="#" class="btn grey darken-3" onclick="window.fcWidget.open(); return false;">Chat</a></div>
+            </div>
+        </div>
     </main>
 
     <footer class="page-footer grey darken-4">
@@ -117,7 +138,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                © 2021 Telsa Motor City all rights reserved
+                © 2022 Tesla Motor City all rights reserved
                 <a class="grey-text text-lighten-4 right" href="/admin.html">Admin</a>
             </div>
         </div>

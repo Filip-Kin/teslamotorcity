@@ -367,3 +367,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .btn-row .col a {
     width: 100%
 }
+
+.loader {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    padding: calc(40vh - 32px) calc(50vw - 32px);
+}

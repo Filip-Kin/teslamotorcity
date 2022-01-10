@@ -14,6 +14,8 @@ let inputs = {
 
 document.forms[0].addEventListener('submit', (evt) => {
     evt.preventDefault();
+    document.forms[0].style.filter = 'blur(3px)';
+    document.getElementById('loader').style.display = 'block';
 
     if (model.value === 'Select model') {
         M.toast({html: 'Select a model'});
@@ -35,6 +37,7 @@ document.forms[0].addEventListener('submit', (evt) => {
         }
     }).then(() => {
         document.forms[0].style.display = 'none';
+        document.getElementById('loader').style.display = 'none';
         document.getElementById('thankyou').style.display = 'block';
     });
 
