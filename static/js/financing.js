@@ -107,7 +107,13 @@ document.getElementById('submit').addEventListener('click', (evt) => {
     grecaptcha.ready(() => {
         grecaptcha.execute('6LfY7gMeAAAAABz4wMoW0im7TXwUpm2b-0vj8gOL', {action: 'submit'}).then((token) => {
             console.log(token);
-            fetch('/api/captcha/'+token)
+            fetch('/api/captcha/', {
+                method: 'POST',
+                body: JSON.stringify({token: token}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
             .then(data => data.json())
             .then(json => {
                 if (json.valid === true) {

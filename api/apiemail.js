@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport(SMTP);
 
 // Captcha
 exports.captcha = (req, res) => {
-    fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${CAPTCHA_SECRET}&response=${req.params.token}`, {
+    fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${CAPTCHA_SECRET}&response=${req.body.token}`, {
         method: 'POST'
     })
     .then(data => data.json())
