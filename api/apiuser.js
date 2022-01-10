@@ -24,6 +24,7 @@ exports.addUser = (req, res, c) => {
                         } else {
                             res.send({status: 200, message: req.body.id});
                         }
+                        c.release();
                     })
                 } else {
                     let hash = auth.constructHashString(auth.hashPassword(req.body.password));
@@ -39,6 +40,7 @@ exports.addUser = (req, res, c) => {
                         } else {
                             res.send({status: 200, message: req.body.id});
                         }
+                        c.release();
                     })
                 }
             } else {
@@ -59,6 +61,7 @@ exports.addUser = (req, res, c) => {
                     } else {
                         res.send({status: 200, message: id});
                     }
+                    c.release();
                 });
             }
         }
@@ -73,6 +76,7 @@ exports.userExists = (req, res, c) => {
         } else {
             res.send({status: 200, message: (rows.length > 0), id: (rows.length > 0)?rows[0].id:false});
         }
+        c.release();
     });
 }
 
@@ -84,6 +88,7 @@ exports.userList = (req, res, c) => {
         } else {
             res.send(rows);
         }
+        c.release();
     })
 }
 
@@ -112,6 +117,7 @@ exports.remove = (req, res, c) => {
                                 } else {
                                     res.send({status: 200, message: 'Removed'});
                                 }
+                                c.release();
                             });
                         }
                     }

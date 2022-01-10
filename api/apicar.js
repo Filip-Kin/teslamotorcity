@@ -15,6 +15,7 @@ exports.inventory = (req, res, c) => {
             car.price = car.price/100
         }
         res.send(row);
+        c.release();
     });
 }
 
@@ -32,6 +33,7 @@ exports.info = (req, res, c) => {
         }
         row[0].price = row[0].price/100
         res.send(row[0]);
+        c.release();
     });
 }
 
@@ -49,19 +51,16 @@ exports.add = (req, res, c) => {
                 console.log(req.body);
                 c.query(`UPDATE cars 
                 SET
-                    make = '${req.body.make}',
                     model = '${req.body.model}',
                     year = '${req.body.year}',
+                    miles = ${req.body.miles},
                     vin = '${req.body.vin}',
                     price = ${req.body.price*100},
                     description = '${req.body.description}',
-                    body = '${req.body.body}',
                     color = '${req.body.color}',
                     engine = '${req.body.engine}',
                     drive = '${req.body.drive}',
-                    cylinders = '${req.body.cylinders}',
-                    transmission = '${req.body.transmission}',
-                    fuel = '${req.body.fuel}',
+                    assist = '${req.body.assist}',
                     images = '${JSON.stringify(req.body.images)}'
                 WHERE id = '${req.body.id}'`, (err) => {
                     if (err) { 
@@ -71,28 +70,26 @@ exports.add = (req, res, c) => {
                     }
                     res.send({status: 200, message: req.body.id});
                     sitemap.updateCar(req.body.id);
+                    c.release();
                 });
             } else {
                 let id = uuidv4.uuid();
                 console.log(id);
                 console.log(req.body);
                 c.query(`INSERT INTO cars 
-                (id, make, model, year, vin, price, description, body, color, engine, drive, cylinders, transmission, fuel, images)
+                (id, model, year, miles, vin, price, description, color, engine, drive, assist, images)
                 VALUES (
                     '${id}',
-                    '${req.body.make}',
                     '${req.body.model}',
                     '${req.body.year}',
+                    ${req.body.miles},
                     '${req.body.vin}',
                     ${req.body.price*100},
                     '${req.body.description}',
-                    '${req.body.body}',
                     '${req.body.color}',
                     '${req.body.engine}',
                     '${req.body.drive}',
-                    '${req.body.cylinders}',
-                    '${req.body.transmission}',
-                    '${req.body.fuel}',
+                    '${req.body.assist}',
                     '${JSON.stringify(req.body.images)}'
                 )`, (err) => {
                     if (err) { 
@@ -102,6 +99,7 @@ exports.add = (req, res, c) => {
                     }
                     res.send({status: 200, message: id});
                     sitemap.updateCar(id);
+                    c.release();
                 });
             }
         }
@@ -150,6 +148,7 @@ exports.remove = (req, res, c) => {
                     Promise.all(threads).then(() => {
                         res.send({status: 200, message: 'Removed'});
                         sitemap.removeCar(req.body.carId);
+                        c.release();
                     });
                 }
             });

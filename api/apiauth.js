@@ -43,6 +43,7 @@ exports.auth = (id, password, c, permissions, next) => {
             if (permissions < 0) return next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)), rows[0].permissions);
             next(false, this.testPassword(password, this.deconstructHashString(rows[0].password)), true);
         }
+        c.release();
     })
 }
 
