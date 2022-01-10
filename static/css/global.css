@@ -381,3 +381,21 @@ textarea.materialize-textarea:focus:not([readonly]) {
 div {
     transition: opacity ease 300ms;
 }
+
+.grecaptcha-badge {
+    top: 80px !important;
+}
+
+.model-selection .col {
+    padding: 0 3px;
+}
+
+.model-selection a {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 65px;
+    border-radius: 16px;
+    color: #fff;
+}

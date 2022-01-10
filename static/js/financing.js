@@ -12,7 +12,8 @@ let pages = [
     document.getElementById('page-2'),
     document.getElementById('page-3'),
     document.getElementById('page-4'),
-    document.getElementById('page-5')
+    document.getElementById('page-5'),
+    document.getElementById('thankyou')
 ]
 
 let inputs = {
