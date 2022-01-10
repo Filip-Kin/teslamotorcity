@@ -48,7 +48,7 @@ app.post('/api/image/add', (req, res) => apiImage.upload(req, res, pool));
 app.use(express.json());
 
 // api-email
-app.post('/captcha', (req, res) => apiEmail.captcha(req, res));
+app.post('/api/captcha', (req, res) => apiEmail.captcha(req, res));
 app.post('/api/testdrive', (req, res) => apiEmail.testdrive(req, res));
 app.post('/api/rental', (req, res) => apiEmail.rental(req, res));
 app.post('/api/special', (req, res) => apiEmail.special(req, res));
