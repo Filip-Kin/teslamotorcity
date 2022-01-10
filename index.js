@@ -49,6 +49,8 @@ app.use(express.json());
 
 // api-email
 app.post('/api/captcha', (req, res) => apiEmail.captcha(req, res));
+app.post('/api/eprice', (req, res) => apiEmail.eprice(req, res));
+app.post('/api/info', (req, res) => apiEmail.info(req, res));
 app.post('/api/testdrive', (req, res) => apiEmail.testdrive(req, res));
 app.post('/api/rental', (req, res) => apiEmail.rental(req, res));
 app.post('/api/special', (req, res) => apiEmail.special(req, res));

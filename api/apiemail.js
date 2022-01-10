@@ -25,7 +25,7 @@ exports.testdrive = (req, res) => {
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
         to: 'me@filipkin.com',
         subject: 'Test Drive Request', // Subject line
-        html: `${req.body.firstName} ${req.body.lastName} is requesting to test drive a model ${req.body.model}\n\n${req.body.email}\n${req.body.phone}\n\n${req.body.comment}`
+        html: `${req.body.firstName} ${req.body.lastName} is requesting to test drive a model ${req.body.model}<br><br>${req.body.email}<br>${req.body.phone}<br><br>${req.body.comment}`
     }).then(info => {
         console.log(info);
         res.send()
@@ -38,7 +38,7 @@ exports.rental = (req, res) => {
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
         to: 'me@filipkin.com',
         subject: 'Rental Request', // Subject line
-        html: `${req.body.firstName} ${req.body.lastName} is requesting to rent a model ${req.body.model}\n\n${req.body.email}\n${req.body.phone}\n\n${req.body.comment}`
+        html: `${req.body.firstName} ${req.body.lastName} is requesting to rent a model ${req.body.model}<br><br>${req.body.email}<br>${req.body.phone}<br><br>${req.body.comment}`
     }).then(info => {
         console.log(info);
         res.send()
@@ -51,7 +51,33 @@ exports.special = (req, res) => {
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
         to: 'me@filipkin.com',
         subject: 'Special Incentive Request', // Subject line
-        html: `${req.body.firstName} ${req.body.lastName} is requesting a special on a model ${req.body.model}\n\n${req.body.email}\n${req.body.phone}`
+        html: `${req.body.firstName} ${req.body.lastName} is requesting a special on a model ${req.body.model}<br><br>${req.body.email}<br>${req.body.phone}`
+    }).then(info => {
+        console.log(info);
+        res.send()
+    });
+};
+
+// Eprice
+exports.eprice = (req, res) => {
+    transporter.sendMail({
+        from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
+        to: 'me@filipkin.com',
+        subject: 'Eprice Request', // Subject line
+        html: `${req.body.firstName} ${req.body.lastName} is requesting an eprice on VIN ${req.body.vin}<br><br>${req.body.email}<br>${req.body.phone}`
+    }).then(info => {
+        console.log(info);
+        res.send()
+    });
+};
+
+// Info
+exports.eprice = (req, res) => {
+    transporter.sendMail({
+        from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
+        to: 'me@filipkin.com',
+        subject: 'Info Request', // Subject line
+        html: `${req.body.firstName} ${req.body.lastName} is requesting more information on VIN ${req.body.vin}<br><br>${req.body.email}<br>${req.body.phone}<br><br>${req.body.comment}`
     }).then(info => {
         console.log(info);
         res.send()
