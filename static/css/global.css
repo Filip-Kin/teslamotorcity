@@ -377,3 +377,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     left: 0;
     padding: calc(40vh - 32px) calc(50vw - 32px);
 }
+
+div {
+    transition: opacity ease 300ms;
+}

@@ -48,9 +48,11 @@ app.post('/api/image/add', (req, res) => apiImage.upload(req, res, pool));
 app.use(express.json());
 
 // api-email
+app.get('/captcha/:token', (req, res) => apiEmail.captcha(req, res));
 app.post('/api/testdrive', (req, res) => apiEmail.testdrive(req, res));
 app.post('/api/rental', (req, res) => apiEmail.rental(req, res));
 app.post('/api/special', (req, res) => apiEmail.special(req, res));
+app.post('/api/financing', (req, res) => apiEmail.financing(req, res));
 
 // api-car
 app.get('/api/car', (req, res) => apiCar.inventory(req, res, pool));

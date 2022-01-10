@@ -29,7 +29,8 @@
                 <ul>
                     <li><a href="#" class="menu"><i class="material-icons">menu</i></a></li>
                     <li><a href="/index.html" class="brand-logo">TESLA MOTOR CITY</li>
-                    <li class="right hide-on-med-and-down"><a href="tel:+15864041670"><i class="material-icons">phone</i></a></li>
+                    <li class="right hide-on-med-and-down"><a href="tel:+15864041670"><i
+                                class="material-icons">phone</i></a></li>
                 </ul>
             </div>
         </nav>
@@ -46,43 +47,55 @@
             </div>
             <div id="page-1" class="center" style="display: block">
                 <h5>Select Model</h5>
-                <ul class="model-selection">
+                <ul class="model-selection" id="model-buttons">
                     <li><a href="#" class="btn btn-large red">S</a></li>
                     <li><a href="#" class="btn btn-large red">3</a></li>
                     <li><a href="#" class="btn btn-large red">X</a></li>
                     <li><a href="#" class="btn btn-large red">Y</a></li>
                 </ul>
             </div>
-            <div id="page-2" class="center" style="display: none">
+            <div id="page-2" class="center" style="display: none; opacity: 0;">
                 <div class="row">
                     <div class="input-field col s6 m4 push-m2">
-                      <input id="first_name" type="text" class="validate">
-                      <label for="first_name">First Name</label>
+                        <input id="first_name" type="text">
+                        <label for="first_name">First Name</label>
                     </div>
                     <div class="input-field col s6 m4 push-m2">
-                      <input id="last_name" type="text" class="validate">
-                      <label for="last_name">Last Name</label>
+                        <input id="last_name" type="text">
+                        <label for="last_name">Last Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m8 push-m2">
-                        <input id="address" type="text" class="validate">
+                        <input id="phone" type="tel">
+                        <label for="phone">Phone Number</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="email" type="email">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="address" type="text">
                         <label for="address">Address</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m8 push-m2">
-                        <input id="address_line_2" type="text" class="validate">
+                        <input id="address_line_2" type="text">
                         <label for="address_line_2">Address Line 2</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4 m2 push-m2">
-                        <input id="zip_code" type="text" class="validate">
+                        <input id="zip_code" type="text">
                         <label for="zip_code">Zip Code</label>
                     </div>
                     <div class="input-field col s4 m3 push-m2">
-                        <input id="city" type="text" class="validate">
+                        <input id="city" type="text">
                         <label for="city">City</label>
                     </div>
                     <div class="input-field col s4 m3 push-m2">
@@ -143,24 +156,30 @@
                         <label for="state">State</label>
                     </div>
                     <div class="row">
+                        <div class="input-field col s12 m8 push-m2">
+                            <h5>How long have you been living at this address?</h5>
+                            <p>
+                                <label>
+                                    <input name="living" type="radio" />
+                                    <span>Less Than 2 Years</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="living" type="radio" id="more_than_2_years" />
+                                    <span>2 or More Years</span>
+                                </label>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="input-field col s12 center">
-                            <button class="btn red waves-effect waves-light">Continue</button>
+                            <button class="btn red waves-effect waves-light" id="step-2">Continue</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="page-3" class="center" style="display: none">
-                <h5>How long have you been living at this address?</h5>
-                <div class="row">
-                    <div class="input-field col s6 m4 push-m2">
-                        <button class="btn grey darken-3 waves-effect waves-light right">Less Than 2 Years</button>
-                    </div>
-                    <div class="input-field col s6 m4">
-                        <button class="btn grey darken-3 waves-effect waves-light left">2 Years or More</button>
-                    </div>
-                </div>
-            </div>
-            <div id="page-4" class="center" style="display: none">
+            <div id="page-3" class="center" style="display: none; opacity: 0;">
                 <h5>What is your current employment status?</h5>
                 <div class="row">
                     <div class="input-field col s12 m8 push-m2">
@@ -177,21 +196,60 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 center">
-                        <button class="btn red waves-effect waves-light">Continue</button>
+                        <button class="btn red waves-effect waves-light" id="step-3">Continue</button>
                     </div>
                 </div>
             </div>
-            <div id="page-4" class="center" style="display: none">
+            <div id="page-4" class="center" style="display: none; opacity: 0;">
                 <h5>Where do you work?</h5>
                 <div class="row">
                     <div class="input-field col s12 m8 push-m2">
-                        <input id="employer" type="text" class="validate">
+                        <input id="employer" type="text">
                         <label for="employer">Employer</label>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="title" type="text">
+                        <label for="title">Job Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m4 push-m2">
+                        <input id="time_on_job" type="text">
+                        <label for="time_on_job">How long have you worked here?</label>
+                    </div>
+                    <div class="input-field col s12 m4 push-m2">
+                        <input id="income" type="text">
+                        <label for="income">Gross Monthly Income</label>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="input-field col s12 center">
-                        <button class="btn red waves-effect waves-light">Submit</button>
+                        <button class="btn red waves-effect waves-light" id="step-4">Continue</button>
+                    </div>
+                </div>
+            </div>
+            <div id="page-5" class="center" style="display: none; opacity: 0;">
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="dob" type="text" placeholder="MM/DD/YYYY">
+                        <label for="dob">Date of Birth</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m8 push-m2">
+                        <input id="social" type="text">
+                        <label for="social">Social Security Number</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit'
+                        data-action='submit'>Submit</button>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <button class="btn red waves-effect waves-light" id="submit">Submit</button>
                     </div>
                 </div>
             </div>
@@ -246,6 +304,7 @@
         }
         function initialize(i, t) { var e; i.getElementById(t) ? initFreshChat() : ((e = i.createElement("script")).id = t, e.async = !0, e.src = "https://wchat.freshchat.com/js/widget.js", e.onload = initFreshChat, i.head.appendChild(e)) } function initiateCall() { initialize(document, "Freshdesk Messaging-js-sdk") } window.addEventListener ? window.addEventListener("load", initiateCall, !1) : window.attachEvent("load", initiateCall, !1);
     </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfY7gMeAAAAABz4wMoW0im7TXwUpm2b-0vj8gOL"></script>
     <script src="https://kit.fontawesome.com/1d8d60483d.js" crossorigin="anonymous"></script>
     <script src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="./js/financing.js"></script>
