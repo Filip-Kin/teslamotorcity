@@ -64,7 +64,7 @@ exports.financing = (req, res) => {
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
         to: 'me@filipkin.com',
         subject: 'Financing Request', // Subject line
-        html: `${JSON.stringify(req.body, null, 4)}`
+        html: `${JSON.stringify(req.body, null, 4).replace('"', '')}`
     }).then(info => {
         console.log(info);
         res.send()
