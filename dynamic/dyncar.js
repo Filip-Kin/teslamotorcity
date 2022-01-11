@@ -42,9 +42,7 @@ const imagesHTML = (imgs) => {
     let bubbles = '';
     for (let i = 0; i < imgs.length; i++) {
         output += `<div class="mySlides fade">
-        <div class="numbertext">${i+1} / ${imgs.length}</div>
         <img src="/img/${imgs[i]}" style="width:100%">
-        <div class="text">Text</div>
       </div>`
         bubbles += `<span class="dot" onclick="currentSlide(${i+1})"></span>`
     }
