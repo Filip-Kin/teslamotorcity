@@ -154,7 +154,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
-            M.Carousel.init(document.querySelectorAll('.carousel'), {});
+            M.Carousel.init(document.querySelectorAll('.carousel'), {
+                numVisible: 1,
+                indicators: true,
+                fullWidth: true
+            });
         });
     </script>
 </body>
