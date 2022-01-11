@@ -399,3 +399,7 @@ div {
     border-radius: 16px;
     color: #fff;
 }
+
+nav a.sidenav-trigger {
+    display: block !important;
+}

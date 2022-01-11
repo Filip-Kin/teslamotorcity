@@ -11,7 +11,14 @@ const files = [
     './static/js/addUser.js',
     './static/js/admin.js',
     './static/js/inventory.js',
-    './static/js/users.js'
+    './static/js/users.js',
+    './static/js/eprice.js',
+    './static/js/financing.js',
+    './static/js/index.js',
+    './static/js/info.js',
+    './static/js/rental.js',
+    './static/js/specials.js',
+    './static/js/testdrive.js'
 ]
 
 let threads = [];
