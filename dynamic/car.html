@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-<head><!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-L0DEBQ8R8Z');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-L0DEBQ8R8Z');
+    </script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css">
     <link rel="stylesheet" href="/vendor/nouislider/dist/nouislider.min.css">
@@ -41,51 +45,62 @@
     </ul>
 
     <main>
-      <div class="container">
-        <div class="row" style="margin: 5px 10px"><div class="left"><a href="#" class="btn red waves-effect waves-light" id="back-button">Back to inventory</a></div></div>
-        <div class="row">
-          <div class="imgs col s12 l8">
-            ${imagesHTML}
-          </div>
-          <div class="col s12 l4">
-            <h4>Model ${model}</h4>
-            <h6>${year}</h6>
-            <h5>${formattedPrice}</h5>
-            <table>
-              <tr>
-                <td>VIN: </td>
-                <td>${vin}</td>
-              </tr>
-              <tr>
-                <td>Mileage: </td>
-                <td>${miles}</td>
-              </tr>
-              <tr>
-                <td>Color: </td>
-                <td>${color}</td>
-              </tr>
-              <tr>
-                <td>Motor: </td>
-                <td>${engine}</td>
-              </tr>
-              <tr>
-                <td>Drive: </td>
-                <td>${drive}</td>
-              </tr>
-              <tr>
-                <td>Autopilot: </td>
-                <td>${assist}</td>
-              </tr>
-            </table>
-            <p>${description}</p>
-            <div class="full-width-btns">
-              <a href="/info.html?${vin}" class="btn red waves-effect waves-light">Request More Information</a>
-              <a href="/eprice.html?${vin}" class="btn grey darken-4 waves-effect waves-light">Get EPrice</a>
-              <a href="tel:+15864041670" class="btn grey darken-4 waves-effect waves-light">Click to Call</a>
+        <div class="container">
+            <div class="row" style="margin: 5px 10px">
+                <div class="left"><a href="#" class="btn red waves-effect waves-light" id="back-button">Back to inventory</a></div>
             </div>
-          </div>
+            <div class="row">
+                <div class="imgs col s12 l8">
+                    ${imagesHTML}
+                </div>
+                <div class="col s12 l4">
+                    <h4>Model ${model}</h4>
+                    <h6>${year}</h6>
+                    <h5>${formattedPrice}</h5>
+                    <div class="buy-links">
+                        <a href="/financing.html?${stock}">Buy</a>
+                        <a href="/financing.html?${stock}">Lease</a>
+                        <a href="/rental.html?${stock}">Rent</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Stock #: </td>
+                            <td>${stock}</td>
+                        </tr>
+                        <tr>
+                            <td>VIN: </td>
+                            <td>${vin}</td>
+                        </tr>
+                        <tr>
+                            <td>Mileage: </td>
+                            <td>${miles}</td>
+                        </tr>
+                        <tr>
+                            <td>Color: </td>
+                            <td>${color}</td>
+                        </tr>
+                        <tr>
+                            <td>Motor: </td>
+                            <td>${engine}</td>
+                        </tr>
+                        <tr>
+                            <td>Drive: </td>
+                            <td>${drive}</td>
+                        </tr>
+                        <tr>
+                            <td>Autopilot: </td>
+                            <td>${assist}</td>
+                        </tr>
+                    </table>
+                    <p>${description}</p>
+                    <div class="full-width-btns">
+                        <a href="/info.html?${stock}" class="btn red waves-effect waves-light">Request More Information</a>
+                        <a href="/testdrive.html?${stock}" class="btn grey darken-4 waves-effect waves-light">Schedule Test Drive</a>
+                        <a href="tel:+15864041670" class="btn grey darken-4 waves-effect waves-light">Click to Call</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </main>
 
     <footer class="page-footer grey darken-4">
@@ -130,10 +145,10 @@
     <script src="https://kit.fontawesome.com/1d8d60483d.js" crossorigin="anonymous"></script>
     <script src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
     <script>
-      document.getElementById('back-button').addEventListener('click', () => {
-        if (document.referrer.endsWith('inventory.html')) history.back();
-        else window.location.url = '/inventory.html';
-      });
+        document.getElementById('back-button').addEventListener('click', () => {
+            if (document.referrer.endsWith('inventory.html')) history.back();
+            else window.location.url = '/inventory.html';
+        });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', M.Sidenav.init(document.querySelectorAll('.sidenav'), {}));

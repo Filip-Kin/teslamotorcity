@@ -16,7 +16,7 @@
                 <a href="/index.html" class="brand-logo center">Tesla Motor City Admin</a>
             </div>
         </nav>
-    
+
         <div id="removeModal" class="modal">
             <div class="modal-content">
                 <h4>Are you sure you want to remove this post?</h4>
@@ -68,11 +68,15 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12 m6">
+                        <div class="input-field col s12 m4">
                             <input id="vin" type="text" autocomplete="none">
                             <label for="vin">VIN</label>
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s6 m4">
+                            <input id="stock" type="text">
+                            <label for="stock">Stock #</label>
+                        </div>
+                        <div class="input-field col s6 m4">
                             <input id="miles" type="number">
                             <label for="miles">Mileage</label>
                         </div>
@@ -114,7 +118,7 @@
                         </div>
                         <div class="col s12">
                             <label for="imageUpload">Upload image</label><br>
-                            <input id="imageUpload" type="file" accept="image/jpeg image/png" multiple="true" class="editPerms"  autocomplete="none"></input>
+                            <input id="imageUpload" type="file" accept="image/jpeg image/png" multiple="true" class="editPerms" autocomplete="none"></input>
                         </div>
                     </div>
                     <div class="row right">
@@ -126,7 +130,7 @@
             </div>
         </div>
     </main>
-  
+
     <footer class="page-footer grey darken-4">
         <div class="container">
             <div class="center">
@@ -171,6 +175,7 @@
     <script>
         let car = {
             id: "${id}",
+            stock: "${stock}",
             model: "${model}",
             year: "${year}",
             miles: "${miles}",
@@ -183,19 +188,20 @@
             assist: "${assist}"
         };
 
-        if (car.id === ('$'+'{id}')) {
+        if (car.id === ('$' + '{id}')) {
             for (let field in car) {
                 car[field] = '';
             }
         }
 
         let images = '${images}';
-        images = (images === '' || images === ('$'+'{images}'))?[]:JSON.parse(images);
+        images = (images === '' || images === ('$' + '{images}')) ? [] : JSON.parse(images);
     </script>
-    
+
     <script type="text/javascript" src="/js/add.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', M.Sidenav.init(document.querySelectorAll('.sidenav'), {}));
     </script>
 </body>
+
 </html>

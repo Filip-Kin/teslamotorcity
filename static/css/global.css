@@ -82,31 +82,25 @@ nav.clear.grey.darken-4 {
     nav .brand-logo {
         font-size: 20px !important;
     }
-
     nav.clear div ul li a {
         color: #000;
     }
-
     .main-parallax-container {
         height: 650px;
     }
-
     .main-parallax {
         margin-top: 84px;
         margin-left: 16px;
     }
-
     .main-parallax h2 {
         font-size: 3rem;
         margin-top: 0;
         color: #000;
     }
-
     .main-parallax h4 {
         position: absolute;
         bottom: 90px;
     }
-
     .big-home-btn {
         position: absolute;
         left: 16px;
@@ -118,11 +112,9 @@ nav.clear.grey.darken-4 {
         line-height: 36px;
         font-size: 14px;
     }
-
     .btn-with-bg {
         background-image: url(../img/badge-blur-2-min.jpg) !important;
     }
-
     .second-parallax {
         height: 400px;
     }
@@ -235,7 +227,6 @@ main {
         grid-auto-rows: minmax(100px, auto);
         margin-top: 10px;
     }
-
     #filter-bar {
         z-index: 100;
         width: 100%;
@@ -243,7 +234,6 @@ main {
         padding: 0 10px;
         overflow: scroll;
     }
-
     #filter-bar .input-field {
         margin: 5px 0;
     }
@@ -271,7 +261,8 @@ main {
     background: #FF1616;
 }
 
-.noUi-handle:after, .noUi-handle:before {
+.noUi-handle:after,
+.noUi-handle:before {
     width: 0;
 }
 
@@ -311,7 +302,7 @@ label span {
 .input-field input[type=tel]:focus+label,
 textarea.materialize-textarea:focus:not([readonly])+label,
 .dropdown-content li>a,
-.dropdown-content li>span{
+.dropdown-content li>span {
     color: #FF1616 !important;
 }
 
@@ -402,4 +393,15 @@ div {
 
 nav a.sidenav-trigger {
     display: block !important;
+}
+
+table td a:not(:first-child) {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.buy-links {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }

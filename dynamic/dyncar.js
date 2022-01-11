@@ -11,9 +11,9 @@ const imagesHTML = (imgs) => {
     if (imgs.length > 1) {
         for (let i = 0; i < imgs.length; i++) {
             if (i > 0) {
-                if ((i-1)%2 === 0) output += `<div class="row">`;
+                if ((i - 1) % 2 === 0) output += `<div class="row">`;
                 output += `<div class="col s12 m6"><img src="/img/${imgs[i]}" class="responsive-img"></div>`;
-                if ((i-1)%2 !== 0 || i+1 === imgs.length) output += `</div>`;
+                if ((i - 1) % 2 !== 0 || i + 1 === imgs.length) output += `</div>`;
             }
         }
     }
@@ -35,12 +35,13 @@ exports.generateCarPage = (req, res, c) => {
             console.log(row);
             // Replace variables in the .html
             data = data.replace(/\${id}/g, row.id);
+            data = data.replace(/\${stock}/g, row.stock);
             data = data.replace(/\${model}/g, row.model);
             data = data.replace(/\${year}/g, row.year);
             data = data.replace(/\${miles}/g, row.miles);
             data = data.replace(/\${vin}/g, row.vin);
-            data = data.replace(/\${price}/g, row.price/100);
-            data = data.replace(/\${formattedPrice}/g, '$'+numberWithCommas(row.price/100));
+            data = data.replace(/\${price}/g, row.price / 100);
+            data = data.replace(/\${formattedPrice}/g, '$' + numberWithCommas(row.price / 100));
             data = data.replace(/\${description}/g, row.description);
             data = data.replace(/\${color}/g, row.color);
             data = data.replace(/\${engine}/g, row.engine);

@@ -14,17 +14,17 @@ window.addEventListener('load', () => {
     } else {
         document.getElementById('removeBtn').style.display = 'none';
     }
-    
+
     M.updateTextFields();
     M.FormSelect.init(document.querySelectorAll('select'), {});
     renderImages();
 });
 
-let renderImages = (toast=null) => {
+let renderImages = (toast = null) => {
     let tbody = document.getElementById('images');
     let out = '';
     let i = 0;
-    let disabled = (localStorage.permissions < 1) ? 'disabled ':'';
+    let disabled = (localStorage.permissions < 1) ? 'disabled ' : '';
     for (let img of images) {
         out += `<tr><td width="50%"><img style="responsive-img" width="100%" src="/img/${img}"></td>`;
         out += `<td><div class="row center"><a class="${disabled}btn red darken-2" href="#" onclick="removeImg(${i})">Remove</a></div>`;
@@ -33,19 +33,19 @@ let renderImages = (toast=null) => {
         i++;
     }
     tbody.innerHTML = out;
-    if (toast!==null) toast.dismiss();
+    if (toast !== null) toast.dismiss();
 }
 
 let removeImg = (i) => {
-    fetch('/api/image/'+images[i]+'/remove', {method: 'POST', headers: {id: localStorage.id, password: localStorage.password}}).then(res => res.json()).then(res => {
+    fetch('/api/image/' + images[i] + '/remove', { method: 'POST', headers: { id: localStorage.id, password: localStorage.password } }).then(res => res.json()).then(res => {
         if (res.status !== 200) {
-            M.toast({html: "Image deletion failed<br>"+res.message});
+            M.toast({ html: "Image deletion failed<br>" + res.message });
         } else {
             let newArr = [];
             for (let j = 0; j < i; j++) {
                 newArr.push(images[j]);
             }
-            for (let k = i+1; k < images.length; k++) {
+            for (let k = i + 1; k < images.length; k++) {
                 newArr.push(images[k]);
             }
             images = newArr;
@@ -56,12 +56,12 @@ let removeImg = (i) => {
 
 let imgUp = (i) => {
     let newArr = [];
-    for (let j = 0; j+1 < i; j++) {
+    for (let j = 0; j + 1 < i; j++) {
         newArr.push(images[j]);
     }
     newArr.push(images[i]);
-    newArr.push(images[i-1]);
-    for (let k = i+1; k < images.length; k++) {
+    newArr.push(images[i - 1]);
+    for (let k = i + 1; k < images.length; k++) {
         newArr.push(images[k]);
     }
     images = newArr;
@@ -73,9 +73,9 @@ let imgDown = (i) => {
     for (let j = 0; j < i; j++) {
         newArr.push(images[j]);
     }
-    newArr.push(images[i+1]);
+    newArr.push(images[i + 1]);
     newArr.push(images[i]);
-    for (let k = i+2; k < images.length; k++) {
+    for (let k = i + 2; k < images.length; k++) {
         newArr.push(images[k]);
     }
     images = newArr;
@@ -83,9 +83,10 @@ let imgDown = (i) => {
 }
 
 let addFormSubmit = () => {
-    let toast = M.toast({html: 'Saving...'});
+    let toast = M.toast({ html: 'Saving...' });
     let newcar = {
         id: car.id,
+        stock: car.stock,
         model: document.forms[0].model.value,
         year: document.forms[0].year.value,
         miles: document.forms[0].miles.value,
@@ -104,7 +105,7 @@ let addFormSubmit = () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            id: localStorage.id, 
+            id: localStorage.id,
             password: localStorage.password
         },
         body: JSON.stringify(newcar)
@@ -113,7 +114,7 @@ let addFormSubmit = () => {
             res.json().then((res) => {
                 console.error(res);
                 toast.dismiss();
-                M.toast({html: 'Something went wrong<br>'+res.message});
+                M.toast({ html: 'Something went wrong<br>' + res.message });
             })
         } else {
             window.location.replace('/admin.html');
@@ -122,7 +123,7 @@ let addFormSubmit = () => {
 }
 
 let uploadImages = () => {
-    let toast = M.toast({html: 'Uploading, please wait'});
+    let toast = M.toast({ html: 'Uploading, please wait' });
     let files = document.forms[0].imageUpload.files;
     console.log(files);
     let promises = [];
@@ -130,7 +131,7 @@ let uploadImages = () => {
         promises.push(new Promise((resolve, reject) => {
             fetch('/api/image/add', {
                 method: 'POST',
-                headers: {id: localStorage.id, password: localStorage.password},
+                headers: { id: localStorage.id, password: localStorage.password },
                 body: img
             }).then(res => res.json()).then(res => resolve(res));
         }))
@@ -138,7 +139,7 @@ let uploadImages = () => {
     Promise.all(promises).then((files) => {
         for (let img of files) {
             if (img.status !== 200) {
-                M.toast({html: 'Failed upload image<br>'+img.message});
+                M.toast({ html: 'Failed upload image<br>' + img.message });
             } else {
                 images.push(img.message);
             }
@@ -152,12 +153,12 @@ document.forms[0].imageUpload.addEventListener('change', uploadImages, false);
 M.Modal.init(document.querySelectorAll('.modal'), {});
 
 let removeCar = () => {
-    fetch('/api/car/'+car.id+'/remove', {
+    fetch('/api/car/' + car.id + '/remove', {
         method: 'POST',
-        headers: {id: localStorage.id, password: localStorage.password}
+        headers: { id: localStorage.id, password: localStorage.password }
     }).then(res => res.json()).then(res => {
         if (res.status !== 200) {
-            M.toast({html: 'Something went wrong<br>'+res.message});
+            M.toast({ html: 'Something went wrong<br>' + res.message });
         } else {
             window.location.replace('/admin.html');
         }
