@@ -22,6 +22,7 @@ const imagesHTML = (imgs) => {
 }
 */
 
+/*
 const imagesHTML = (imgs) => {
     imgs = JSON.parse(imgs);
     if (imgs.length < 1) imgs.push(`<img src="https://via.placeholder.com/1280x720">`);
@@ -30,6 +31,31 @@ const imagesHTML = (imgs) => {
         output += `<a class="carousel-item" href="#${i}!"><img src="/img/${imgs[i]}"></a>`
     }
     output += `</div>`;
+    return output;
+}
+*/
+
+const imagesHTML = (imgs) => {
+    imgs = JSON.parse(imgs);
+    if (imgs.length < 1) imgs.push(`<img src="https://via.placeholder.com/1280x720">`);
+    let output = `<div class="slideshow-container">`;
+    let bubbles = '';
+    for (let i = 0; i < imgs.length; i++) {
+        output += `<div class="mySlides fade">
+        <div class="numbertext">${i+1} / ${imgs.length}</div>
+        <img src="/img/${imgs[i]}" style="width:100%">
+        <div class="text">Text</div>
+      </div>`
+        bubbles += `<span class="dot" onclick="currentSlide(${i+1})"></span>`
+    }
+    output += `
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        ${bubbles}
+    </div>`;
     return output;
 }
 
