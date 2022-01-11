@@ -1,3 +1,5 @@
+let info = {}
+
 document.addEventListener('DOMContentLoaded', function() {
     let vin = window.location.href.split('?')[1];
     if (vin) {
@@ -39,8 +41,6 @@ let inputs = {
     dob: document.getElementById('dob'),
     social: document.getElementById('social')
 }
-
-let info = {}
 
 function stepOne(model) {
     info.model = model;
