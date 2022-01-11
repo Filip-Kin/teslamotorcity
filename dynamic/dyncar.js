@@ -39,7 +39,7 @@ exports.generateCarPage = (req, res, c) => {
             data = data.replace(/\${year}/g, row.year);
             data = data.replace(/\${miles}/g, row.miles);
             data = data.replace(/\${vin}/g, row.vin);
-            data = data.replace(/\${price}/g, row.price);
+            data = data.replace(/\${price}/g, row.price/100);
             data = data.replace(/\${formattedPrice}/g, '$'+numberWithCommas(row.price/100));
             data = data.replace(/\${description}/g, row.description);
             data = data.replace(/\${color}/g, row.color);

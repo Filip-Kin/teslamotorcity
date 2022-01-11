@@ -72,8 +72,9 @@ let generateCarList = () => {
         console.log(cars);
         for (car of cars) {
             out += `<tr><td><div><img src="/img/${JSON.parse(car.images)[0]}" style="width: 15vw; height: auto"></div></td>`;
-            out += `<td>${car.make} ${car.model}</td>`;
+            out += `<td>Model ${car.model}</td>`;
             out += `<td>${car.year}</td>`;
+            out += `<td>${car.miles}</td>`;
             out += `<td>${car.price}</td>`;
             out += `<td><a href="add/${car.id}" class="btn red darken-3">Edit</a></td></tr>`;
         }

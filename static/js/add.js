@@ -9,28 +9,7 @@ window.addEventListener('load', () => {
     if (car.id !== "") {
         for (let field in car) {
             console.log(field);
-            if (document.forms[0][field].length == undefined) {
-                document.forms[0][field].value = car[field];
-            } else {
-                if (field === 'drive') {
-                    switch (car[field]) {
-                        case 'Front wheel drive': document.forms[0][field][2].checked = true;
-                        case 'Rear wheel drive': document.forms[0][field][1].checked = true;
-                        case 'All wheel drive': document.forms[0][field][0].checked = true;
-                    }
-                } else if (field === 'transmission') {
-                    switch (car[field]) {
-                        case 'Automatic': document.forms[0][field][1].checked = true;
-                        case 'Manual': document.forms[0][field][0].checked = true;
-                    }
-                } else if (field === 'fuel') {
-                    switch (car[field]) {
-                        case 'Gas': document.forms[0][field][2].checked = true;
-                        case 'Hybrid': document.forms[0][field][1].checked = true;
-                        case 'Electric': document.forms[0][field][0].checked = true;
-                    }
-                }
-            }
+            document.forms[0][field].value = car[field];
         }
     } else {
         document.getElementById('removeBtn').style.display = 'none';
@@ -102,32 +81,20 @@ let imgDown = (i) => {
     renderImages();
 }
 
-let getRadioValue = (radios) => {
-    for (var i = 0, length = radios.length; i < length; i++) {
-            if (radios[i].checked) {
-                return radios[i].value;
-                break;
-            }
-      }
-}
-
 let addFormSubmit = () => {
     let toast = M.toast({html: 'Saving...'});
     let newcar = {
         id: car.id,
-        make: document.forms[0].make.value,
         model: document.forms[0].model.value,
         year: document.forms[0].year.value,
+        miles: document.forms[0].miles.value,
         vin: document.forms[0].vin.value,
         price: document.forms[0].price.value,
         description: document.forms[0].description.value,
-        body: document.forms[0].body.value,
         color: document.forms[0].color.value,
         engine: document.forms[0].engine.value,
-        drive: getRadioValue(document.forms[0].drive),
-        cylinders: document.forms[0].cylinders.value,
-        transmission: getRadioValue(document.forms[0].transmission),
-        fuel: getRadioValue(document.forms[0].fuel),
+        drive: document.forms[0].drive.value,
+        assist: document.forms[0].cylinders.assist,
         images: images
     }
     console.log(newcar);
@@ -195,3 +162,7 @@ let removeCar = () => {
         }
     });
 }
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+});
