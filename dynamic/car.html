@@ -152,7 +152,10 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', M.Sidenav.init(document.querySelectorAll('.sidenav'), {}));
+        document.addEventListener('DOMContentLoaded', () => {
+            M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
+            M.Carousel.init(document.querySelectorAll('.carousel'), {});
+        });
     </script>
 </body>
 
