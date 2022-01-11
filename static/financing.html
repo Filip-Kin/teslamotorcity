@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-<head><!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-L0DEBQ8R8Z');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-L0DEBQ8R8Z');
+    </script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css">
     <link rel="stylesheet" href="/vendor/nouislider/dist/nouislider.min.css">
@@ -46,13 +50,12 @@
             <div class="center">
                 <h3>Finance Your Tesla</h3>
                 <p>
-                    Getting approved for your Tesla has never been easier.<br>
-                    Apply online and get approved the same day!
+                    Getting approved for your Tesla has never been easier.<br> Apply online and get approved the same day!
                 </p>
             </div>
             <div id="page-1" class="center" style="display: block">
                 <h5>Select Model</h5>
-                <div class="container row model-selection white-text">
+                <div class="container row model-selection white-text" id="model-buttons">
                     <div class="col s12 m6">
                         <a href="#" class="waves-effect waves-light" style="background-image: url('/img/model-s-min.jpg');">S</a>
                     </div>
@@ -300,7 +303,8 @@
                 </div>
             </div>
             <div class="row center">
-                Tesla Motor City is not affiliated with Tesla, inc.
+                Tesla Motor City is not affiliated with Tesla, inc. <br>
+                <a href="privacy.html">Privacy Policy</a>
             </div>
         </div>
         <div class="footer-copyright">
@@ -319,7 +323,16 @@
                 host: "https://wchat.freshchat.com"
             });
         }
-        function initialize(i, t) { var e; i.getElementById(t) ? initFreshChat() : ((e = i.createElement("script")).id = t, e.async = !0, e.src = "https://wchat.freshchat.com/js/widget.js", e.onload = initFreshChat, i.head.appendChild(e)) } function initiateCall() { initialize(document, "Freshdesk Messaging-js-sdk") } window.addEventListener ? window.addEventListener("load", initiateCall, !1) : window.attachEvent("load", initiateCall, !1);
+
+        function initialize(i, t) {
+            var e;
+            i.getElementById(t) ? initFreshChat() : ((e = i.createElement("script")).id = t, e.async = !0, e.src = "https://wchat.freshchat.com/js/widget.js", e.onload = initFreshChat, i.head.appendChild(e))
+        }
+
+        function initiateCall() {
+            initialize(document, "Freshdesk Messaging-js-sdk")
+        }
+        window.addEventListener ? window.addEventListener("load", initiateCall, !1) : window.attachEvent("load", initiateCall, !1);
     </script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LfY7gMeAAAAABz4wMoW0im7TXwUpm2b-0vj8gOL"></script>
     <script src="https://kit.fontawesome.com/1d8d60483d.js" crossorigin="anonymous"></script>

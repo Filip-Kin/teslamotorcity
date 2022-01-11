@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-<head><!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-L0DEBQ8R8Z');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-L0DEBQ8R8Z');
+    </script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css">
     <link rel="stylesheet" href="/vendor/nouislider/dist/nouislider.min.css">
@@ -44,13 +48,15 @@
         <div class="loader" style="display: none;" id="loader">
             <div class="preloader-wrapper big active">
                 <div class="spinner-layer spinner-red-only">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,12 +75,12 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="first_name" type="text" name="first_name" required>
-                  <label for="first_name">First Name</label>
+                    <input id="first_name" type="text" name="first_name" required>
+                    <label for="first_name">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="last_name" type="text" name="last_name" required>
-                  <label for="last_name">Last Name</label>
+                    <input id="last_name" type="text" name="last_name" required>
+                    <label for="last_name">Last Name</label>
                 </div>
             </div>
             <div class="row">
@@ -138,7 +144,8 @@
                 </div>
             </div>
             <div class="row center">
-                Tesla Motor City is not affiliated with Tesla, inc.
+                Tesla Motor City is not affiliated with Tesla, inc. <br>
+                <a href="privacy.html">Privacy Policy</a>
             </div>
         </div>
         <div class="footer-copyright">
@@ -157,7 +164,16 @@
                 host: "https://wchat.freshchat.com"
             });
         }
-        function initialize(i, t) { var e; i.getElementById(t) ? initFreshChat() : ((e = i.createElement("script")).id = t, e.async = !0, e.src = "https://wchat.freshchat.com/js/widget.js", e.onload = initFreshChat, i.head.appendChild(e)) } function initiateCall() { initialize(document, "Freshdesk Messaging-js-sdk") } window.addEventListener ? window.addEventListener("load", initiateCall, !1) : window.attachEvent("load", initiateCall, !1);
+
+        function initialize(i, t) {
+            var e;
+            i.getElementById(t) ? initFreshChat() : ((e = i.createElement("script")).id = t, e.async = !0, e.src = "https://wchat.freshchat.com/js/widget.js", e.onload = initFreshChat, i.head.appendChild(e))
+        }
+
+        function initiateCall() {
+            initialize(document, "Freshdesk Messaging-js-sdk")
+        }
+        window.addEventListener ? window.addEventListener("load", initiateCall, !1) : window.attachEvent("load", initiateCall, !1);
     </script>
     <script src="https://kit.fontawesome.com/1d8d60483d.js" crossorigin="anonymous"></script>
     <script src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
