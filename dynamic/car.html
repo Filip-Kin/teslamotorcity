@@ -230,6 +230,7 @@
         });
     </script>
     <script>
+        var slideIndex = 1;
         // Next/previous controls
         function plusSlides(n) {
             showSlides(slideIndex += n);
@@ -261,7 +262,6 @@
         }
         document.addEventListener('DOMContentLoaded', () => {
             M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
-            var slideIndex = 1;
             showSlides(slideIndex);
         });
     </script>
