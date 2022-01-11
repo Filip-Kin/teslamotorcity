@@ -2,66 +2,71 @@ const uuidv4 = require('uuidv4');
 const auth = require('./apiauth.js');
 
 exports.addUser = (req, res, pool) => {
-    auth.auth(req.headers.id, req.headers.password, c, 2, (err, login, permission) => {
-        if (err) {
-            res.status(500);
-            res.send({status: 500, message: err.message});
-        } else if (!login || !permission) {
-            res.status(403);
-            res.send({status: 403, message: 'Invalid credentials'});
-        } else {
-            console.log(req.body);
-            if (req.body.id !== '') {
-                if (req.body.password === '') {
-                    pool.query(`UPDATE users
-                    SET
-                        username = '${req.body.username}',
-                        permissions = ${req.body.permissions}
-                    WHERE id = '${req.body.id}';`, (err) => {
-                        if (err) {
-                            res.status(500);
-                            res.send({status: 500, message: err.message});
-                        } else {
-                            res.send({status: 200, message: req.body.id});
-                        }
-                    })
-                } else {
-                    let hash = auth.constructHashString(auth.hashPassword(req.body.password));
-                    pool.query(`UPDATE users
-                    SET
-                        username = '${req.body.username}',
-                        permissions = ${req.body.permissions},
-                        password = '${hash}'
-                    WHERE id = '${req.body.id}';`, (err) => {
-                        if (err) {
-                            res.status(500);
-                            res.send({status: 500, message: err.message});
-                        } else {
-                            res.send({status: 200, message: req.body.id});
-                        }
-                    })
-                }
+    pool.getConnection((err, c) => {
+        auth.auth(req.headers.id, req.headers.password, c, 2, (err, login, permission) => {
+            if (err) {
+                res.status(500);
+                res.send({status: 500, message: err.message});
+            } else if (!login || !permission) {
+                res.status(403);
+                res.send({status: 403, message: 'Invalid credentials'});
             } else {
-                let id = uuidv4.uuid();
-                let hash = auth.constructHashString(auth.hashPassword(req.body.password));
-                console.log(id+' '+hash.length+' '+hash);
-                pool.query(`INSERT INTO users 
-                (id, username, permissions, password) 
-                VALUES (
-                    '${id}',
-                    '${req.body.username.toLowerCase()}',
-                    ${req.body.permissions},
-                    '${hash}'
-                )`, (err) => {
-                    if (err) {
-                        res.status(500);
-                        res.send({status: 500, message: err.message});
+                console.log(req.body);
+                if (req.body.id !== '') {
+                    if (req.body.password === '') {
+                        c.query(`UPDATE users
+                        SET
+                            username = '${req.body.username}',
+                            permissions = ${req.body.permissions}
+                        WHERE id = '${req.body.id}';`, (err) => {
+                            if (err) {
+                                res.status(500);
+                                res.send({status: 500, message: err.message});
+                            } else {
+                                res.send({status: 200, message: req.body.id});
+                            }
+                            c.release();
+                        })
                     } else {
-                        res.send({status: 200, message: id});
+                        let hash = auth.constructHashString(auth.hashPassword(req.body.password));
+                        c.query(`UPDATE users
+                        SET
+                            username = '${req.body.username}',
+                            permissions = ${req.body.permissions},
+                            password = '${hash}'
+                        WHERE id = '${req.body.id}';`, (err) => {
+                            if (err) {
+                                res.status(500);
+                                res.send({status: 500, message: err.message});
+                            } else {
+                                res.send({status: 200, message: req.body.id});
+                            }
+                            c.release();
+                        })
                     }
-                });
+                } else {
+                    let id = uuidv4.uuid();
+                    let hash = auth.constructHashString(auth.hashPassword(req.body.password));
+                    console.log(id+' '+hash.length+' '+hash);
+                    c.query(`INSERT INTO users 
+                    (id, username, permissions, password) 
+                    VALUES (
+                        '${id}',
+                        '${req.body.username.toLowerCase()}',
+                        ${req.body.permissions},
+                        '${hash}'
+                    )`, (err) => {
+                        if (err) {
+                            res.status(500);
+                            res.send({status: 500, message: err.message});
+                        } else {
+                            res.send({status: 200, message: id});
+                        }
+                        c.release();
+                    });
+                }
             }
-        }
+        });
     });
 }
 
