@@ -16,6 +16,7 @@ window.addEventListener('load', () => {
     }
     
     M.updateTextFields();
+    M.FormSelect.init(document.querySelectorAll('select'), {});
     renderImages();
 });
 
@@ -162,7 +163,3 @@ let removeCar = () => {
         }
     });
 }
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
-});
