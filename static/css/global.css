@@ -100,6 +100,7 @@ nav.clear.grey.darken-4 {
     .main-parallax h4 {
         position: absolute;
         bottom: 90px;
+        margin-left: -6px;
     }
     .big-home-btn {
         position: absolute;

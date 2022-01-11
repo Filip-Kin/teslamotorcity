@@ -12,7 +12,6 @@ const files = [
     './static/js/admin.js',
     './static/js/inventory.js',
     './static/js/users.js',
-    './static/js/eprice.js',
     './static/js/financing.js',
     './static/js/index.js',
     './static/js/info.js',
@@ -25,21 +24,21 @@ let threads = [];
 
 for (let i = 0; i < files.length; i++) {
     let file = files[i];
-    console.log('Processing '+file)
+    console.log('Processing ' + file)
     let type = file.match(/(js|css|html)$/gm);
     threads.push(new Promise((resolve, reject) => {
         minify(file, options).then((data) => {
-            let newFile = file.replace(/\.(js|css|html)$/gm, '.min.'+type[0]);
-            console.log('Writing '+newFile)
+            let newFile = file.replace(/\.(js|css|html)$/gm, '.min.' + type[0]);
+            console.log('Writing ' + newFile)
             writeFile(newFile, data, (err) => {
                 if (err) {
-                    console.log('Write error on file '+file);
+                    console.log('Write error on file ' + file);
                     console.error(err);
                 }
                 resolve();
             })
         }).catch(err => {
-            console.log('Minify error on file '+file);
+            console.log('Minify error on file ' + file);
             console.error(err);
             resolve();
         });
