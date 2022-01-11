@@ -27,7 +27,7 @@ const imagesHTML = (imgs) => {
     if (imgs.length < 1) imgs.push(`<img src="https://via.placeholder.com/1280x720">`);
     let output = `<div class="carousel">`;
     for (let i = 0; i < imgs.length; i++) {
-        output += `<a class="carousel-item" href="#${i}!"><img src="/img/${img[i]}"></a>`
+        output += `<a class="carousel-item" href="#${i}!"><img src="/img/${imgs[i]}"></a>`
     }
     output += `</div>`;
     return output;
