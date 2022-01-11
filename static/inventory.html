@@ -31,6 +31,15 @@
         </nav>
     </div>
 
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/inventory.html">Inventory</a></li>
+        <li><a href="/testdrive.html">Test Drive</a></li>
+        <li><a href="/financing.html">Financing</a></li>
+        <li><a href="/rental.html">Rental</a></li>
+        <li><a href="/specials.html">Incentives</a></li>
+    </ul>
+
     <main>
         <a href="#" id="filter-btn" class="btn grey darken-3 hide-on-med-and-up" style="margin: 5px 5px -3px 10px;">Filter</a>
         <div class="row">
@@ -189,6 +198,9 @@
     <script src="/vendor/nouislider/dist/nouislider.min.js"></script>
     <script src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/inventory.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', M.Sidenav.init(document.querySelectorAll('.sidenav'), {}));
+    </script>
 </body>
 
 </html>

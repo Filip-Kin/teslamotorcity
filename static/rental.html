@@ -31,6 +31,15 @@
         </nav>
     </div>
 
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/inventory.html">Inventory</a></li>
+        <li><a href="/testdrive.html">Test Drive</a></li>
+        <li><a href="/financing.html">Financing</a></li>
+        <li><a href="/rental.html">Rental</a></li>
+        <li><a href="/specials.html">Incentives</a></li>
+    </ul>
+
     <main>
         <div class="loader" style="display: none;" id="loader">
             <div class="preloader-wrapper big active">
@@ -153,6 +162,9 @@
     <script src="https://kit.fontawesome.com/1d8d60483d.js" crossorigin="anonymous"></script>
     <script src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="./js/rental.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', M.Sidenav.init(document.querySelectorAll('.sidenav'), {}));
+    </script>
 </body>
 
 </html>

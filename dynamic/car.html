@@ -31,6 +31,15 @@
         </nav>
     </div>
 
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/inventory.html">Inventory</a></li>
+        <li><a href="/testdrive.html">Test Drive</a></li>
+        <li><a href="/financing.html">Financing</a></li>
+        <li><a href="/rental.html">Rental</a></li>
+        <li><a href="/specials.html">Incentives</a></li>
+    </ul>
+
     <main>
       <div class="container">
         <div class="row" style="margin: 5px 10px"><div class="left"><a href="#" class="btn red waves-effect waves-light" id="back-button">Back to inventory</a></div></div>
@@ -125,6 +134,9 @@
         if (document.referrer.endsWith('inventory.html')) history.back();
         else window.location.url = '/inventory.html';
       });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', M.Sidenav.init(document.querySelectorAll('.sidenav'), {}));
     </script>
 </body>
 
