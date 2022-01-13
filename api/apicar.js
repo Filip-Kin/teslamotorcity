@@ -80,7 +80,7 @@ exports.add = (req, res, pool) => {
                     (id, stock, model, year, miles, vin, price, description, color, engine, drive, assist, images)
                     VALUES (
                         '${id}',
-                        '${stock}',
+                        '${req.body.stock}',
                         '${req.body.model}',
                         '${req.body.year}',
                         ${req.body.miles},
@@ -109,7 +109,7 @@ exports.add = (req, res, pool) => {
 }
 
 // Remove a car
-exports.remove = (req, res, c) => {
+exports.remove = (req, res, pool) => {
     pool.getConnection((err, c) => {
         auth(req.headers.id, req.headers.password, c, 1, (err, login, permission) => {
             if (err) {

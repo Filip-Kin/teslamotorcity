@@ -50,7 +50,8 @@
             <div class="center">
                 <h3>Finance Your Tesla</h3>
                 <p>
-                    Getting approved for your Tesla has never been easier.<br> Apply online and get approved the same day!
+                    Getting approved for your Tesla is quick and easy.<br>
+                    Apply online and get approved the same day!
                 </p>
             </div>
             <div id="page-1" class="center" style="display: block">
@@ -106,15 +107,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4 m2 push-m2">
+                    <div class="input-field col s5 m4 push-m2">
                         <input id="zip_code" type="text">
                         <label for="zip_code">Zip Code</label>
                     </div>
-                    <div class="input-field col s4 m3 push-m2">
+                    <div class="input-field col s7 m4 push-m2">
                         <input id="city" type="text">
                         <label for="city">City</label>
                     </div>
-                    <div class="input-field col s4 m3 push-m2">
+                </div>
+                <div class="row">
+                    <div class="input-field col s5 m4 push-m2">
                         <select id="state">
                             <option value="" disabled selected>Select state</option>
                             <option value="AL">Alabama</option>
@@ -171,27 +174,17 @@
                         </select>
                         <label for="state">State</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12 m8 push-m2">
-                            <h5>How long have you been living at this address?</h5>
-                            <p>
-                                <label>
-                                    <input name="living" type="radio" />
-                                    <span>Less Than 2 Years</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input name="living" type="radio" id="more_than_2_years" />
-                                    <span>2 or More Years</span>
-                                </label>
-                            </p>
-                        </div>
+                    <div class="input-field col s7 m4 push-m2">
+                        <select id="living">
+                            <option>2 or More Years</option>
+                            <option>Less Than 2 Years</option>
+                        </select>
+                        <label for="living">How long have you lived here?</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12 center">
-                            <button class="btn red waves-effect waves-light" id="step-2">Continue</button>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <button class="btn red waves-effect waves-light" id="step-2">Continue</button>
                     </div>
                 </div>
             </div>
@@ -263,6 +256,9 @@
                     <div class="input-field col s12 center">
                         <button class="btn red waves-effect waves-light" id="submit">Submit</button>
                     </div>
+                </div>
+                <div class="row">
+                    <img src="/img/SSL.png" style="height: 64px">
                 </div>
             </div>
         </form>

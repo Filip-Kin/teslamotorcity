@@ -4,40 +4,8 @@ const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-/*
 const imagesHTML = (imgs) => {
     imgs = JSON.parse(imgs);
-    if (imgs.length < 1) return `<img src="https://via.placeholder.com/1280x720">`;
-    let output = `<div class="row center"><img src="/img/${imgs[0]}" class="responsive-img"></div>`;
-    if (imgs.length > 1) {
-        for (let i = 0; i < imgs.length; i++) {
-            if (i > 0) {
-                if ((i - 1) % 2 === 0) output += `<div class="row">`;
-                output += `<div class="col s12 m6"><img src="/img/${imgs[i]}" class="responsive-img"></div>`;
-                if ((i - 1) % 2 !== 0 || i + 1 === imgs.length) output += `</div>`;
-            }
-        }
-    }
-    return output;
-}
-*/
-
-/*
-const imagesHTML = (imgs) => {
-    imgs = JSON.parse(imgs);
-    if (imgs.length < 1) imgs.push(`<img src="https://via.placeholder.com/1280x720">`);
-    let output = `<div class="carousel">`;
-    for (let i = 0; i < imgs.length; i++) {
-        output += `<a class="carousel-item" href="#${i}!"><img src="/img/${imgs[i]}"></a>`
-    }
-    output += `</div>`;
-    return output;
-}
-*/
-
-const imagesHTML = (imgs) => {
-    imgs = JSON.parse(imgs);
-    if (imgs.length < 1) imgs.push(`<img src="https://via.placeholder.com/1280x720">`);
     let output = `<div class="slideshow-container">`;
     let bubbles = '';
     for (let i = 0; i < imgs.length; i++) {
@@ -78,7 +46,8 @@ exports.generateCarPage = (req, res, c) => {
             data = data.replace(/\${miles}/g, row.miles);
             data = data.replace(/\${vin}/g, row.vin);
             data = data.replace(/\${price}/g, row.price / 100);
-            data = data.replace(/\${formattedPrice}/g, '$' + numberWithCommas(row.price / 100));
+            if (row.price < 0) data = data.replace(/\${formattedPrice}/g, 'Call for Price');
+            else data = data.replace(/\${formattedPrice}/g, '$' + numberWithCommas(row.price / 100));
             data = data.replace(/\${description}/g, row.description);
             data = data.replace(/\${color}/g, row.color);
             data = data.replace(/\${engine}/g, row.engine);
