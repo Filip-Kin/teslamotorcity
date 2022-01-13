@@ -10,7 +10,7 @@ const imagesHTML = (imgs) => {
     let bubbles = '';
     for (let i = 0; i < imgs.length; i++) {
         output += `<div class="mySlides fade">
-        <img src="/img/${imgs[i]}" style="width:100%" loading="lazy">
+        <img src="/img/${imgs[i]}" style="width:100%">
       </div>`
         bubbles += `<span class="dot" onclick="currentSlide(${i+1})"></span>`
     }
