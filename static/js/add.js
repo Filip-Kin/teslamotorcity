@@ -86,7 +86,7 @@ let addFormSubmit = () => {
     let toast = M.toast({ html: 'Saving...' });
     let newcar = {
         id: car.id,
-        stock: car.stock,
+        stock: document.forms[0].stock.value,
         model: document.forms[0].model.value,
         year: document.forms[0].year.value,
         miles: document.forms[0].miles.value,
@@ -96,7 +96,7 @@ let addFormSubmit = () => {
         color: document.forms[0].color.value,
         engine: document.forms[0].engine.value,
         drive: document.forms[0].drive.value,
-        assist: document.forms[0].cylinders.assist,
+        assist: document.forms[0].assist.value,
         images: images
     }
     console.log(newcar);
