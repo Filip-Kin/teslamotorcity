@@ -6,12 +6,11 @@ const numberWithCommas = (x) => {
 
 const imagesHTML = (imgs) => {
     imgs = JSON.parse(imgs);
-    if (imgs.length < 1) imgs.push(`<img src="https://via.placeholder.com/1280x720">`);
     let output = `<div class="slideshow-container">`;
     let bubbles = '';
     for (let i = 0; i < imgs.length; i++) {
         output += `<div class="mySlides fade">
-        <img src="/img/${imgs[i]}" style="width:100%">
+        <img src="/img/${imgs[i]}" style="width:100%" loading="lazy">
       </div>`
         bubbles += `<span class="dot" onclick="currentSlide(${i+1})"></span>`
     }

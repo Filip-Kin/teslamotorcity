@@ -18,6 +18,7 @@ let makeCard = (c) => {
 
     let imgContainer = document.createElement('div');
     imgContainer.classList.add('card-image');
+    imgContainer.setAttribute('loading', 'lazy');
     card.appendChild(imgContainer);
 
     let img = document.createElement('img');
