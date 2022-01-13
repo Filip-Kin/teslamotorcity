@@ -1,21 +1,103 @@
 <!DOCTYPE html>
 <html>
 
-<head><!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0DEBQ8R8Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-L0DEBQ8R8Z');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-L0DEBQ8R8Z');
+    </script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css">
     <link rel="stylesheet" href="/vendor/nouislider/dist/nouislider.min.css">
     <link type="text/css" rel="stylesheet" href="/css/global.min.css" media="screen,projection">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        
+        .mySlides {
+            display: none;
+        }
+        
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+        
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -41,51 +123,62 @@
     </ul>
 
     <main>
-      <div class="container">
-        <div class="row" style="margin: 5px 10px"><div class="left"><a href="#" class="btn red waves-effect waves-light" id="back-button">Back to inventory</a></div></div>
-        <div class="row">
-          <div class="imgs col s12 l8">
-            ${imagesHTML}
-          </div>
-          <div class="col s12 l4">
-            <h4>Model ${model}</h4>
-            <h6>${year}</h6>
-            <h5>${formattedPrice}</h5>
-            <table>
-              <tr>
-                <td>VIN: </td>
-                <td>${vin}</td>
-              </tr>
-              <tr>
-                <td>Mileage: </td>
-                <td>${miles}</td>
-              </tr>
-              <tr>
-                <td>Color: </td>
-                <td>${color}</td>
-              </tr>
-              <tr>
-                <td>Motor: </td>
-                <td>${engine}</td>
-              </tr>
-              <tr>
-                <td>Drive: </td>
-                <td>${drive}</td>
-              </tr>
-              <tr>
-                <td>Autopilot: </td>
-                <td>${assist}</td>
-              </tr>
-            </table>
-            <p>${description}</p>
-            <div class="full-width-btns">
-              <a href="/info.html?${vin}" class="btn red waves-effect waves-light">Request More Information</a>
-              <a href="/eprice.html?${vin}" class="btn grey darken-4 waves-effect waves-light">Get EPrice</a>
-              <a href="tel:+15864041670" class="btn grey darken-4 waves-effect waves-light">Click to Call</a>
+        <div class="container">
+            <div class="row" style="margin: 5px 10px">
+                <div class="left"><a href="#" class="btn red waves-effect waves-light" id="back-button">Back to inventory</a></div>
             </div>
-          </div>
+            <div class="row">
+                <div class="imgs col s12 l8">
+                    ${imagesHTML}
+                </div>
+                <div class="col s12 l4">
+                    <h4>Model ${model}</h4>
+                    <h6>${year}</h6>
+                    <h5>${formattedPrice}</h5>
+                    <div class="buy-links">
+                        <a href="/financing.html?${stock}">Buy</a>
+                        <a href="/financing.html?${stock}">Lease</a>
+                        <a href="/rental.html?${stock}">Rent</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Stock #: </td>
+                            <td>${stock}</td>
+                        </tr>
+                        <tr>
+                            <td>VIN: </td>
+                            <td>${vin}</td>
+                        </tr>
+                        <tr>
+                            <td>Mileage: </td>
+                            <td>${miles}</td>
+                        </tr>
+                        <tr>
+                            <td>Color: </td>
+                            <td>${color}</td>
+                        </tr>
+                        <tr>
+                            <td>Motor: </td>
+                            <td>${engine}</td>
+                        </tr>
+                        <tr>
+                            <td>Drive: </td>
+                            <td>${drive}</td>
+                        </tr>
+                        <tr>
+                            <td>Autopilot: </td>
+                            <td>${assist}</td>
+                        </tr>
+                    </table>
+                    <p>${description}</p>
+                    <div class="full-width-btns">
+                        <a href="/info.html?${stock}" class="btn red waves-effect waves-light">Request More Information</a>
+                        <a href="/testdrive.html?${stock}" class="btn grey darken-4 waves-effect waves-light">Schedule Test Drive</a>
+                        <a href="tel:+15864041670" class="btn grey darken-4 waves-effect waves-light">Click to Call</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </main>
 
     <footer class="page-footer grey darken-4">
@@ -115,7 +208,8 @@
                 </div>
             </div>
             <div class="row center">
-                Tesla Motor City is not affiliated with Tesla, inc.
+                Tesla Motor City is not affiliated with Tesla, inc. <br>
+                <a href="privacy.html">Privacy Policy</a>
             </div>
         </div>
         <div class="footer-copyright">
@@ -130,13 +224,46 @@
     <script src="https://kit.fontawesome.com/1d8d60483d.js" crossorigin="anonymous"></script>
     <script src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
     <script>
-      document.getElementById('back-button').addEventListener('click', () => {
-        if (document.referrer.endsWith('inventory.html')) history.back();
-        else window.location.url = '/inventory.html';
-      });
+        document.getElementById('back-button').addEventListener('click', () => {
+            if (document.referrer.endsWith('inventory.html')) history.back();
+            else window.location.url = '/inventory.html';
+        });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', M.Sidenav.init(document.querySelectorAll('.sidenav'), {}));
+        var slideIndex = 1;
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
+            showSlides(slideIndex);
+        });
     </script>
 </body>
 

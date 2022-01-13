@@ -1,4 +1,10 @@
+let info = {}
+
 document.addEventListener('DOMContentLoaded', function() {
+    let vin = window.location.href.split('?')[1];
+    if (vin) {
+        info.stock = vin;
+    }
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {});
 });
@@ -35,8 +41,6 @@ let inputs = {
     dob: document.getElementById('dob'),
     social: document.getElementById('social')
 }
-
-let info = {}
 
 function stepOne(model) {
     info.model = model;
@@ -106,35 +110,35 @@ document.getElementById('submit').addEventListener('click', (evt) => {
     info.dob = inputs.dob.value;
     info.social = inputs.social.value;
     grecaptcha.ready(() => {
-        grecaptcha.execute('6LfY7gMeAAAAABz4wMoW0im7TXwUpm2b-0vj8gOL', {action: 'submit'}).then((token) => {
+        grecaptcha.execute('6LfY7gMeAAAAABz4wMoW0im7TXwUpm2b-0vj8gOL', { action: 'submit' }).then((token) => {
             console.log(token);
             fetch('/api/captcha/', {
-                method: 'POST',
-                body: JSON.stringify({token: token}),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(data => data.json())
-            .then(json => {
-                if (json.valid === true) {
-                    fetch('/api/financing', {
-                        method: 'POST',
-                        body: JSON.stringify(info),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                    pages[4].style.opacity = 0;
-                    setTimeout(() => {
-                        pages[4].style.display = 'none';
-                        pages[5].style.display = 'block';
-                        pages[5].style.opacity = 1;
-                    }, 300);
-                } else {
-                    M.toast({html: 'Invalid captcha'});
-                }
-            });
+                    method: 'POST',
+                    body: JSON.stringify({ token: token }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(data => data.json())
+                .then(json => {
+                    if (json.valid === true) {
+                        fetch('/api/financing', {
+                            method: 'POST',
+                            body: JSON.stringify(info),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        pages[4].style.opacity = 0;
+                        setTimeout(() => {
+                            pages[4].style.display = 'none';
+                            pages[5].style.display = 'block';
+                            pages[5].style.opacity = 1;
+                        }, 300);
+                    } else {
+                        M.toast({ html: 'Invalid captcha' });
+                    }
+                });
         });
     });
     return false;

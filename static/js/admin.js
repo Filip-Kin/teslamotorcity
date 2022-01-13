@@ -1,51 +1,52 @@
 let loginFormSubmit = () => {
     document.forms.loginForm.login.blur();
     document.forms.loginForm.password.blur();
-    console.log('/api/user/'+document.forms.loginForm.login.value);
-    fetch('/api/user/'+document.forms.loginForm.login.value)
-    .then(res => res.json())
-    .then(res => {
-        if (res.message === true) {
-            localStorage.setItem('id', res.id);
-            localStorage.setItem('username', document.forms.loginForm.login.value);
-            fetch('/api/auth/'+res.id, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: `{
+    console.log('/api/user/' + document.forms.loginForm.login.value);
+    fetch('/api/user/' + document.forms.loginForm.login.value)
+        .then(res => res.json())
+        .then(res => {
+            if (res.message === true) {
+                localStorage.setItem('id', res.id);
+                localStorage.setItem('username', document.forms.loginForm.login.value);
+                fetch('/api/auth/' + res.id, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: `{
                     "password": "${document.forms.loginForm.password.value}"
-                }`})
-            .then(res => res.json())
-            .then(res => {
-                if (res.auth) {
-                    document.forms.loginForm.login.classList.remove('invalid');
-                    document.forms.loginForm.password.classList.remove('invalid');
-                    document.forms.loginForm.login.classList.add('valid');
-                    document.forms.loginForm.password.classList.add('valid');
-                    localStorage.setItem('password', document.forms.loginForm.password.value);
-                    localStorage.setItem('permissions', res.permissions);
-                    document.getElementById('login').style.display = 'none';
-                    document.getElementById('admin-page').style.display = '';
-                    generateCarList();
-                } else {
-                    if (localStorage.password == undefined) {
-                        document.forms.loginForm.login.classList.add('invalid');
-                        document.forms.loginForm.password.classList.add('invalid');
-                        M.toast({html: 'Incorrect username or password'})
-                    } else {
-                        localStorage.remove('password')
-                        document.getElementById('login').style.display = '';
-                    }
-                }
-            });
-        } else {
-            document.forms.loginForm.login.classList.add('invalid');
-            document.forms.loginForm.password.classList.add('invalid');
-            document.getElementById('login').style.display = '';
-            M.toast({html: 'Incorrect username or password'})
-        }
-    });
+                }`
+                    })
+                    .then(res => res.json())
+                    .then(res => {
+                        if (res.auth) {
+                            document.forms.loginForm.login.classList.remove('invalid');
+                            document.forms.loginForm.password.classList.remove('invalid');
+                            document.forms.loginForm.login.classList.add('valid');
+                            document.forms.loginForm.password.classList.add('valid');
+                            localStorage.setItem('password', document.forms.loginForm.password.value);
+                            localStorage.setItem('permissions', res.permissions);
+                            document.getElementById('login').style.display = 'none';
+                            document.getElementById('admin-page').style.display = '';
+                            generateCarList();
+                        } else {
+                            if (localStorage.password == undefined) {
+                                document.forms.loginForm.login.classList.add('invalid');
+                                document.forms.loginForm.password.classList.add('invalid');
+                                M.toast({ html: 'Incorrect username or password' })
+                            } else {
+                                localStorage.removeItem('password')
+                                document.getElementById('login').style.display = '';
+                            }
+                        }
+                    });
+            } else {
+                document.forms.loginForm.login.classList.add('invalid');
+                document.forms.loginForm.password.classList.add('invalid');
+                document.getElementById('login').style.display = '';
+                M.toast({ html: 'Incorrect username or password' })
+            }
+        });
 };
 
 if (localStorage.username != undefined) {
@@ -72,6 +73,7 @@ let generateCarList = () => {
         console.log(cars);
         for (car of cars) {
             out += `<tr><td><div><img src="/img/${JSON.parse(car.images)[0]}" style="width: 15vw; height: auto"></div></td>`;
+            out += `<td>${car.stock}</td>`;
             out += `<td>Model ${car.model}</td>`;
             out += `<td>${car.year}</td>`;
             out += `<td>${car.miles}</td>`;

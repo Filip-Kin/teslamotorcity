@@ -1,8 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
-});
-
 let inputs = {
     model: document.getElementById('model'),
     firstName: document.getElementById('first_name'),
@@ -12,13 +7,23 @@ let inputs = {
     comment: document.getElementById('comment')
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    let vin = window.location.href.split('?')[1];
+    if (vin) {
+        inputs.comment.value = 'Stock # ' + vin;
+        M.updateTextFields();
+    }
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+});
+
 document.forms[0].addEventListener('submit', (evt) => {
     evt.preventDefault();
     document.forms[0].style.filter = 'blur(3px)';
     document.getElementById('loader').style.display = 'block';
 
     if (model.value === 'Select model') {
-        M.toast({html: 'Select a model'});
+        M.toast({ html: 'Select a model' });
         return false;
     }
 
