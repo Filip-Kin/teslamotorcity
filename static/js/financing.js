@@ -26,7 +26,7 @@ let inputs = {
     zipCode: document.getElementById('zip_code'),
     city: document.getElementById('city'),
     state: document.getElementById('state'),
-    living: document.getElementById('more_than_2_years'),
+    living: document.getElementById('living'),
     employment: document.getElementById('employment-status'),
     employer: document.getElementById('employer'),
     title: document.getElementById('title'),
@@ -59,7 +59,7 @@ document.getElementById('step-2').addEventListener('click', (evt) => {
     info.zipCode = inputs.zipCode.value;
     info.city = inputs.city.value;
     info.state = inputs.state.value;
-    info.living = inputs.living.checked;
+    info.living = inputs.living.value;
     pages[1].style.opacity = 0;
     setTimeout(() => {
         pages[1].style.display = 'none';
