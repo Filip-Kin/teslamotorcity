@@ -89,6 +89,7 @@ let makeInventory = () => {
 function filterElms() {
     for (let car of cars) {
         if (
+            car.price < 0 ||
             car.price > filter.price.max || 
             car.price < filter.price.min ||
             car.year > filter.year.max ||
