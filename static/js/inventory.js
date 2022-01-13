@@ -7,7 +7,7 @@ let makeCard = (c) => {
 
     let imgSrc = '/img/' + c.images[0];
     let titleText = `Model ${c.model.split(' ')[0]} <span class="year">${c.year}</span>`;
-    let subtitleText = `${numberWithCommas(c.miles)} miles <span class="right">$ ${numberWithCommas(c.price)}</span>`;
+    let subtitleText = `${numberWithCommas(c.miles)} miles <span class="right">$ ${(c.price < 0) ? 'Call' : numberWithCommas(c.price)}</span>`;
 
     let card = document.createElement('div');
     card.classList.add('card');
@@ -74,7 +74,7 @@ let makeInventory = () => {
                 car.year = parseInt(car.year);
                 if (resetFilter) {
                     if (car.price > filter.price.max) filter.price.max = car.price;
-                    if (car.price < filter.price.min) filter.price.min = car.price;
+                    if (car.price < filter.price.min && car.price > 0) filter.price.min = car.price;
                     if (car.year < filter.year.min) filter.year.min = car.year;
                     if (car.year > filter.year.max) filter.year.max = car.year;
                     if (car.miles > filter.mileage.max) filter.mileage.max = car.miles;
