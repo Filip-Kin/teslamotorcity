@@ -1,4 +1,4 @@
-const { SMTP, CAPTCHA_SECRET } = require('../config');
+const { EMAIL, SMTP, CAPTCHA_SECRET } = require('../config');
 const fetch = require('node-fetch');
 const nodemailer = require('nodemailer');
 
@@ -23,7 +23,7 @@ exports.captcha = (req, res) => {
 exports.testdrive = (req, res) => {
     transporter.sendMail({
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
-        to: 'me@filipkin.com',
+        to: EMAIL,
         subject: 'Test Drive Request', // Subject line
         html: `${req.body.firstName} ${req.body.lastName} is requesting to test drive a model ${req.body.model}<br><br>${req.body.email}<br>${req.body.phone}<br><br>${req.body.comment}`
     }).then(info => {
@@ -36,7 +36,7 @@ exports.testdrive = (req, res) => {
 exports.rental = (req, res) => {
     transporter.sendMail({
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
-        to: 'me@filipkin.com',
+        to: EMAIL,
         subject: 'Rental Request', // Subject line
         html: `${req.body.firstName} ${req.body.lastName} is requesting to rent a model ${req.body.model}<br><br>${req.body.email}<br>${req.body.phone}<br><br>${req.body.comment}`
     }).then(info => {
@@ -49,7 +49,7 @@ exports.rental = (req, res) => {
 exports.special = (req, res) => {
     transporter.sendMail({
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
-        to: 'me@filipkin.com',
+        to: EMAIL,
         subject: 'Special Incentive Request', // Subject line
         html: `${req.body.firstName} ${req.body.lastName} is requesting a special on a model ${req.body.model}<br><br>${req.body.email}<br>${req.body.phone}`
     }).then(info => {
@@ -62,7 +62,7 @@ exports.special = (req, res) => {
 exports.info = (req, res) => {
     transporter.sendMail({
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
-        to: 'me@filipkin.com',
+        to: EMAIL,
         subject: 'Info Request', // Subject line
         html: `${req.body.firstName} ${req.body.lastName} is requesting more information on stock # ${req.body.vin}<br><br>${req.body.email}<br>${req.body.phone}<br><br>${req.body.comment}`
     }).then(info => {
@@ -73,11 +73,16 @@ exports.info = (req, res) => {
 
 // Financing
 exports.financing = (req, res) => {
+    let html = '<table>';
+    for (let i in req.body) {
+        html += `<tr><td>${i}</td><td>${req.body[i]}</td></tr>\n`;
+    }
+    html += '</table>';
     transporter.sendMail({
         from: '"Tesla Motor City" <ozella.wolf10@ethereal.email>',
-        to: 'me@filipkin.com',
+        to: EMAIL,
         subject: 'Financing Request', // Subject line
-        html: `${JSON.stringify(req.body, null, 4).replace('"', '')}`
+        html: html
     }).then(info => {
         console.log(info);
         res.send()
