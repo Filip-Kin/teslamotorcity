@@ -5,7 +5,7 @@ const sitemap = require('./sitemapUpdates.js');
 
 // Car inventory
 exports.inventory = (req, res, c) => {
-    c.query(`SELECT * FROM cars`, (err, row) => {
+    c.query(`SELECT * FROM cars ORDER BY year DESC`, (err, row) => {
         if (err) {
             console.error(err);
             res.status(500);
