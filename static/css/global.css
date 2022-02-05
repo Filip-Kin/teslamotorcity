@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
-
 @font-face {
     font-family: 'TESLA';
     src: url("./fonts/TESLA.woff2") format("woff2");
@@ -47,11 +46,11 @@ nav {
 
 .main-parallax h2 {
     margin-top: 0;
-    color: #fff;
+    color: #000;
 }
 
 .main-parallax h4 {
-    color: #fff;
+    color: #000;
 }
 
 .big-home-btn {
@@ -186,10 +185,15 @@ main {
     min-height: 100vh;
 }
 
-.brand-logo {
+nav .brand-logo {
     white-space: nowrap;
     font-size: 24px !important;
     margin-left: 12px;
+    color: #000;
+}
+
+nav .menu-button {
+    color: #000;
 }
 
 .homepage-nav a.btn {
