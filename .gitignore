@@ -8,3 +8,4 @@ static/google*
 dbBackup.sql
 package-lock.json
 config.js
+static/img/favicon/*
