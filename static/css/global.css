@@ -189,10 +189,21 @@ nav .brand-logo {
     white-space: nowrap;
     font-size: 24px !important;
     margin-left: 12px;
+    color: #fff;
+}
+
+.homepage nav .brand-logo {
+    white-space: nowrap;
+    font-size: 24px !important;
+    margin-left: 12px;
     color: #000;
 }
 
 nav .menu {
+    color: #fff;
+}
+
+.homepage nav .menu {
     color: #000;
 }
 
